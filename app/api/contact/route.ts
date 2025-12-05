@@ -11,21 +11,22 @@ interface ContactData {
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.ERP_NEXT_API_KEY;
-    const apiSecret = process.env.ERP_NEXT_API_SECRET;
-    
-    if (!apiKey || !apiSecret) {
+    const apiKey = process.env.ERPNEXT_API_KEY;
+    const apiSecret = process.env.ERPNEXT_API_SECRET;
+    const erpnextUrl = process.env.NEXT_PUBLIC_ERPNEXT_URL;
+
+    if (!apiKey || !apiSecret || !erpnextUrl) {
       return NextResponse.json(
-        { error: 'ERPNext API credentials not found' },
+        { error: 'ERPNext API credentials or URL not found' },
         { status: 500 }
       );
     }
 
     const formData: ContactData = await request.json();
-    
+
     // Step 1: Create Contact
     console.log('Creating contact for:', formData.email);
-    
+
     const contactPayload = {
       first_name: formData.firstName,
       last_name: formData.lastName,
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
       description: formData.description
     };
 
-    const contactResponse = await fetch('https://siyaratech.m.erpnext.com/api/resource/Contact', {
+    const contactResponse = await fetch(`${erpnextUrl}/api/resource/Contact`, {
       method: 'POST',
       headers: {
         'Authorization': `token ${apiKey}:${apiSecret}`,
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
 
     // Step 2: Create Lead
     console.log('Creating lead for:', formData.email);
-    
+
     const leadPayload = {
       lead_name: `${formData.firstName} ${formData.lastName}`,
       email_id: formData.email,
@@ -70,7 +71,7 @@ export async function POST(request: NextRequest) {
       description: formData.description
     };
 
-    const leadResponse = await fetch('https://siyaratech.m.erpnext.com/api/resource/Lead', {
+    const leadResponse = await fetch(`${erpnextUrl}/api/resource/Lead`, {
       method: 'POST',
       headers: {
         'Authorization': `token ${apiKey}:${apiSecret}`,

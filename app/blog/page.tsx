@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import HeroSection from '@/components/HeroSection';
+import PageHeader from '@/components/PageHeader';
 import BlogCard from '@/components/BlogCard';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -26,11 +26,11 @@ export default function BlogPage() {
       try {
         setLoading(true);
         const response = await fetch('/api/blogs');
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
-        
+
         const data = await response.json();
         setBlogs(data.blogs);
         setError(null);
@@ -50,13 +50,11 @@ export default function BlogPage() {
 
   return (
     <div className="pt-16">
-      <HeroSection
+      <PageHeader
         title="Blog & Insights"
         subtitle="Stay Ahead of the Curve"
         description="Discover the latest trends, best practices, and expert insights in technology, AI, and digital transformation."
-        primaryCTA="Subscribe to Newsletter"
-        onPrimaryCTA={() => {}}
-        showStats={false}
+        badge="Latest Updates"
       />
 
       <section className="py-20 transition-colors duration-300">
@@ -88,7 +86,7 @@ export default function BlogPage() {
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
                     Featured Article
                   </Badge>
-                  <Card 
+                  <Card
                     className="overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
                     onClick={() => router.push(`/blog/${featuredBlog.id}`)}
                   >
@@ -112,7 +110,7 @@ export default function BlogPage() {
                         <p className="text-muted-foreground mb-6 line-clamp-3">
                           {featuredBlog.description}
                         </p>
-                        <Button 
+                        <Button
                           className="hover:scale-105 transition-transform duration-200"
                           onClick={(e) => {
                             e.stopPropagation();

@@ -1,10 +1,11 @@
 "use client";
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
+import PageHeader from '@/components/PageHeader';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Rocket, Shield, Heart } from 'lucide-react';
+import FoundersSection from '@/components/FoundersSection';
 
 export default function AboutPage() {
   const router = useRouter();
@@ -17,47 +18,15 @@ export default function AboutPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const teamMembers = [
-    {
-      name: 'Alex Thompson',
-      role: 'CEO & Founder',
-      bio: 'Visionary leader with 15+ years in tech innovation and digital transformation.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300',
-      skills: ['Strategy', 'Leadership', 'Innovation']
-    },
-    {
-      name: 'Jennifer Kim',
-      role: 'CTO',
-      bio: 'Technical expert specializing in AI, machine learning, and scalable architecture.',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b739?w=300',
-      skills: ['AI/ML', 'Architecture', 'Cloud']
-    },
-    {
-      name: 'Mike Roberts',
-      role: 'Head of Consulting',
-      bio: 'Strategic consultant helping enterprises navigate complex digital transformations.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300',
-      skills: ['Consulting', 'Strategy', 'Process']
-    },
-    {
-      name: 'Sarah Chen',
-      role: 'Lead Developer',
-      bio: 'Full-stack developer passionate about creating exceptional user experiences.',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300',
-      skills: ['React', 'Node.js', 'UI/UX']
-    }
-  ];
+
 
   return (
     <div className="pt-16">
-      <HeroSection
+      <PageHeader
         title="About FutureTech"
         subtitle="Innovation Driven by Purpose"
         description="We're a team of passionate technologists, strategists, and innovators dedicated to helping businesses thrive in the digital age."
-        primaryCTA="Join Our Team"
-        secondaryCTA="Our Story"
-        onPrimaryCTA={() => navigateTo('careers')}
-        showStats={false}
+        badge="Who We Are"
       />
 
       {/* Company Story */}
@@ -102,44 +71,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-gradient-to-b from-background to-accent/10 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              Our Team
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">Meet the Experts</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our diverse team combines deep technical expertise with strategic business insight to deliver exceptional results.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center p-6 border-border/50 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
-                <div className="relative mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-r from-primary/20 to-chart-1/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                <p className="text-primary mb-3">{member.role}</p>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{member.bio}</p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {member.skills.map((skill, skillIndex) => (
-                    <Badge key={skillIndex} variant="outline" className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FoundersSection />
 
       {/* Values */}
       <section className="py-20 transition-colors duration-300">

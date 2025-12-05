@@ -16,29 +16,43 @@ export async function GET(
   request: Request,
   { params }: { params: { name: string } }
 ) {
-  try {
-    const apiKey = process.env.ERP_NEXT_API_KEY;
-    const apiSecret = process.env.ERP_NEXT_API_SECRET;
-    
-    if (!apiKey || !apiSecret) {
-      return NextResponse.json(
-        { error: 'ERPNext API credentials not found' },
-        { status: 500 }
-      );
-    }
+  const ERPNEXT_URL = process.env.NEXT_PUBLIC_ERPNEXT_URL;
+  const API_KEY = process.env.ERPNEXT_API_KEY;
+  const API_SECRET = process.env.ERPNEXT_API_SECRET;
 
-    const url = new URL(`https://siyaratech.m.erpnext.com/api/resource/Blog%20Post/${params.name}`);
-    
+  if (!ERPNEXT_URL) {
+    console.warn("NEXT_PUBLIC_ERPNEXT_URL is not defined. Returning mock data.");
+    // Return mock data if no URL is configured
+    // Simulating a blog post based on the ID
+    return NextResponse.json({
+      blogPost: {
+        name: params.name,
+        title: 'The Future of AI in Enterprise',
+        content: '<p>Artificial intelligence is reshaping business operations...</p>',
+        contentType: 'HTML',
+        contentMd: '',
+        publishedOn: new Date().toISOString(),
+      }
+    });
+  }
+
+  try {
+    const url = new URL(`${ERPNEXT_URL}/api/resource/Blog Post/${params.name}`);
+
     // Add query parameters for the fields we need
-    url.searchParams.append('fields', '["title","content","content_type","content_md","published","published_on"]');
+    url.searchParams.append('fields', '["name","title","content","content_type","content_md","published","published_on"]');
+
+    const headers: HeadersInit = {
+      'Content-Type': 'application/json',
+    };
+
+    if (API_KEY && API_SECRET) {
+      headers['Authorization'] = `token ${API_KEY}:${API_SECRET}`;
+    }
 
     const response = await fetch(url.toString(), {
       method: 'GET',
-      headers: {
-        'Authorization': `token ${apiKey}:${apiSecret}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: headers,
       cache: 'no-store',
     });
 
@@ -56,7 +70,7 @@ export async function GET(
     }
 
     const data: BlogPostResponse = await response.json();
-    
+
     // Check if the blog post is published
     if (!data.data.published) {
       return NextResponse.json(
@@ -76,7 +90,7 @@ export async function GET(
     };
 
     return NextResponse.json({ blogPost });
-    
+
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return NextResponse.json(

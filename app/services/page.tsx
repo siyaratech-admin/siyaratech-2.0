@@ -1,11 +1,12 @@
 "use client";
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import ServiceCard from '@/components/ServiceCard';
+import PageHeader from '@/components/PageHeader';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
-import { Brain, Cloud, Users, Code, Zap, TrendingUp, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import MaskedDiv from '@/components/ui/masked-div';
+import { motion } from 'motion/react';
 
 export default function ServicesPage() {
   const router = useRouter();
@@ -18,227 +19,366 @@ export default function ServicesPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const services = [
-    {
-      icon: Brain,
-      title: 'AI and Automation',
-      description: 'Implement AI solutions to automate processes, improve decision-making, and innovate your business operations.',
-      features: ['Machine Learning', 'Process Automation', 'Predictive Analytics', 'Neural Networks'],
-      category: 'AI & Automation',
-      isPopular: true
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud Services',
-      description: 'Adopt cloud technologies to enhance scalability, flexibility, and security of your IT environment.',
-      features: ['AWS', 'Azure', 'Google Cloud', 'DevOps'],
-      category: 'Cloud Services',
-      isPopular: false
-    },
-    {
-      icon: Users,
-      title: 'Talent Outsourcing',
-      description: 'Focus on your core competencies while we provide talented professionals to manage your IT and business processes efficiently.',
-      features: ['IT Staffing', 'Remote Teams', 'Skill Matching', 'Project Management'],
-      category: 'Talent Outsourcing',
-      isPopular: false
-    },
-    {
-      icon: Code,
-      title: 'Software Development',
-      description: 'Leverage our IT expertise to build robust, scalable, and secure technology infrastructures that support your business objectives.',
-      features: ['Full-Stack Development', 'Mobile Apps', 'Web Applications', 'API Development'],
-      category: 'Software Development',
-      isPopular: false
-    },
-    {
-      icon: Zap,
-      title: 'Digital Transformation',
-      description: 'Transform your business digitally to stay competitive and meet the evolving demands of the market.',
-      features: ['Strategy Consulting', 'Process Optimization', 'Technology Integration', 'Change Management'],
-      category: 'Digital Transformation',
-      isPopular: false
-    },
-    {
-      icon: TrendingUp,
-      title: 'Business Consulting',
-      description: 'Unlock your business\'s full potential with our strategic consulting services. We help organizations improve performance, optimize processes, and achieve sustainable growth.',
-      features: ['Strategy Development', 'Market Analysis', 'Process Optimization', 'Performance Improvement'],
-      category: 'Business Consulting',
-      isPopular: false
-    }
-  ];
-
   return (
-    <div className="pt-16">
-      <HeroSection
+    <div className="">
+      <PageHeader
         title="Our Services"
         subtitle="Comprehensive Technology Solutions"
         description="From AI implementation to complete digital transformations, we provide cutting-edge technology services that drive measurable business results."
-        primaryCTA="Get Custom Quote"
-        secondaryCTA="Schedule Consultation"
-        onPrimaryCTA={() => navigateTo('contact')}
-        showStats={false}
+        badge="What We Do"
       />
 
-      <section className="py-24 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
-            {services.map((service, index) => (
-              <div 
-                key={index}
-                className="transform transition-all duration-500 hover:scale-[1.02]"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
+      {/* Services Section with Consistent Puzzle Layout */}
+      <div className="container mx-auto px-4 py-16 space-y-16 md:space-y-24 lg:space-y-32">
+
+        {/* AI & Technology Consulting - Right Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Video Background (bottom layer) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-1"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
               >
-                <ServiceCard {...service} />
-              </div>
-            ))}
+                <source
+                  src="https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
           </div>
 
-          {/* Process Section */}
-          <div className="text-center mb-20">
-            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 text-sm px-4 py-2">
-              Our Process
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-gradient">
-              How We Deliver Excellence
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-16 leading-relaxed">
-              We follow a proven methodology to ensure your project is delivered on time, within budget, and exceeds expectations.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { 
-                step: '01', 
-                title: 'Discovery', 
-                description: 'We analyze your business needs and technical requirements through comprehensive workshops and assessments.',
-                icon: '🔍'
-              },
-              { 
-                step: '02', 
-                title: 'Strategy', 
-                description: 'We develop a comprehensive plan and technology roadmap tailored to your specific goals and constraints.',
-                icon: '📋'
-              },
-              { 
-                step: '03', 
-                title: 'Implementation', 
-                description: 'Our expert team brings your solution to life using agile methodologies and best practices.',
-                icon: '⚡'
-              },
-              { 
-                step: '04', 
-                title: 'Support', 
-                description: 'Ongoing maintenance and optimization for continued success with 24/7 monitoring and support.',
-                icon: '🛠️'
-              }
-            ].map((process, index) => (
-              <Card key={index} className="text-center p-8 border-border/20 hover:shadow-2xl hover:scale-105 transition-all duration-500 group bg-card/80 backdrop-blur-sm glass-card-hover glass-highlight relative overflow-hidden">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-primary/10 backdrop-blur-sm border border-primary/20 text-primary-foreground rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <span className="relative z-10 text-primary font-bold">{process.step}</span>
+          {/* Content Card (top layer) - fits in right cutout */}
+          <motion.div
+            className="absolute top-0 right-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%]"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  AI & Technology Consulting
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Harness the power of artificial intelligence and cutting-edge technologies to drive innovation and competitive advantage.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Machine Learning Implementation
                   </div>
-                  
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{process.icon}</div>
-                  
-                  <h3 className="text-xl font-semibold mb-4 group-hover:text-primary transition-colors duration-300">{process.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{process.description}</p>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    AI Strategy Development
+                  </div>
                 </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* Why Choose Us Section */}
-          <div className="mt-32">
-            <div className="text-center mb-20">
-              <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 text-sm px-4 py-2">
-                Why Choose Us
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-gradient">
-                What Sets Us Apart
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: '🎯',
-                  title: 'Proven Track Record',
-                  description: '500+ successful projects delivered across various industries with a 100% client satisfaction rate.'
-                },
-                {
-                  icon: '⚡',
-                  title: 'Cutting-Edge Technology',
-                  description: 'We leverage the latest technologies and frameworks to build future-proof solutions.'
-                },
-                {
-                  icon: '👥',
-                  title: 'Expert Team',
-                  description: 'Our team consists of certified professionals with deep expertise in their respective domains.'
-                },
-                {
-                  icon: '🔒',
-                  title: 'Security First',
-                  description: 'We implement enterprise-grade security measures to protect your data and systems.'
-                },
-                {
-                  icon: '📈',
-                  title: 'Scalable Solutions',
-                  description: 'Our solutions are designed to grow with your business and adapt to changing requirements.'
-                },
-                {
-                  icon: '🏆',
-                  title: 'Award-Winning Service',
-                  description: 'Recognized industry leader with multiple awards for innovation and client service excellence.'
-                }
-              ].map((feature, index) => (
-                <Card key={index} className="p-6 border-border/20 hover:shadow-xl hover:scale-105 transition-all duration-500 group bg-card/80 backdrop-blur-sm glass-card-hover glass-highlight">
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                  <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Service Guarantees */}
-          <div className="mt-32">
-            <div className="text-center mb-16">
-              <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 text-sm px-4 py-2">
-                Our Commitment
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-gradient">
-                Service Guarantees
-              </h2>
-            </div>
-
-            <Card className="p-8 bg-card/80 backdrop-blur-sm border-primary/20 glass-card glass-highlight relative overflow-hidden">
-              {/* Background Gradient Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-chart-1/5 opacity-50"></div>
-              
-              <div className="relative grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  { icon: CheckCircle, title: '99.9% Uptime', subtitle: 'System Reliability' },
-                  { icon: CheckCircle, title: '24/7 Support', subtitle: 'Always Available' },
-                  { icon: CheckCircle, title: 'Money Back', subtitle: 'Satisfaction Guarantee' },
-                  { icon: CheckCircle, title: 'On-Time Delivery', subtitle: 'Project Commitment' }
-                ].map((guarantee, index) => (
-                  <div key={index} className="text-center group">
-                    <guarantee.icon className="w-12 h-12 text-green-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{guarantee.title}</h3>
-                    <p className="text-muted-foreground">{guarantee.subtitle}</p>
-                  </div>
-                ))}
               </div>
-            </Card>
+            </MaskedDiv>
+          </motion.div>
+        </div>
+
+        {/* Cloud Services - Left Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Content Card (left side) - fits in left cutout */}
+          <motion.div
+            className="absolute top-0 left-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%] z-10"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  Cloud Services
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Enhance scalability, flexibility, and security with enterprise-grade cloud solutions and infrastructure.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    AWS, Azure, Google Cloud
+                  </div>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    DevOps & Infrastructure
+                  </div>
+                </div>
+              </div>
+            </MaskedDiv>
+          </motion.div>
+
+          {/* Video Background (right side) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-2"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/18069166/18069166-uhd_2560_1440_24fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
           </div>
         </div>
-      </section>
+
+        {/* Software Development - Right Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Video Background (bottom layer) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-3"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/18069701/18069701-uhd_2560_1440_24fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
+          </div>
+
+          {/* Content Card (top layer) - fits in right cutout */}
+          <motion.div
+            className="absolute top-0 right-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%]"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  Software Development
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Build robust, scalable applications with modern development practices and cutting-edge technologies.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Full-Stack Development
+                  </div>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Mobile & Web Apps
+                  </div>
+                </div>
+              </div>
+            </MaskedDiv>
+          </motion.div>
+        </div>
+
+        {/* Digital Transformation - Left Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Content Card (left side) - fits in left cutout */}
+          <motion.div
+            className="absolute top-0 left-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%] z-10"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  Digital Transformation
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Transform your business digitally to stay competitive in the modern market landscape.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Strategy Consulting
+                  </div>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Process Optimization
+                  </div>
+                </div>
+              </div>
+            </MaskedDiv>
+          </motion.div>
+
+          {/* Video Background (right side) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-4"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/18069232/18069232-uhd_2560_1440_24fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
+          </div>
+        </div>
+
+        {/* Business Consulting - Right Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Video Background (bottom layer) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-1"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
+          </div>
+
+          {/* Content Card (top layer) - fits in right cutout */}
+          <motion.div
+            className="absolute top-0 right-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%]"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  Business Consulting
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Unlock your business's potential with strategic consulting for sustainable growth and performance.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Strategy Development
+                  </div>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Performance Improvement
+                  </div>
+                </div>
+              </div>
+            </MaskedDiv>
+          </motion.div>
+        </div>
+
+        {/* Talent Outsourcing - Left Cutout */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+          {/* Content Card (left side) - fits in left cutout */}
+          <motion.div
+            className="absolute top-0 left-0 w-full md:w-[55%] lg:w-[45%] h-full md:h-[55%] lg:h-[45%] z-10"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <MaskedDiv
+              maskType="type-1"
+              size={1}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-white/95 backdrop-blur-md shadow-xl border border-white/20 dark:bg-black/80 dark:border-white/10 p-4 md:p-6 lg:p-8 flex flex-col justify-center">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground">
+                  Talent Outsourcing
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
+                  Focus on core competencies while we provide talented professionals for your IT and business processes.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    IT Staffing Solutions
+                  </div>
+                  <div className="flex items-center text-xs md:text-sm text-primary">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+                    Remote Team Management
+                  </div>
+                </div>
+              </div>
+            </MaskedDiv>
+          </motion.div>
+
+          {/* Video Background (right side) */}
+          <div className="absolute inset-0">
+            <MaskedDiv
+              maskType="type-2"
+              size={0.45}
+              className="w-full h-full"
+            >
+              <video
+                className="cursor-pointer transition-all duration-300 hover:scale-105 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/18069166/18069166-uhd_2560_1440_24fps.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </MaskedDiv>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
