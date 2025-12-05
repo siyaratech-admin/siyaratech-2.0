@@ -1,4 +1,5 @@
 import { ParticleConfig } from '../types/particle';
+export type { ParticleConfig };
 
 export class Particle {
     x: number;

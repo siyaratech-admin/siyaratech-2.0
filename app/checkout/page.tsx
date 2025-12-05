@@ -62,7 +62,7 @@ export default function Checkout() {
   // Actually, useParams in Next.js returns an object.
   const params = useParams()
   const courseId = params?.courseId as string
-  
+
   const router = useRouter()
 
   const course = courses.find((c) => c.id === courseId) || courses[0] // Default to first course if not found for demo
@@ -77,12 +77,12 @@ export default function Checkout() {
   if (!course) {
     return (
       <div className="min-h-screen relative overflow-hidden">
-        
+
         <div className="bg-gradient-to-br from-gray-900 via-[#FD1D1D]/10 to-black" />
         <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
           <BrandGlassCard variant="primary" className="p-8 text-center max-w-md">
             <h1 className="text-2xl font-bold text-white mb-4">Course Not Found</h1>
-            <p className="text-gray-300 mb-6">The course you're looking for doesn't exist.</p>
+            <p className="text-gray-300 mb-6">The course you&apos;re looking for doesn&apos;t exist.</p>
             <Button
               onClick={() => router.push("/courses")}
               className="bg-gradient-to-r from-[#833AB4] to-[#4079ff] text-white"
@@ -116,7 +116,7 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      
+
       <div className="bg-gradient-to-br from-gray-900 via-[#FD1D1D]/10 to-black animate-gradient-xy" />
 
       <div className="relative z-10 px-4 w-full min-h-screen mt-20">

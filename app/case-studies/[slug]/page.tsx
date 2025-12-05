@@ -11,9 +11,13 @@ import { cn } from "@/lib/utils" // Assuming cn utility is available
 import { useEffect, useRef } from "react" // For SkeletonFour
 
 // Placeholders
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CardContainer = ({ children, className }: any) => <div className={className}>{children}</div>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CardBody = ({ children, className }: any) => <div className={className}>{children}</div>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CardItem = ({ children, className }: any) => <div className={className}>{children}</div>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ThreeDMarquee = ({ images }: any) => <div>3D Marquee Placeholder</div>
 
 // Define types for case study data

@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Rocket, Shield, Heart } from 'lucide-react';
 import FoundersSection from '@/components/FoundersSection';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function AboutPage() {
                 Founded in 2014, FutureTech emerged from a simple belief: technology should empower businesses to achieve extraordinary results. What started as a small team of developers has grown into a comprehensive technology consultancy serving Fortune 500 companies worldwide.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Our mission is to bridge the gap between cutting-edge technology and practical business solutions. We don't just build software – we craft digital experiences that transform how organizations operate, compete, and grow.
+                Our mission is to bridge the gap between cutting-edge technology and practical business solutions. We don&apos;t just build software – we craft digital experiences that transform how organizations operate, compete, and grow.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -59,7 +60,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative group">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600"
                 alt="Team collaboration"
                 className="rounded-lg shadow-xl group-hover:scale-105 transition-transform duration-300"

@@ -4,9 +4,10 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 // import { PaymentContent } from "../components/PaymentContent"
 // import LoadingIndicator from "../components/LoadingIndicator"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "@/components/ThemeProvider"
 
 // Placeholders
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PaymentContent = ({ searchParams }: any) => <div>Payment Content Placeholder</div>
 const LoadingIndicator = () => <div>Loading...</div>
 

@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
 
                 <div className="space-y-4 text-sm sm:text-base">
                     <p>
-                        This Privacy Policy describes how SIYARATECH INNOVATIONS LLP and its affiliates (collectively "SIYARATECH INNOVATIONS LLP, we, our, us") collect, use, share, protect or otherwise process your information/ personal data through our website https://www.siyaratechin.com/ (referred to as Platform). Please note that you may be able to browse certain sections of the Platform without registering with us. We do not offer any product/service under this Platform outside India and your personal data will primarily be stored and processed in India.
+                        This Privacy Policy describes how SIYARATECH INNOVATIONS LLP and its affiliates (collectively &quot;SIYARATECH INNOVATIONS LLP, we, our, us&quot;) collect, use, share, protect or otherwise process your information/ personal data through our website https://www.siyaratechin.com/ (referred to as Platform). Please note that you may be able to browse certain sections of the Platform without registering with us. We do not offer any product/service under this Platform outside India and your personal data will primarily be stored and processed in India.
                     </p>
 
                     <p>
@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
                         You always have the option to not provide information, by choosing not to use a particular service or feature on the Platform. We may track your behaviour, preferences, and other information that you choose to provide on our Platform. This information is compiled and analysed on an aggregated basis.
                     </p>
                     <p>
-                        We will also collect your information related to your transactions on Platform and such third-party business partner platforms. When such a third-party business partner collects your personal data directly from you, you will be governed by their privacy policies. We shall not be responsible for the third-party business partner's privacy practices or the content of their privacy policies, and we request you to read their privacy policies prior to disclosing any information.
+                        We will also collect your information related to your transactions on Platform and such third-party business partner platforms. When such a third-party business partner collects your personal data directly from you, you will be governed by their privacy policies. We shall not be responsible for the third-party business partner&apos;s privacy practices or the content of their privacy policies, and we request you to read their privacy policies prior to disclosing any information.
                     </p>
                     <p>
                         If you receive an email, a call from a person/association claiming to be SIYARATECH INNOVATIONS LLP seeking any personal data like debit/credit card PIN, net-banking or mobile banking password, we request you to never provide such information. If you have already revealed such information, report it immediately to an appropriate law enforcement agency.
@@ -152,7 +152,7 @@ export default function PrivacyPolicy() {
                         You, while providing your personal data over the Platform or any partner platforms or establishments, consent to us (including our other corporate entities, affiliates, lending partners, technology partners, marketing channels, business partners and other third parties) to contact you through SMS, instant messaging apps, call and/or e-mail for the purposes specified in this Privacy Policy.
                     </p>
                     <p>
-                        You have an option to withdraw your consent that you have already provided by writing to the Grievance Officer at the contact information provided below. Please mention "Withdrawal of consent for processing personal data" in your subject line of your communication. We may verify such requests before acting on our request. However, please note that your withdrawal of consent will not be retrospective and will be in accordance with the Terms of Use, this Privacy Policy, and applicable laws.
+                        You have an option to withdraw your consent that you have already provided by writing to the Grievance Officer at the contact information provided below. Please mention &quot;Withdrawal of consent for processing personal data&quot; in your subject line of your communication. We may verify such requests before acting on our request. However, please note that your withdrawal of consent will not be retrospective and will be in accordance with the Terms of Use, this Privacy Policy, and applicable laws.
                     </p>
                     <p>
                         In the event you withdraw consent given to us under this Privacy Policy, we reserve the right to restrict or deny the provision of our services for which we consider such information to be necessary.
@@ -184,16 +184,16 @@ export default function PrivacyPolicy() {
                         A. This document is an electronic record in terms of Information Technology Act, 2000 and rules there under as applicable and the amended provisions pertaining to electronic records in various statutes as amended by the Information Technology Act, 2000. This electronic record is generated by a computer system and does not require any physical or digital signatures.
                     </p>
                     <p>
-                        B. This document is published in accordance with the provisions of Rule 3 (1) of the Information Technology (Intermediaries guidelines) Rules, 2011 that require publishing the rules and regulations, privacy policy and Terms of Use for access or usage of domain name https://www.siyaratechin.com/ ("Website"), including the related mobile site and mobile application (hereinafter referred to as "Platform").
+                        B. This document is published in accordance with the provisions of Rule 3 (1) of the Information Technology (Intermediaries guidelines) Rules, 2011 that require publishing the rules and regulations, privacy policy and Terms of Use for access or usage of domain name https://www.siyaratechin.com/ (&quot;Website&quot;), including the related mobile site and mobile application (hereinafter referred to as &quot;Platform&quot;).
                     </p>
                     <p>
-                        C. The Platform is owned by SIYARATECH INNOVATIONS LLP, a company incorporated under the Companies Act, 1956 with its registered office at FLAT NO.-17, INDRAPRASATHA PARK SOC., NAWALE CHAWL, NASHIK ROAD, Nehru Nagar Sub Post Office, DEOLALI, Nashik, Nashik, Maharashtra, 422101 (hereinafter referred to as "Platform Owner", "we", "us", "our").
+                        C. The Platform is owned by SIYARATECH INNOVATIONS LLP, a company incorporated under the Companies Act, 1956 with its registered office at FLAT NO.-17, INDRAPRASATHA PARK SOC., NAWALE CHAWL, NASHIK ROAD, Nehru Nagar Sub Post Office, DEOLALI, Nashik, Nashik, Maharashtra, 422101 (hereinafter referred to as &quot;Platform Owner&quot;, &quot;we&quot;, &quot;us&quot;, &quot;our&quot;).
                     </p>
                     <p>
-                        D. Your use of the Platform and services and tools are governed by the following terms and conditions ("Terms of Use") as applicable to the Platform including the applicable policies which are incorporated herein by way of reference. If You transact on the Platform, You shall be subject to the policies that are applicable to the Platform for such transaction. By mere use of the Platform, You shall be contracting with the Platform Owner and these terms and conditions including the policies constitute Your binding obligations, with Platform Owner.
+                        D. Your use of the Platform and services and tools are governed by the following terms and conditions (&quot;Terms of Use&quot;) as applicable to the Platform including the applicable policies which are incorporated herein by way of reference. If You transact on the Platform, You shall be subject to the policies that are applicable to the Platform for such transaction. By mere use of the Platform, You shall be contracting with the Platform Owner and these terms and conditions including the policies constitute Your binding obligations, with Platform Owner.
                     </p>
                     <p>
-                        E. For the purpose of these Terms of Use, wherever the context so requires "you", "your" or "user" shall mean any natural or legal person who has agreed to become a user/buyer on the Platform.
+                        E. For the purpose of these Terms of Use, wherever the context so requires &quot;you&quot;, &quot;your&quot; or &quot;user&quot; shall mean any natural or legal person who has agreed to become a user/buyer on the Platform.
                     </p>
                     <p>
                         F. ACCESSING, BROWSING OR OTHERWISE USING THE PLATFORM INDICATES YOUR AGREEMENT TO ALL THE TERMS AND CONDITIONS UNDER THESE TERMS OF USE, SO PLEASE READ THE TERMS OF USE CAREFULLY BEFORE PROCEEDING.
@@ -211,7 +211,7 @@ export default function PrivacyPolicy() {
                         <li>You agree not to use the Platform and/ or Services for any purpose that is unlawful, illegal or forbidden by these Terms, or Indian or local laws that might apply to you.</li>
                         <li>You agree and acknowledge that website and the Services may contain links to other third party websites. On accessing these links, you will be governed by the terms of use, privacy policy and such other policies of such third party websites. These links are provided for your convenience for provide further information.</li>
                         <li>You understand that upon initiating a transaction for availing the Services you are entering into a legally binding and enforceable contract with the Platform Owner for the Services.</li>
-                        <li>You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as applicable) and their respective officers, directors, agents, and employees, from any claim or demand, or actions including reasonable attorneys' fees, made by any third party or penalty imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other Policies, or Your violation of any law, rules or regulations or the rights (including infringement of intellectual property rights) of a third party.</li>
+                        <li>You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as applicable) and their respective officers, directors, agents, and employees, from any claim or demand, or actions including reasonable attorneys&apos; fees, made by any third party or penalty imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other Policies, or Your violation of any law, rules or regulations or the rights (including infringement of intellectual property rights) of a third party.</li>
                         <li>In no event will the Platform Owner be liable for any indirect, consequential, incidental, special or punitive damages, including without limitation damages for loss of profits or revenues, business interruption, loss of business opportunities, loss of data or loss of other economic interests, whether in contract, negligence, tort or otherwise, arising from the use of or inability to use the Services, however caused and whether arising in contract, tort, negligence, warranty or otherwise, exceed the amount paid by You for using the Services giving rise to the cause of action or Rupees One Hundred (Rs. 100) whichever is less</li>
                         <li>Notwithstanding anything contained in these Terms of Use, the parties shall not be liable for any failure to perform an obligation under these Terms if performance is prevented or delayed by a force majeure event.</li>
                         <li>These Terms and any dispute or claim relating to it, or its enforceability, shall be governed by and construed in accordance with the laws of India.</li>
@@ -224,7 +224,7 @@ export default function PrivacyPolicy() {
 
                 <h2 className="text-xl sm:text-2xl font-semibold mt-6 mb-2">Refund Policy</h2>
                 <p className="mb-4 text-sm sm:text-base">
-                    If the refund is approved, the amount will be automatically refunded on your original payment method within 10 business days. If more than 15 business days have passed since we've approved your return, please contact us.
+                    If the refund is approved, the amount will be automatically refunded on your original payment method within 10 business days. If more than 15 business days have passed since we&apos;ve approved your return, please contact us.
                 </p>
             </div>
         </div>

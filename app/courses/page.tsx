@@ -10,7 +10,9 @@ import axios from "axios"
 import Cookies from "js-cookie"
 
 // Placeholder for missing components
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const BrandGlassCard = ({ children, className, variant }: any) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const BlurFade = ({ children, inView, duration, delay }: any) => <div>{children}</div>
 
 interface Course {

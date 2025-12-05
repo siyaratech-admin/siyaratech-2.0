@@ -56,6 +56,7 @@ export default function HeroSection({
             animateBy="words"
             direction="top"
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] text-center"
+            as="h1"
           />
         </div>
 

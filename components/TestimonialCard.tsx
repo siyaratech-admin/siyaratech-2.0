@@ -29,11 +29,10 @@ export default function TestimonialCard({
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`w-4 h-4 ${
-                  i < rating 
-                    ? 'text-primary fill-current' 
+                className={`w-4 h-4 ${i < rating
+                    ? 'text-primary fill-current'
                     : 'text-muted-foreground'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -41,7 +40,7 @@ export default function TestimonialCard({
 
         {/* Content */}
         <blockquote className="text-foreground mb-8 text-lg leading-relaxed italic">
-          "{content}"
+          &quot;{content}&quot;
         </blockquote>
 
         {/* Author Info */}

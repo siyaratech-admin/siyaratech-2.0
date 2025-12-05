@@ -1,5 +1,5 @@
 /*
-	Installed from https://reactbits.dev/ts/tailwind/
+  Installed from https://reactbits.dev/ts/tailwind/
 */
 
 import { motion, Transition } from "motion/react";
@@ -19,6 +19,8 @@ type BlurTextProps = {
   easing?: EasingFunction;
   onAnimationComplete?: () => void;
   stepDuration?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: any;
 };
 
 const buildKeyframes = (
@@ -50,10 +52,11 @@ const BlurText: React.FC<BlurTextProps> = ({
   easing = (t) => t,
   onAnimationComplete,
   stepDuration = 0.35,
+  as: Component = "p",
 }) => {
   const elements = animateBy === "words" ? text.split(" ") : text.split("");
   const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -100,7 +103,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   );
 
   return (
-    <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>
+    <Component ref={ref} className={`blur-text ${className} flex flex-wrap`}>
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
@@ -130,7 +133,7 @@ const BlurText: React.FC<BlurTextProps> = ({
           </motion.span>
         );
       })}
-    </p>
+    </Component>
   );
 };
 

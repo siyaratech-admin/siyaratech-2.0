@@ -293,6 +293,7 @@ export default function ShapeHero({
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             custom={1}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             variants={fadeUpVariants as any}
             initial="hidden"
             animate="visible"
@@ -314,6 +315,7 @@ export default function ShapeHero({
           </motion.div>
           <motion.div
             custom={2}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             variants={fadeUpVariants as any}
             initial="hidden"
             animate="visible"

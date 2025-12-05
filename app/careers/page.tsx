@@ -4,13 +4,13 @@ import HeroSection from '@/components/HeroSection';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { 
-  Rocket, 
-  Target, 
-  Globe, 
-  Heart, 
-  Coffee, 
-  Award, 
+import {
+  Rocket,
+  Target,
+  Globe,
+  Heart,
+  Coffee,
+  Award,
   ArrowRight,
   Briefcase,
   MapPin
@@ -76,8 +76,8 @@ export default function CareersPage() {
         description="Work with cutting-edge technologies, solve complex challenges, and help build the future alongside passionate, talented colleagues."
         primaryCTA="View Open Positions"
         secondaryCTA="Learn About Culture"
-        onPrimaryCTA={() => {}}
-        onSecondaryCTA={() => {}}
+        onPrimaryCTA={() => { }}
+        onSecondaryCTA={() => { }}
         showStats={false}
       />
 
@@ -161,7 +161,7 @@ export default function CareersPage() {
 
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-6">
-              Don't see the perfect role? We're always looking for exceptional talent.
+              Don&apos;t see the perfect role? We&apos;re always looking for exceptional talent.
             </p>
             <Button variant="outline" size="lg" className="hover:scale-105 transition-transform duration-200">
               Send Us Your Resume

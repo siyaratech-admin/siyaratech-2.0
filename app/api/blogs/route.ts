@@ -52,6 +52,7 @@ export async function GET() {
     const data = await response.json();
 
     // Transform ERPNext data to our format
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const blogs = data.data.map((item: any) => ({
       id: item.name,
       title: item.title,
@@ -61,6 +62,7 @@ export async function GET() {
 
     return NextResponse.json({ blogs });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error in blog API:', error);
     return NextResponse.json({

@@ -304,7 +304,7 @@ export default function ServicesPage() {
                   Business Consulting
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 md:mb-4">
-                  Unlock your business's potential with strategic consulting for sustainable growth and performance.
+                  Unlock your business&apos;s potential with strategic consulting for sustainable growth and performance.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center text-xs md:text-sm text-primary">

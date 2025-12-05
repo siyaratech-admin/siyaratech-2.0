@@ -64,7 +64,7 @@ export default function CaseStudiesSection() {
                         Proven <span className="text-primary">Success Stories</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Explore real-world examples of how we've helped businesses transform their operations and achieve remarkable growth.
+                        Explore real-world examples of how we&apos;ve helped businesses transform their operations and achieve remarkable growth.
                     </p>
                 </div>
 

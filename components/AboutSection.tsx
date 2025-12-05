@@ -19,7 +19,7 @@ export default function AboutSection() {
                         Innovation Driven by <span className="text-primary">Purpose</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        We're a team of passionate technologists, strategists, and innovators dedicated to helping businesses thrive in the digital age.
+                        We&apos;re a team of passionate technologists, strategists, and innovators dedicated to helping businesses thrive in the digital age.
                     </p>
                 </div>
 

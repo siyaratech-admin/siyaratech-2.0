@@ -19,18 +19,18 @@ export default function ScrollEffects({ children }: ScrollEffectsProps) {
       // Smooth scroll setup
       let currentY = 0;
       let targetY = 0;
-      let ease = 0.08;
+      const ease = 0.08;
 
       const updateScroll = () => {
         targetY = window.scrollY;
         currentY += (targetY - currentY) * ease;
-        
+
         if (contentRef.current) {
           gsap.set(contentRef.current, {
             y: -currentY
           });
         }
-        
+
         requestAnimationFrame(updateScroll);
       };
 
@@ -43,10 +43,10 @@ export default function ScrollEffects({ children }: ScrollEffectsProps) {
 
       // Create scroll-triggered animations
       const sections = gsap.utils.toArray('.scroll-section');
-      
-      sections.forEach((section: any, index) => {
+
+      sections.forEach((section: Element, index: number) => {
         // Section reveal animation
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           {
             opacity: 0,
             y: 100,
@@ -69,7 +69,7 @@ export default function ScrollEffects({ children }: ScrollEffectsProps) {
 
         // Parallax elements within sections
         const parallaxElements = section.querySelectorAll('.parallax-element');
-        parallaxElements.forEach((element: any, i: number) => {
+        parallaxElements.forEach((element: Element, i: number) => {
           gsap.to(element, {
             yPercent: -50 * (i + 1) * 0.5,
             ease: 'none',
@@ -84,9 +84,9 @@ export default function ScrollEffects({ children }: ScrollEffectsProps) {
 
         // Text reveal animations
         const textElements = section.querySelectorAll('.text-reveal');
-        textElements.forEach((text: any) => {
+        textElements.forEach((text: Element) => {
           const chars = text.textContent.split('');
-          text.innerHTML = chars.map((char: string) => 
+          text.innerHTML = chars.map((char: string) =>
             `<span class="char" style="display: inline-block; opacity: 0; transform: translateY(50px);">${char === ' ' ? '&nbsp;' : char}</span>`
           ).join('');
 
@@ -107,12 +107,12 @@ export default function ScrollEffects({ children }: ScrollEffectsProps) {
 
       // Magnetic cursor effect
       const magneticElements = document.querySelectorAll('.magnetic');
-      magneticElements.forEach((element: any) => {
+      magneticElements.forEach((element: Element) => {
         element.addEventListener('mousemove', (e: MouseEvent) => {
           const rect = element.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
-          
+
           gsap.to(element, {
             x: x * 0.3,
             y: y * 0.3,

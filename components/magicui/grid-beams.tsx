@@ -110,6 +110,7 @@ const LightRay = React.memo<LightRayProps>(
     );
   },
 );
+LightRay.displayName = "LightRay";
 
 export const GridBeams: React.FC<GridBeamsProps> = ({
   children,

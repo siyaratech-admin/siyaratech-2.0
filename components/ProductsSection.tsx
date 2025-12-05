@@ -179,7 +179,7 @@ export default function ProductsSection() {
                             </span>
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                            Experience the next generation of enterprise software. Our products don't just assist—they anticipate, adapt, and act.
+                            Experience the next generation of enterprise software. Our products don&apos;t just assist—they anticipate, adapt, and act.
                         </p>
                     </motion.div>
                 </div>

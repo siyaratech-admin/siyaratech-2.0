@@ -14,8 +14,9 @@ interface BlogPostResponse {
 
 export async function GET(
   request: Request,
-  { params }: { params: { name: string } }
+  props: { params: Promise<{ name: string }> }
 ) {
+  const params = await props.params;
   const ERPNEXT_URL = process.env.NEXT_PUBLIC_ERPNEXT_URL;
   const API_KEY = process.env.ERPNEXT_API_KEY;
   const API_SECRET = process.env.ERPNEXT_API_SECRET;

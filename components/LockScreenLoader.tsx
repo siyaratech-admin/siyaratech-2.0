@@ -4,18 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ParticleCanvas from './ParticleCanvas';
 import { ParticleConfig } from '../utils/particleSystem';
 
-const particleConfig: ParticleConfig = {
-    gap: 4,
-    size: 2,
-    hoverSize: 0, // No hover effect for loader
-    ease: 0.05,
-    friction: 0.9,
-    color: '#ffffff',
-    activeColor: '#ffffff',
-    glow: true,
-    parallax: false,
-    twinkle: true,
-};
+
 
 export default function LockScreenLoader() {
     const [logoSrc, setLogoSrc] = useState("/static_images/logo.png");
