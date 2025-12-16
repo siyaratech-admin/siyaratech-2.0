@@ -29,7 +29,6 @@ export default function CaseStudyCard({
   client,
   industry,
   challenge,
-  result,
   metrics,
   image,
   tags,

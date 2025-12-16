@@ -5,9 +5,6 @@ import { ArrowRight, Play } from 'lucide-react';
 import BlurText from '@/components/TextAnimations/BlurText/BlurText';
 import { motion } from 'framer-motion';
 import LightPillar from './LightPillar';
-import FlowingMenu from './FlowingMenu/FlowingMenu';
-
-// ... existing imports
 
 interface HeroSectionProps {
   title: string;

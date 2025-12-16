@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import NextImage from "next/image"
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
-import { ThreeDMarquee } from "@/components/ui/3d-marquee"
 import { cn } from "@/lib/utils" // Assuming cn utility is available
 // import createGlobe from "cobe" // For SkeletonFour
 

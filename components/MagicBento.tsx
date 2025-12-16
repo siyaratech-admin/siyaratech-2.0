@@ -116,7 +116,6 @@ const ParticleCard: React.FC<{
   glowColor?: string;
   enableTilt?: boolean;
   clickEffect?: boolean;
-  clickEffect?: boolean;
   enableMagnetism?: boolean;
   onClick?: () => void;
 }> = ({
@@ -345,7 +344,7 @@ const ParticleCard: React.FC<{
         element.removeEventListener('click', handleClick);
         clearAllParticles();
       };
-    }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
+    }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor, onClick]);
 
     return (
       <div
