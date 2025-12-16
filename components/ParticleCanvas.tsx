@@ -13,7 +13,7 @@ interface ParticleCanvasProps {
 const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ imageSrc, config, className }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<Particle[]>([]);
-    const animationFrameRef = useRef<number>();
+    const animationFrameRef = useRef<number | null>(null);
     const mouseRef = useRef({ x: -9999, y: -9999 });
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -48,7 +48,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ imageSrc, config, class
             );
             setIsLoaded(true);
         };
-    }, [imageSrc, config.gap]); // Re-init when image or density changes
+    }, [imageSrc, config]); // Re-init when image or density changes
 
     const currentEase = useRef(0.01);
 

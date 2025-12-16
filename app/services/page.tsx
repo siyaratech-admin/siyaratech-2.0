@@ -1,23 +1,15 @@
 "use client";
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { useRouter } from 'next/navigation';
 import { CheckCircle } from 'lucide-react';
 import MaskedDiv from '@/components/ui/masked-div';
 import { motion } from 'motion/react';
 
 export default function ServicesPage() {
-  const router = useRouter();
+
 
   // Function to navigate and scroll to top
-  const navigateTo = (page: string) => {
-    const path = page === 'home' ? '/' : `/${page}`;
-    router.push(path);
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+
 
   return (
     <div className="">

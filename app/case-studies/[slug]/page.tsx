@@ -4,21 +4,12 @@ import type React from "react"
 import { useRouter, useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
-// import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
-// import { ThreeDMarquee } from "@/components/ui/3d-marquee"
+import NextImage from "next/image"
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+import { ThreeDMarquee } from "@/components/ui/3d-marquee"
 import { cn } from "@/lib/utils" // Assuming cn utility is available
 // import createGlobe from "cobe" // For SkeletonFour
-import { useEffect, useRef } from "react" // For SkeletonFour
 
-// Placeholders
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CardContainer = ({ children, className }: any) => <div className={className}>{children}</div>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CardBody = ({ children, className }: any) => <div className={className}>{children}</div>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CardItem = ({ children, className }: any) => <div className={className}>{children}</div>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ThreeDMarquee = ({ images }: any) => <div>3D Marquee Placeholder</div>
 
 // Define types for case study data
 type CaseStudySectionData = {
@@ -170,43 +161,8 @@ export default function CaseStudyDetailPage() {
         )
     }
 
-    const { mainTitle, mainDescription, sections } = currentCaseStudy
 
-    const images = [
-        "/IS_Admin_Dashboard.png",
-        "/IS_Admin_Products.png",
-        "/IS_Admin_Influencer.png",
-        "/IS_Admin_Collection.png",
-        "/IS_Homepage.png",
-        "/IS_InfluencerProfile.png",
-        "/IS_Cart.png",
-        "/IS_Order.png",
-        "/IS_Search.png",
-        "/IS_Admin_Dashboard.png",
-        "/IS_Admin_Products.png",
-        "/IS_Admin_Influencer.png",
-        "/IS_Admin_Collection.png",
-        "/IS_Homepage.png",
-        "/IS_InfluencerProfile.png",
-        "/IS_Cart.png",
-        "/IS_Order.png",
-        "/IS_Search.png",
-        "/IS_Admin_Collection.png",
-        "/IS_Homepage.png",
-        "/IS_InfluencerProfile.png",
-        "/IS_Cart.png",
-        "/IS_Order.png",
-        "/IS_Search.png",
-        "/IS_Admin_Dashboard.png",
-        "/IS_Admin_Products.png",
-        "/IS_Admin_Influencer.png",
-        "/IS_Admin_Collection.png",
-        "/IS_Homepage.png",
-        "/IS_InfluencerProfile.png",
-        "/IS_Cart.png",
-        "/IS_Order.png",
-        "/IS_Search.png",
-    ]
+    const { mainTitle, mainDescription, sections } = currentCaseStudy
 
     return (
         <div className="mt-12 max-w-8xl mx-auto px-4 py-12 z-10 h-fit relative">
@@ -223,7 +179,6 @@ export default function CaseStudyDetailPage() {
 
                 {/* overlay */}
                 <div className="absolute inset-0 z-10 h-full w-full bg-black/80 dark:bg-black/40" />
-                <ThreeDMarquee className="pointer-events-none absolute inset-0 h-full w-full" images={images} />
             </div>
 
             <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
@@ -281,16 +236,18 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 }
 
 // Skeleton component to render the actual case study section content
-const CaseStudySectionSkeleton = ({ title, image, description, list }: CaseStudySectionData) => {
+const CaseStudySectionSkeleton = ({ title, image, list }: CaseStudySectionData) => {
     return (
         <div className="relative flex flex-col items-start p-4 gap-4 h-full overflow-hidden">
             <CardContainer className="inter-var w-full">
                 <CardBody className="bg-white dark:bg-black border border-gray-200 h-full dark:border-neutral-800 rounded-xl w-full overflow-hidden">
                     <CardItem translateZ="50" className="w-full !h-full relative">
                         <div className="w-fit h-full md:h-fit flex items-center justify-center">
-                            <img
+                            <NextImage
                                 src={image || "/placeholder.svg"}
                                 alt={title}
+                                width={800}
+                                height={600}
                                 className="max-w-full max-h-full object-contain rounded-lg shadow-md"
                             />
                         </div>

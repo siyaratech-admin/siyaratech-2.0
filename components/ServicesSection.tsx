@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react";
+
+import { Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 

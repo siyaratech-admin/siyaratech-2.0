@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import {
     Heart,
@@ -31,10 +32,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="healthcare.png"
+                    src="/healthcare.png"
                     alt="Healthcare background"
+                    fill
                 />
             ),
             className: "md:col-span-2",
@@ -47,10 +49,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="finance.png"
+                    src="/finance.png"
                     alt="Finance background"
+                    fill
                 />
             ),
             className: "md:col-span-1",
@@ -63,10 +66,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="manufacturing.png"
+                    src="/manufacturing.png"
                     alt="Manufacturing background"
+                    fill
                 />
             ),
             className: "md:col-span-1",
@@ -79,10 +83,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="retail.png"
+                    src="/retail.png"
                     alt="Retail background"
+                    fill
                 />
             ),
             className: "md:col-span-1",
@@ -95,10 +100,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="education.png"
+                    src="/education.png"
                     alt="Education background"
+                    fill
                 />
             ),
             className: "md:col-span-1",
@@ -111,10 +117,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="technology.png"
+                    src="/technology.png"
                     alt="Technology background"
+                    fill
                 />
             ),
             className: "md:col-span-3",
@@ -127,10 +134,11 @@ export default function IndustriesSection() {
             href: "/contact",
             cta: "Learn More",
             background: (
-                <img
+                <Image
                     className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
                     alt="Construction background"
+                    fill
                 />
             ),
             className: "md:col-span-1",

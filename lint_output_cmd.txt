@@ -1,0 +1,20 @@
+
+> siyaratech_new@0.1.0 lint
+> next lint
+
+ ⚠ Warning: Found multiple lockfiles. Selecting C:\Users\shubh\package-lock.json.
+   Consider removing the lockfiles at:
+   * C:\Users\shubh\OneDrive\Desktop\Siyaratech_Projects\siyaratech2.0\siyaratechin.com\package-lock.json
+   * C:\Users\shubh\OneDrive\Desktop\Siyaratech_Projects\package-lock.json
+
+
+./app/case-studies/[slug]/page.tsx
+19:1  Warning: Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any').
+
+./components/ScrollEffects.tsx
+93:20  Error: Parsing error: ';' expected.
+
+./components/SplashScreen.tsx
+74:13  Error: Parsing error: ';' expected.
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

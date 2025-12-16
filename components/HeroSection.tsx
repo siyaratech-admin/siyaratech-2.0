@@ -2,18 +2,16 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Play } from 'lucide-react';
-import { GridBeams } from './magicui/grid-beams';
-import ColorBends from './ColorBends';
 import BlurText from '@/components/TextAnimations/BlurText/BlurText';
 import { motion } from 'framer-motion';
-import ParticleCanvas from './ParticleCanvas';
-import Beams from './Beams';
+import LightPillar from './LightPillar';
+import FlowingMenu from './FlowingMenu/FlowingMenu';
 
 // ... existing imports
 
 interface HeroSectionProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   primaryCTA: string;
   secondaryCTA?: string;
@@ -34,20 +32,40 @@ export default function HeroSection({
   return (
     <section className="relative w-screen min-h-screen flex items-center justify-center overflow-hidden bg-none">
       <div className="absolute inset-0 w-full h-full z-0">
-        <Beams
-          beamWidth={4}
-          beamHeight={30}
-          beamNumber={24}
-          lightColor="#ffffff"
-          speed={2}
-          noiseIntensity={1.75}
-          scale={0.1}
-          rotation={30}
-          colors={['#833AB4', '#FD1D1D', '#FCB045']}
+        <LightPillar
+          topColor="#3b0764"
+          bottomColor="#facc15"
+          middleColor="#ea580c"
+          intensity={1.0}
+          rotationSpeed={0.3}
+          glowAmount={0.005}
+          pillarWidth={3.0}
+          pillarHeight={0.4}
+          noiseIntensity={0.5}
+          pillarRotation={45}
+          helixEnabled={false}
+          helixSpeed={1}
+          helixTightness={8.0}
+          helixOpacity={1}
+          interactive={false}
+          mixBlendMode="normal"
         />
       </div>
 
       <div className="relative z-40 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        {/* Subtitle Badge */}
+        {subtitle && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6 inline-flex items-center px-4 py-2 rounded-full border border-primary/20 bg-background/50 backdrop-blur-sm"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+            <span className="text-sm font-medium text-primary tracking-wide uppercase">{subtitle}</span>
+          </motion.div>
+        )}
+
         {/* Title */}
         <div className="mb-8 w-full flex justify-center">
           <BlurText

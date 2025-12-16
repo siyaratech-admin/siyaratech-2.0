@@ -238,7 +238,7 @@ const Beams: FC<BeamsProps> = ({
         },
         material: { fog: true },
         uniforms: {
-          diffuse: new THREE.Color(...hexToNormalizedRGB('#000000')),
+          diffuse: new THREE.Color(...hexToNormalizedRGB(lightColor)),
           time: { shared: true, mixed: true, linked: true, value: 0 },
           roughness: 0.2,
           metalness: 0.9,
@@ -248,7 +248,7 @@ const Beams: FC<BeamsProps> = ({
           uScale: scale
         }
       }),
-    [speed, noiseIntensity, scale]
+    [speed, noiseIntensity, scale, lightColor]
   );
 
   return (

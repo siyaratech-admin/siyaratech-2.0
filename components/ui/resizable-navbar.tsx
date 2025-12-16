@@ -163,7 +163,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-50 mx-auto flex w-full flex-col items-center justify-between rounded-2xl px-4 py-3 lg:hidden",
-        "glass-card glass-card-hover",
+        "glass-card backdrop-blur-md",
         "border-border shadow-lg",
         className,
       )}
@@ -193,7 +193,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -208,8 +207,8 @@ export const MobileNavMenu = ({
             damping: 30,
           }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-2xl px-4 py-8",
-            "glass-card glass-card-hover border-border shadow-lg",
+            "absolute inset-x-0 top-full mt-2 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-2xl px-4 py-8",
+            "glass-card border-border shadow-lg",
             className,
           )}
         >
@@ -244,6 +243,7 @@ export const MobileNavToggle = ({
 
 import Link from "next/link";
 import Image from "next/image";
+import { Badge } from "./badge";
 
 export const NavbarLogo = () => {
   return (
@@ -288,10 +288,7 @@ export const NavbarButton = ({
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-    | React.ComponentPropsWithoutRef<"a">
-    | React.ComponentPropsWithoutRef<"button">
-  )) => {
+} & React.ComponentPropsWithoutRef<React.ElementType>) => {
   const baseStyles =
     "px-4 py-2 rounded-lg text-sm font-medium relative cursor-pointer hover:-translate-y-0.5 transition-all duration-200 inline-block text-center";
 
@@ -319,11 +316,11 @@ export const NavbarButton = ({
   }
 
   return (
-    <Tag
+    <Badge
       className={cn(baseStyles, variantStyles[variant], className)}
       {...props}
     >
       {children}
-    </Tag>
+    </Badge>
   );
 };

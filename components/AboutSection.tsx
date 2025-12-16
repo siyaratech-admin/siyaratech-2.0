@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Rocket, Shield, Heart } from 'lucide-react';
@@ -27,9 +28,11 @@ export default function AboutSection() {
                 <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
                     <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-2xl blur-3xl" />
-                        <img
+                        <Image
                             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
                             alt="Team collaboration"
+                            width={800}
+                            height={600}
                             className="relative rounded-2xl shadow-2xl border border-white/10"
                         />
                     </div>

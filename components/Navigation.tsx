@@ -98,7 +98,7 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
-            className="backdrop-blur-3xl bg-white/90 dark:bg-black/90"
+            className="backdrop-blur-xl bg-white/10 dark:bg-black/10"
           >
             {navItems.map((item, idx) => (
               <button

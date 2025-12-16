@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import PageHeader from '@/components/PageHeader';
 import BlogCard from '@/components/BlogCard';
 import { Card } from '@/components/ui/card';
@@ -93,12 +94,14 @@ export default function BlogPage() {
                     <div className="md:flex">
                       <div className="md:w-1/2">
                         <div className="aspect-video md:aspect-auto md:h-full overflow-hidden">
-                          <img
+                          <Image
                             src={featuredBlog.image}
                             alt={featuredBlog.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
                             onError={(e) => {
-                              e.currentTarget.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600';
+                              const target = e.target as HTMLImageElement;
+                              target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600';
                             }}
                           />
                         </div>

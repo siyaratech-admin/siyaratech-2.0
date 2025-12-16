@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroSection
         title="Transform Your Business with Cutting-Edge Technology"
-        subtitle="Innovation That Drives Results"
+
         description="We help forward-thinking companies leverage AI, modern web technologies, and digital transformation to achieve unprecedented growth and efficiency."
         primaryCTA="Start Your Project"
         secondaryCTA="View Our Work"

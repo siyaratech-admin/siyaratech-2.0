@@ -1,21 +1,22 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Twitter, 
-  Github, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Twitter,
+  Github,
   Facebook,
   ArrowRight,
   Heart
 } from 'lucide-react';
-const  logoText = '/static_images/siyaratech_logo_name_below_tagline.png';
-const logoIcon  = '/static_images/siyaratech_logo_transparent.png';
+const logoText = '/static_images/siyaratech_logo_name_below_tagline.png';
+const logoIcon = '/static_images/siyaratech_logo_transparent.png';
 
 export default function Footer() {
   const router = useRouter();
@@ -106,22 +107,26 @@ export default function Footer() {
               <div className="flex items-center mb-6">
                 <div className="relative mr-3">
                   <div className="absolute inset-0 bg-brand-gradient rounded-xl blur-sm opacity-50"></div>
-                  <img 
+                  <Image
                     src={logoIcon}
                     alt="SIYARA TECH Logo"
-                    className="relative w-10 h-10 object-contain"
+                    width={40}
+                    height={40}
+                    className="relative object-contain"
                   />
                 </div>
-                <img 
+                <Image
                   src={logoText}
                   alt="SIYARA TECH"
-                  className="h-8 object-contain"
+                  width={150}
+                  height={32}
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Empowering businesses through innovative technology solutions. We transform ideas into reality with cutting-edge AI, modern web development, and comprehensive digital transformation services.
               </p>
-              
+
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center text-muted-foreground hover:text-primary transition-colors">
@@ -172,7 +177,7 @@ export default function Footer() {
               <Heart className="w-4 h-4 mx-2 text-chart-1 fill-current animate-pulse" />
               <span>for innovation.</span>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -187,7 +192,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-6 border-t border-border/30 text-sm text-muted-foreground">
             <div className="flex space-x-6 mb-4 md:mb-0">
               <button className="hover:text-primary transition-colors">Privacy Policy</button>

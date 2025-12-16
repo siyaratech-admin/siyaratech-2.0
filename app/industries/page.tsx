@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import { Badge } from "@/components/ui/badge";
-import { useRouter } from "next/navigation";
 import {
   Heart,
   DollarSign,
@@ -23,13 +23,7 @@ import {
 } from "@tabler/icons-react";
 
 export default function IndustriesPage() {
-  const router = useRouter();
 
-  const navigateTo = (page: string) => {
-    const path = page === "home" ? "/" : `/${page}`;
-    router.push(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   // ... (industries data remains the same)
   const industries = [
@@ -41,10 +35,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop"
           alt="Healthcare background"
+          fill
         />
       ),
       className: "md:col-span-2",
@@ -57,10 +52,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop"
           alt="Finance background"
+          fill
         />
       ),
       className: "md:col-span-1",
@@ -73,10 +69,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&h=600&fit=crop"
           alt="Manufacturing background"
+          fill
         />
       ),
       className: "md:col-span-1",
@@ -89,10 +86,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop"
           alt="Retail background"
+          fill
         />
       ),
       className: "md:col-span-1",
@@ -105,10 +103,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop"
           alt="Education background"
+          fill
         />
       ),
       className: "md:col-span-1",
@@ -121,10 +120,11 @@ export default function IndustriesPage() {
       href: "/contact",
       cta: "Learn More",
       background: (
-        <img
+        <Image
           className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
           src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=600&fit=crop"
           alt="Technology background"
+          fill
         />
       ),
       className: "md:col-span-3",

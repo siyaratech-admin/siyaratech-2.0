@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const ERPNEXT_URL = process.env.NEXT_PUBLIC_ERPNEXT_URL;
-  const API_KEY = process.env.ERPNEXT_API_KEY; // Optional, if needed for private blogs
-  const API_SECRET = process.env.ERPNEXT_API_SECRET; // Optional
+
 
   if (!ERPNEXT_URL) {
     console.warn("NEXT_PUBLIC_ERPNEXT_URL is not defined. Returning mock data.");

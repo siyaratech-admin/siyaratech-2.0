@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, BarChart3, Briefcase, Layers, ArrowRight, Sparkles, ShoppingBag, BookOpen, ShoppingCart, FileText, CheckSquare, LayoutDashboard, Bot, PenTool } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { Users, BarChart3, Briefcase, Layers, ShoppingBag, BookOpen, ShoppingCart, FileText, CheckSquare, LayoutDashboard, Bot, PenTool } from "lucide-react";
 import { CpuArchitecture } from "./ui/cpu-architecture";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
+import { useRouter } from "next/navigation";
+import ServiceCard from "./ServiceCard";
 
 const erpProducts = [
     {
@@ -133,26 +134,27 @@ const innovativeProducts = [
 ];
 
 export default function ProductsSection() {
-    // Map products to BentoCardProps
-    const erpCards: BentoCardProps[] = erpProducts.map(product => ({
-        title: product.title,
-        description: product.description,
-        label: product.subtitle,
-        icon: product.icon,
-        color: '#060010',
-        textAutoHide: false,
-        image: product.image,
-    }));
+    const router = useRouter();
 
-    const innovativeCards: BentoCardProps[] = innovativeProducts.map(product => ({
-        title: product.title,
-        description: product.description,
-        label: product.subtitle,
-        icon: product.icon,
-        color: '#060010',
-        textAutoHide: false,
-        image: product.image,
-    }));
+
+
+    const innovativeCards: BentoCardProps[] = innovativeProducts.map(product => {
+        let slug = "";
+        if (product.id === "influencer-platform") {
+            slug = "influencer-driven-ecommerce-platform";
+        }
+
+        return {
+            title: product.title,
+            description: product.description,
+            label: product.subtitle,
+            icon: product.icon,
+            color: '#060010',
+            textAutoHide: false,
+            image: product.image,
+            onClick: slug ? () => router.push(`/case-studies/${slug}`) : undefined,
+        };
+    });
 
     return (
         <section id="products" className="py-24 bg-background relative overflow-hidden">
@@ -203,15 +205,18 @@ export default function ProductsSection() {
                             Comprehensive enterprise resource planning tools powered by advanced AI to optimize your business operations.
                         </p>
                     </div>
-                    <div className="flex justify-center w-full">
-                        <MagicBento
-                            cards={erpCards}
-                            enableStars={true}
-                            enableSpotlight={true}
-                            enableBorderGlow={true}
-                            enableTilt={true}
-                            glowColor="132, 0, 255"
-                        />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {erpProducts.map((product, index) => (
+                            <ServiceCard
+                                key={index}
+                                icon={product.icon}
+                                title={product.title}
+                                description={product.description}
+                                features={product.features}
+                                category={product.subtitle}
+                                isPopular={index === 0} // Example logic, maybe make the first one popular
+                            />
+                        ))}
                     </div>
                 </div>
 

@@ -6,14 +6,15 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 // import BlurFade from "@/components/ui/blur-fade"
 import { BookOpen, Clock, Users, Star, Play, ArrowRight } from "lucide-react"
+import Image from "next/image"
 import axios from "axios"
 import Cookies from "js-cookie"
 
 // Placeholder for missing components
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BrandGlassCard = ({ children, className, variant }: any) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
+const BrandGlassCard = ({ children, className }: any) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BlurFade = ({ children, inView, duration, delay }: any) => <div>{children}</div>
+const BlurFade = ({ children }: any) => <div>{children}</div>
 
 interface Course {
     id: string
@@ -77,10 +78,11 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
             <BrandGlassCard variant={variant} className="h-full overflow-hidden group" intensity="high">
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden rounded-t-2xl">
-                    <img
+                    <Image
                         src={course.image || "/placeholder.svg"}
                         alt={course.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                         loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

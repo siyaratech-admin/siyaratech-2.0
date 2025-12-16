@@ -52,7 +52,7 @@ export function ThemeToggle() {
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={theme + resolvedTheme}
+              key={(theme || "system") + (resolvedTheme || "light")}
               initial={{ y: -20, opacity: 0, rotate: -90 }}
               animate={{ y: 0, opacity: 1, rotate: 0 }}
               exit={{ y: 20, opacity: 0, rotate: 90 }}
@@ -65,11 +65,11 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent 
-        align="end" 
+      <DropdownMenuContent
+        align="end"
         className="glass-card glass-card-hover border-border shadow-lg"
       >
-        <DropdownMenuItem 
+        <DropdownMenuItem
           onClick={() => setTheme("light")}
           className="cursor-pointer hover:bg-accent focus:bg-accent"
         >
@@ -77,7 +77,7 @@ export function ThemeToggle() {
           <span>Light</span>
           {theme === "light" && <span className="ml-auto text-brand-purple">✓</span>}
         </DropdownMenuItem>
-        <DropdownMenuItem 
+        <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className="cursor-pointer hover:bg-accent focus:bg-accent"
         >
@@ -85,7 +85,7 @@ export function ThemeToggle() {
           <span>Dark</span>
           {theme === "dark" && <span className="ml-auto text-brand-purple">✓</span>}
         </DropdownMenuItem>
-        <DropdownMenuItem 
+        <DropdownMenuItem
           onClick={() => setTheme("system")}
           className="cursor-pointer hover:bg-accent focus:bg-accent"
         >

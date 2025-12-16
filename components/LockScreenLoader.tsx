@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ParticleCanvas from './ParticleCanvas';
 import { ParticleConfig } from '../utils/particleSystem';
 

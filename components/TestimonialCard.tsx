@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from './ui/card';
 import { Star, Quote } from 'lucide-react';
 
@@ -30,8 +31,8 @@ export default function TestimonialCard({
               <Star
                 key={i}
                 className={`w-4 h-4 ${i < rating
-                    ? 'text-primary fill-current'
-                    : 'text-muted-foreground'
+                  ? 'text-primary fill-current'
+                  : 'text-muted-foreground'
                   }`}
               />
             ))}
@@ -46,10 +47,12 @@ export default function TestimonialCard({
         {/* Author Info */}
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <img
+            <Image
               src={avatar}
               alt={name}
-              className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300"
+              width={48}
+              height={48}
+              className="rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300"
             />
             <div className="absolute inset-0 rounded-full bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>

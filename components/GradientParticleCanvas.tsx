@@ -13,7 +13,7 @@ interface GradientParticleCanvasProps {
 const GradientParticleCanvas: React.FC<GradientParticleCanvasProps> = ({ imageSrc, config, className }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<GradientParticle[]>([]);
-    const animationFrameRef = useRef<number>();
+    const animationFrameRef = useRef<number>(0);
     const mouseRef = useRef({ x: 0, y: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -46,7 +46,7 @@ const GradientParticleCanvas: React.FC<GradientParticleCanvasProps> = ({ imageSr
             );
             setIsLoaded(true);
         };
-    }, [imageSrc, config.gap]);
+    }, [imageSrc, config]);
 
     const currentEase = useRef(0.01);
 

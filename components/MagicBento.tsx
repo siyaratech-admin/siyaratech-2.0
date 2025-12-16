@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 export interface BentoCardProps {
   color?: string;
@@ -8,7 +9,7 @@ export interface BentoCardProps {
   label?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
-  icon?: React.ElementType;
+  icon?: React.ElementType<{ className?: string }>;
   onClick?: () => void;
   image?: string;
 }
@@ -30,7 +31,7 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '124, 58, 237';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
@@ -115,7 +116,9 @@ const ParticleCard: React.FC<{
   glowColor?: string;
   enableTilt?: boolean;
   clickEffect?: boolean;
+  clickEffect?: boolean;
   enableMagnetism?: boolean;
+  onClick?: () => void;
 }> = ({
   children,
   className = '',
@@ -125,7 +128,8 @@ const ParticleCard: React.FC<{
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
   clickEffect = false,
-  enableMagnetism = false
+  enableMagnetism = false,
+  onClick
 }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const particlesRef = useRef<HTMLDivElement[]>([]);
@@ -198,7 +202,7 @@ const ParticleCard: React.FC<{
             repeat: -1,
             yoyo: true
           });
-        }, index * 100);
+        }, index * 100) as unknown as number;
 
         timeoutsRef.current.push(timeoutId);
       });
@@ -325,6 +329,7 @@ const ParticleCard: React.FC<{
             onComplete: () => ripple.remove()
           }
         );
+        if (onClick) onClick();
       };
 
       element.addEventListener('mouseenter', handleMouseEnter);
@@ -705,19 +710,21 @@ const MagicBento: React.FC<BentoProps> = ({
                   enableTilt={enableTilt}
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
+                  onClick={card.onClick}
                 >
                   <div className="card__header flex justify-between gap-3 relative text-white z-10">
-                    <span className="card__label text-base font-medium tracking-wide drop-shadow-md">{card.label}</span>
+                    {card.label && <span className="card__label text-base font-medium tracking-wide drop-shadow-md">{card.label}</span>}
                     {card.icon && <card.icon className="w-6 h-6 drop-shadow-md" />}
                   </div>
 
                   {/* Background Image */}
                   {card.image && (
                     <div className="absolute inset-0 z-0">
-                      <img
+                      <Image
                         src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover opacity-40 transition-transform duration-700 ease-out group-hover:scale-110"
+                        alt={card.title || ''}
+                        fill
+                        className="object-cover opacity-40 transition-transform duration-700 ease-out group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                     </div>
@@ -742,6 +749,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 key={index}
                 className={baseClassName}
                 style={cardStyle}
+                onClick={card.onClick}
                 ref={el => {
                   if (!el) return;
 
@@ -854,7 +862,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 }}
               >
                 <div className="card__header flex justify-between gap-3 relative text-white">
-                  <span className="card__label text-base">{card.label}</span>
+                  {card.label && <span className="card__label text-base">{card.label}</span>}
                 </div>
                 <div className="card__content flex flex-col relative text-white">
                   <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>

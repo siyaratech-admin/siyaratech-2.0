@@ -3,21 +3,15 @@ import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useRouter } from 'next/navigation';
 import { Rocket, Shield, Heart } from 'lucide-react';
 import FoundersSection from '@/components/FoundersSection';
 import Image from 'next/image';
 
 export default function AboutPage() {
-  const router = useRouter();
+
 
   // Function to navigate and scroll to top
-  const navigateTo = (page: string) => {
-    const path = page === 'home' ? '/' : `/${page}`;
-    router.push(path);
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+
 
 
 

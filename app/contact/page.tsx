@@ -2,13 +2,13 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from "@/components/ui/card";
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   ArrowRight,
   CheckCircle,
   Star,
@@ -39,7 +39,7 @@ export default function ContactPage() {
     description: '',
     budget: 'Let\'s discuss'
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -66,11 +66,11 @@ export default function ContactPage() {
       });
 
       const result = await response.json();
-      
+
       if (response.ok) {
         console.log('Contact Response:', result.contact);
         console.log('Lead Response:', result.lead);
-        
+
         setSubmitStatus('success');
         // Reset form
         setFormData({
@@ -98,10 +98,9 @@ export default function ContactPage() {
     <div className="pt-16">
       <HeroSection
         title="Get In Touch"
-        subtitle="Let's Build Something Amazing Together"
         description="Ready to transform your business? We'd love to hear about your project and discuss how we can help you achieve your goals."
         primaryCTA="Schedule Call"
-        onPrimaryCTA={() => {}}
+        onPrimaryCTA={() => { }}
         showStats={false}
       />
 
@@ -111,7 +110,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <Card className="p-8 border-border/50 hover:shadow-xl transition-all duration-300">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              
+
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center text-green-800">
@@ -121,7 +120,7 @@ export default function ContactPage() {
                   <p className="text-green-700 text-sm mt-1">We&apos;ll get back to you within 24 hours.</p>
                 </div>
               )}
-              
+
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                   <div className="flex items-center text-red-800">
@@ -129,70 +128,70 @@ export default function ContactPage() {
                   </div>
                 </div>
               )}
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name</label>
-                    <Input 
+                    <Input
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      placeholder="John" 
+                      placeholder="John"
                       className="transition-all duration-300 focus:scale-[1.02]"
-                      required 
+                      required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Last Name</label>
-                    <Input 
+                    <Input
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      placeholder="Doe" 
+                      placeholder="Doe"
                       className="transition-all duration-300 focus:scale-[1.02]"
-                      required 
+                      required
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input 
-                    type="email" 
+                  <Input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="john@company.com" 
+                    placeholder="john@company.com"
                     className="transition-all duration-300 focus:scale-[1.02]"
-                    required 
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Phone</label>
-                  <Input 
-                    type="tel" 
+                  <Input
+                    type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 123-4567" 
+                    placeholder="+1 (555) 123-4567"
                     className="transition-all duration-300 focus:scale-[1.02]"
-                    required 
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Company</label>
-                  <Input 
+                  <Input
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    placeholder="Your Company" 
+                    placeholder="Your Company"
                     className="transition-all duration-300 focus:scale-[1.02]"
-                    required 
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Service Interest</label>
-                  <select 
+                  <select
                     name="serviceInterest"
                     value={formData.serviceInterest}
                     onChange={handleInputChange}
@@ -207,19 +206,19 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Project Description</label>
-                  <Textarea 
+                  <Textarea
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
-                    placeholder="Tell us about your project..." 
-                    rows={4} 
+                    placeholder="Tell us about your project..."
+                    rows={4}
                     className="transition-all duration-300 focus:scale-[1.02]"
-                    required 
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Budget Range</label>
-                  <select 
+                  <select
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
@@ -232,7 +231,7 @@ export default function ContactPage() {
                     <option>Let&apos;s discuss</option>
                   </select>
                 </div>
-                <Button 
+                <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-primary to-chart-1 text-primary-foreground hover:scale-105 transition-transform duration-200 disabled:opacity-50 disabled:hover:scale-100"

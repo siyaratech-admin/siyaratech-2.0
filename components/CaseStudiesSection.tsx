@@ -4,86 +4,118 @@ import CaseStudyCard from '@/components/CaseStudyCard';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function CaseStudiesSection() {
     const router = useRouter();
 
     const caseStudies = [
         {
-            title: 'AI-Powered Customer Service Revolution',
-            client: 'MegaCorp Inc.',
-            industry: 'E-commerce',
-            challenge: 'High customer service costs and slow response times were affecting customer satisfaction and retention rates.',
-            result: 'Implemented an AI chatbot system that handles 80% of customer inquiries automatically, reducing response time from hours to seconds.',
+            title: "Influencer-Driven eCommerce Platform",
+            client: "FashionForward",
+            industry: "E-commerce",
+            challenge: "Transform traditional online shopping into a social-first discovery experience powered by influencers.",
+            result: "Integrated influencer profiles, curated collections, and seamless checkout, boosting engagement and sales.",
             metrics: [
-                { label: 'Response Time', value: '< 30 sec', improvement: '95% faster' },
-                { label: 'Cost Reduction', value: '$2.5M saved', improvement: '60% less' },
-                { label: 'Satisfaction', value: '4.8/5 stars', improvement: '40% higher' },
-                { label: 'Efficiency', value: '80% automated', improvement: '300% more' }
+                { label: "Sales Increase", value: "150%", improvement: "150% growth" },
+                { label: "User Engagement", value: "200%", improvement: "200% higher" },
+                { label: "Conversion Rate", value: "85%", improvement: "85% better" },
             ],
-            image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600',
-            tags: ['AI', 'Automation', 'Customer Service', 'Machine Learning']
+            image: "/IS_Homepage.png",
+            tags: ["React", "Node.js", "MongoDB", "AWS"],
+            slug: "influencer-driven-ecommerce-platform"
         },
         {
-            title: 'Complete Digital Platform Overhaul',
-            client: 'RetailChain Ltd.',
-            industry: 'Retail',
-            challenge: 'Legacy systems were causing frequent downtime and poor user experience, leading to lost sales and frustrated customers.',
-            result: 'Built a modern, scalable e-commerce platform with real-time inventory management and personalized shopping experiences.',
+            title: "Digital Transformation for a Retail Chain",
+            client: "RetailGiant",
+            industry: "Retail",
+            challenge: "Complete digital transformation to improve online sales and customer engagement.",
+            result: "Resulted in a 30% increase in online sales and improved customer engagement through a new digital platform.",
             metrics: [
-                { label: 'Uptime', value: '99.9%', improvement: '500% better' },
-                { label: 'Sales Growth', value: '+250%', improvement: '250% more' },
-                { label: 'Page Speed', value: '1.2s load', improvement: '80% faster' },
-                { label: 'Conversion', value: '8.5%', improvement: '200% higher' }
+                { label: "Online Sales", value: "+30%", improvement: "30% increase" },
+                { label: "Customer Satisfaction", value: "95%", improvement: "95% score" },
+                { label: "Operational Efficiency", value: "+40%", improvement: "40% better" },
             ],
-            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600',
-            tags: ['E-commerce', 'Web Development', 'Cloud', 'Performance']
+            image: "/DT_Retail_Industry.png",
+            tags: ["Vue.js", "Python", "PostgreSQL", "Docker"],
+            slug: "digital-transformation-for-a-retail-chain"
         },
         {
-            title: 'Predictive Analytics for Supply Chain',
-            client: 'LogisticsPro',
-            industry: 'Logistics',
-            challenge: 'Inefficient supply chain management was causing delays, overstocking, and increased operational costs.',
-            result: 'Developed a predictive analytics system that optimizes inventory levels and predicts demand with 95% accuracy.',
+            title: "AI Implementation in Healthcare",
+            client: "HealthPlus",
+            industry: "Healthcare",
+            challenge: "Optimise patient scheduling and reduce wait times in a major hospital network.",
+            result: "AI solution optimized scheduling, reducing wait times by 25% and increasing staff efficiency.",
             metrics: [
-                { label: 'Accuracy', value: '95%', improvement: '50% better' },
-                { label: 'Inventory Cost', value: '-45%', improvement: '45% less' },
-                { label: 'Delivery Time', value: '-30%', improvement: '30% faster' },
-                { label: 'Waste Reduction', value: '-60%', improvement: '60% less' }
+                { label: "Wait Time Reduction", value: "25%", improvement: "25% faster" },
+                { label: "Patient Satisfaction", value: "92%", improvement: "92% score" },
+                { label: "Staff Efficiency", value: "+35%", improvement: "35% higher" },
             ],
-            image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600',
-            tags: ['Analytics', 'Machine Learning', 'Supply Chain', 'Optimization']
+            image: "/healthcare.png",
+            tags: ["Python", "TensorFlow", "FastAPI", "Redis"],
+            slug: "ai-implementation-in-healthcare"
         }
     ];
 
     return (
         <section id="case-studies" className="py-24 bg-background relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Background Elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-                        Proven <span className="text-primary">Success Stories</span>
-                    </h2>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Explore real-world examples of how we&apos;ve helped businesses transform their operations and achieve remarkable growth.
-                    </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                            Proven <span className="text-primary">Success Stories</span>
+                        </h2>
+                        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                            Explore real-world examples of how we&apos;ve helped businesses transform their operations and achieve remarkable growth.
+                        </p>
+                    </motion.div>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     {caseStudies.map((caseStudy, index) => (
-                        <CaseStudyCard key={index} {...caseStudy} />
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                            <CaseStudyCard
+                                {...caseStudy}
+                                onReadMore={() => router.push(`/case-studies/${caseStudy.slug}`)}
+                            />
+                        </motion.div>
                     ))}
                 </div>
 
                 <div className="text-center">
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        onClick={() => router.push('/case-studies')}
-                        className="rounded-full px-8 h-12 text-base hover:bg-primary/5"
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
                     >
-                        View All Case Studies
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
+                        <Button
+                            size="lg"
+                            variant="outline"
+                            onClick={() => router.push('/case-studies')}
+                            className="rounded-full px-8 h-12 text-base hover:bg-primary/5 transition-all duration-300 hover:scale-105"
+                        >
+                            View All Case Studies
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -11,10 +11,11 @@ import { Label } from "@/components/ui/label"
 // import BlurFade from "@/components/ui/blur-fade"
 import { CreditCard, User, Mail, Phone, Building } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 // Placeholder for missing components
-const BrandGlassCard = ({ children, className, variant }: any) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
-const BlurFade = ({ children, inView, duration, delay }: any) => <div>{children}</div>
+const BrandGlassCard = ({ children, className }: { children: React.ReactNode; className?: string; variant?: unknown; intensity?: unknown }) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
+const BlurFade = ({ children }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
 
 interface Course {
   id: string
@@ -196,9 +197,11 @@ export default function Checkout() {
               {/* Course Details */}
               <BlurFade inView duration={0.6} delay={0.2}>
                 <BrandGlassCard variant="secondary" className="p-6" intensity="high">
-                  <img
+                  <Image
                     src={course.thumbnail || "/placeholder.svg"}
                     alt={course.title}
+                    width={400}
+                    height={300}
                     className="w-full h-48 object-cover rounded-xl mb-4"
                   />
                   <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{course.title}</h2>

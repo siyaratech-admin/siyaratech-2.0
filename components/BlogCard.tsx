@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,13 +23,15 @@ export default function BlogCard({ id, title, description, image, className = ''
   return (
     <Card className={`group overflow-hidden border-border/50 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer ${className}`} onClick={handleReadMore}>
       <div className="aspect-video overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
           onError={(e) => {
             // Fallback to a placeholder image if the image fails to load
-            e.currentTarget.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600';
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600';
           }}
         />
       </div>
@@ -39,8 +42,8 @@ export default function BlogCard({ id, title, description, image, className = ''
         <p className="text-muted-foreground mb-4 line-clamp-3">
           {description}
         </p>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           className="w-full hover:bg-primary hover:text-primary-foreground transition-colors"
           onClick={(e) => {
             e.stopPropagation();
