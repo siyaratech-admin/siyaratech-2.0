@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Clock, Zap, CheckCircle, Smartphone, Shield, Layers, Cloud } from 'lucide-react';
+import { Zap, Shield, Layers, Cloud } from 'lucide-react';
 import { NavbarButton } from './ui/resizable-navbar';
 
 export default function ImpactSection() {

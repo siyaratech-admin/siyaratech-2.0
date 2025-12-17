@@ -96,7 +96,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
                             <div className="bg-accent/5 p-8 rounded-2xl border border-border/50">
                                 <h3 className="text-xl font-bold mb-4">Transform Your {industry.name} Business</h3>
                                 <p className="text-muted-foreground mb-6">
-                                    Our specialized team understands the unique challenges of the {industry.name} sector. Let's discuss how we can help you achieve your goals.
+                                    Our specialized team understands the unique challenges of the {industry.name} sector. Let&apos;s discuss how we can help you achieve your goals.
                                 </p>
                                 <Link href="/contact">
                                     <Button className="w-full bg-brand-gradient hover:opacity-90">

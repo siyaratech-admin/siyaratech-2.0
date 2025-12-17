@@ -253,9 +253,9 @@ export const NavbarLogo = () => {
     >
       {/* Logo Icon */}
       <div className="relative">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-          <div className="w-8 h-8  rounded-md flex items-center justify-center">
-            <Image src={"/static_images/logo.png"} alt="Siyaratech" width={48} height={48} className="object-contain" />
+        <div className="w-36 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <div className="w-36 h-36  rounded-md flex items-center justify-center">
+            <Image src={"/static_images/logo.png"} alt="Siyaratech" width={256} height={128} className="object-cover" />
           </div>
         </div>
         {/* Glow effect */}
@@ -263,28 +263,26 @@ export const NavbarLogo = () => {
       </div>
 
       {/* Company Name */}
-      <div className="flex flex-col">
+      {/* <div className="flex flex-col">
         <span className="font-bold text-md text-foreground group-hover:text-brand-purple transition-colors duration-300">
           Siyaratech
         </span>
         <span className="font-bold text-md text-foreground group-hover:text-brand-purple transition-colors duration-300">
           Innovations
         </span>
-      </div>
+      </div> */}
     </Link>
   );
 };
 
 export const NavbarButton = ({
   href,
-  as: _Tag = "button",
   children,
   className,
   variant = "primary",
   ...props
 }: {
   href?: string;
-  as?: React.ElementType;
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";

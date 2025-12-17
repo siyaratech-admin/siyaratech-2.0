@@ -89,8 +89,9 @@ const CpuArchitecture = ({
           <stop offset="100%" stopColor="#f59e0b" />
         </linearGradient>
 
-        <filter id="cpu-light-shadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#9333ea" floodOpacity="0.3" />
+        <filter id="cpu-noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
         </filter>
 
         <marker
@@ -106,17 +107,26 @@ const CpuArchitecture = ({
           </circle>
         </marker>
 
-        {/* Masks for Nodes */}
-        {paths.map((_, i) => (
-          <mask id={`cpu-mask-${i}`} key={`mask-${i}`}>
-            <circle cx="0" cy="0" r="8" fill="white" />
-          </mask>
-        ))}
+        <filter id="cpu-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        <pattern id="cpu-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeOpacity="0.05" strokeWidth="0.5" />
+        </pattern>
 
       </defs>
 
+      {/* === BACKGROUND GRID & NOISE === */}
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#cpu-grid)" />
+      <rect x="0" y="0" width="100%" height="100%" filter="url(#cpu-noise)" opacity="0.15" fill="transparent" />
+
       {/* === BACKGROUND TRACKS === */}
-      <g stroke="currentColor" fill="none" strokeWidth="0.5" strokeOpacity="0.2">
+      <g stroke="currentColor" fill="none" strokeWidth="1" strokeOpacity="0.15">
         {paths.map((p, i) => (
           <path key={`track-${i}`} d={p.d} />
         ))}
@@ -124,14 +134,14 @@ const CpuArchitecture = ({
 
       {/* === ANIMATED BEAMS === */}
       {animateLines && (
-        <g stroke="url(#cpu-text-gradient)" fill="none" strokeWidth="1" strokeLinecap="round">
+        <g stroke="url(#cpu-text-gradient)" fill="none" strokeWidth="1.5" strokeLinecap="round" filter="url(#cpu-glow)">
           {paths.map((p, i) => (
-            <path key={`beam-${i}`} d={p.d} strokeDasharray="10 150" strokeDashoffset="160">
+            <path key={`beam-${i}`} d={p.d} strokeDasharray="20 180" strokeDashoffset="200">
               <animate
                 attributeName="stroke-dashoffset"
-                from="160"
+                from="200"
                 to="0"
-                dur={`${2 + i * 0.2}s`}
+                dur={`${2.5 + i * 0.3}s`}
                 repeatCount="indefinite"
               />
             </path>
@@ -141,30 +151,28 @@ const CpuArchitecture = ({
 
       {/* === NODES (Start Points) === */}
       {paths.map((p, i) => {
-        // Parse start point roughly or use a group transform
-        // Actually, the original used masks causing circles to appear at 0,0 of user space?
-        // No, the original had paths and then separate groups with masks and circles.
-        // Let's position circles at the start of paths.
-
-        // Extract M coordinates
         const flow = p.d.split(" ");
         const startX = parseFloat(flow[1]);
         const startY = parseFloat(flow[2]);
 
         return (
           <g key={`node-${i}`} transform={`translate(${startX}, ${startY})`}>
-            <circle r="4" fill={p.color} className="animate-pulse">
-              <animate attributeName="r" values="3; 5; 3" dur="2s" repeatCount="indefinite" />
+            {/* Glass/Glow Background */}
+            <circle r="6" fill={p.color} opacity="0.1" className="animate-pulse" />
+
+            {/* Outer Ring */}
+            <circle r="3.5" stroke={p.color} strokeWidth="1" fill="none" opacity="0.8">
+              <animate attributeName="opacity" values="0.8; 0.4; 0.8" dur="3s" repeatCount="indefinite" />
             </circle>
-            {/* Glow */}
-            <circle r="8" fill={p.color} opacity="0.3" />
+
+            {/* Inner Core */}
+            <circle r="1.5" fill={p.color} filter="url(#cpu-glow)" />
           </g>
         );
       })}
 
-
       {/* === CENTRAL CPU BOX === */}
-      <g>
+      <g filter="url(#cpu-light-shadow)">
         {/* Cpu connections */}
         {showCpuConnections && (
           <g fill="url(#cpu-connection-gradient)">
@@ -186,10 +194,22 @@ const CpuArchitecture = ({
           width="40"
           height="20"
           rx="4"
-          fill="#0a0a0a"
+          fill="#0a0a0a" // Dark background for the chip
           stroke="url(#cpu-text-gradient)"
+          strokeWidth="1.2"
+        />
+
+        {/* Inner Border for detail */}
+        <rect
+          x="87"
+          y="42"
+          width="36"
+          height="16"
+          rx="2"
+          fill="none"
+          stroke="white"
+          strokeOpacity="0.1"
           strokeWidth="0.5"
-          filter="url(#cpu-light-shadow)"
         />
 
         {/* Centered Text */}
@@ -200,9 +220,9 @@ const CpuArchitecture = ({
           dominantBaseline="middle"
           fontSize="6"
           fill={animateText ? "url(#cpu-text-gradient)" : "white"}
-          fontWeight="700"
+          fontWeight="800"
           letterSpacing="0.05em"
-          className="select-none px-2"
+          className="select-none px-2 font-mono"
         >
           {text}
         </text>

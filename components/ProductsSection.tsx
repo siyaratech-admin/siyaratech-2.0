@@ -161,11 +161,11 @@ export default function ProductsSection() {
                 </div>
 
                 {/* CPU Architecture Visualization */}
-                <div className="mb-24 p-8 rounded-3xl border border-border/50 bg-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="mb-24 p-8 rounded-3xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:50px_50px]" />
                     <div className="relative z-10 flex flex-col items-center">
                         <h3 className="text-2xl font-bold mb-8 text-center">The Core of Our Intelligence</h3>
-                        <div className="w-full max-w-3xl">
+                        <div className="w-full max-w-5xl">
                             <CpuArchitecture text="AI" />
                         </div>
                     </div>

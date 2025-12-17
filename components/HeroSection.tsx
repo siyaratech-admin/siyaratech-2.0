@@ -19,10 +19,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
-  title,
   subtitle,
-  description,
-  primaryCTA,
   secondaryCTA,
   onPrimaryCTA,
   onSecondaryCTA,

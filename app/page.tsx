@@ -4,11 +4,10 @@ import HeroSection from "@/components/HeroSection";
 import ProductsSection from "@/components/ProductsSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import AICapabilities from "@/components/AICapabilities";
-import ImpactSection from "@/components/ImpactSection";
 import { useRouter } from "next/navigation";
 
-import V0ParticleAnimation from "@/components/v0-particle-animation";
 import LockScreenLoader from "@/components/LockScreenLoader";
+import ImpactSection from "@/components/ImpactSection";
 
 export default function HomePage() {
   const router = useRouter();

@@ -12,11 +12,9 @@ import {
     Code,
     Zap,
     TrendingUp,
-    Layers,
-    BarChart3,
+    CheckSquare,
     Briefcase,
-    Bot,
-    CheckSquare
+    Bot
 } from "lucide-react";
 import React from "react";
 

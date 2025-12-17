@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react"; // Keep for type safety if needed, or remove if unused. Actually they are not used in file directly now.
+// import { Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react"; // Keep for type safety if needed, or remove if unused. Actually they are not used in file directly now.
 // Removing unused imports completely
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
