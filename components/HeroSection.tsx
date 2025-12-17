@@ -41,20 +41,20 @@ export default function HeroSection({
       <div className="absolute inset-0 w-full h-full z-0">
         <LightPillar
           topColor={isLight ? "#9333ea" : "#3b0764"} // Vibrant Purple for light mode
-          bottomColor={isLight ? "#fbbf24" : "#facc15"} // Soft Amber for light mode
+          bottomColor={isLight ? "#fbbf24" : "#f59e0b"} // Soft Amber for light mode
           middleColor={isLight ? "#f97316" : "#ea580c"} // Bright Orange for light mode
           intensity={isLight ? 0.6 : 1.0} // Soft intensity
           rotationSpeed={0.8}
-          glowAmount={isLight ? 0.005 : 0.010}
+          glowAmount={isLight ? 0.005 : 0.007}
           pillarWidth={3.0}
           pillarHeight={0.3}
-          noiseIntensity={isLight ? 0.0 : 1.0} // No noise for clean look
+          noiseIntensity={isLight ? 3.0 : 2.0} // No noise for clean look
           pillarRotation={70}
           helixEnabled={true}
           helixSpeed={2}
           helixTightness={8.0}
           helixOpacity={1}
-          interactive={true}
+          interactive={false}
           mixBlendMode={isLight ? "normal" : "screen"}
         />
       </div>
