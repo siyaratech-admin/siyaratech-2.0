@@ -1,65 +1,36 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import ParticleCanvas from './ParticleCanvas';
-import { ParticleConfig } from '../utils/particleSystem';
-
-
+import { motion, AnimatePresence } from 'framer-motion';
 export default function LockScreenLoader() {
-    const [logoSrc, setLogoSrc] = useState("/static_images/logo.png");
-    const [config, setConfig] = useState<ParticleConfig>({
-        gap: 6,
-        sizeBase: 2,
-        sizeVariation: 2,
-        mouseRadius: 500,
-        friction: 0.92,
-        ease: 0.2,
-        glow: false,
-        bgOpacity: 0
-    });
+    const [isVisible, setIsVisible] = useState(true);
 
-    useEffect(() => {
-        // Handle responsive logo and config
-        const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setLogoSrc("/static_images/mob_logo.png");
-                // Optimize for mobile: larger gap (fewer particles), no glow
-                setConfig((prev: ParticleConfig) => ({ ...prev, gap: 12, glow: false }));
-            } else {
-                setLogoSrc("/static_images/logo.png");
-                // Desktop settings
-                setConfig((prev: ParticleConfig) => ({ ...prev, gap: 6, glow: false }));
-            }
-        };
-
-        // Initial check
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const handleVideoEnd = () => {
+        // Delay slightly before triggering exit to ensure video holds last frame
+        setTimeout(() => {
+            setIsVisible(false);
+        }, 200);
+    };
 
     return (
-        <div className="fixed inset-0 z-[100] w-full h-screen flex items-center justify-center bg-black overflow-hidden">
-            <div className="w-full h-full relative">
-                <ParticleCanvas
-                    imageSrc={logoSrc}
-                    config={config}
-                    className="w-full h-full"
-                />
-            </div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1 }}
-                className="absolute bottom-10 font-semibold text-white text-sm tracking-widest font-light"
-            >
-                INITIALIZING INTELLIGENCE...
-            </motion.div>
-        </div>
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    key="loader"
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    className="fixed inset-0 z-[100] w-full h-screen flex items-center justify-center bg-black overflow-hidden"
+                >
+                    <video
+                        src="/Logo_Animation.mp4"
+                        autoPlay
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover md:object-cover"
+                        onEnded={handleVideoEnd}
+                    />
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 }

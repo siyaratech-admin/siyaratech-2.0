@@ -54,7 +54,7 @@ export default function HeroSection({
           helixSpeed={2}
           helixTightness={8.0}
           helixOpacity={1}
-          interactive={false}
+          interactive={true}
           mixBlendMode={isLight ? "normal" : "screen"}
         />
       </div>

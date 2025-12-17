@@ -14,13 +14,13 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border-2 border-border bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground hover:border-primary/50 dark:hover:bg-primary/10",
+          "border-2 border-foreground/10 bg-transparent hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors duration-300",
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        gradient: "bg-brand-gradient text-white shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:brightness-110 border-0",
+        gradient: "relative overflow-hidden bg-brand-gradient text-white shadow-lg shadow-brand-purple/20 hover:shadow-xl hover:shadow-brand-purple/30 hover:-translate-y-0.5 transition-all duration-300 border-0 after:absolute after:inset-0 after:z-10 after:translate-x-[-150%] after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:skew-x-12 hover:after:translate-x-[150%] after:transition-transform after:duration-700 ease-in-out",
         glass: "bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:border-white/30 shadow-lg",
       },
       size: {

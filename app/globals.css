@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,33 +5,43 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --font-size: 16px; /* Increased base font size for better readability */
+  --font-size: 16px;
+  /* Increased base font size for better readability */
   --background: #ffffff;
-  --foreground: #0f172a; /* Slate 900 */
+  --foreground: #0f172a;
+  /* Slate 900 */
   --card: #ffffff;
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #7c3aed; /* Violet 600 - More vibrant purple */
+  --primary: #7c3aed;
+  /* Violet 600 - More vibrant purple */
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9; /* Slate 100 */
-  --secondary-foreground: #1e293b; /* Slate 800 */
-  --muted: #f8fafc; /* Slate 50 */
-  --muted-foreground: #64748b; /* Slate 500 */
+  --secondary: #f1f5f9;
+  /* Slate 100 */
+  --secondary-foreground: #1e293b;
+  /* Slate 800 */
+  --muted: #f8fafc;
+  /* Slate 50 */
+  --muted-foreground: #64748b;
+  /* Slate 500 */
   --accent: #f1f5f9;
   --accent-foreground: #0f172a;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e2e8f0; /* Slate 200 */
+  --border: #e2e8f0;
+  /* Slate 200 */
   --input: #e2e8f0;
   --ring: #7c3aed;
-  --radius: 0.75rem; /* Slightly larger radius for modern feel */
+  --radius: 0.75rem;
+  /* Slightly larger radius for modern feel */
 
   /* Brand Colors - Refined */
   --brand-purple: #7c3aed;
   --brand-red: #ef4444;
   --brand-orange: #f97316;
-  --brand-gradient: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #f97316 100%); /* Purple -> Pink -> Orange */
+  --brand-gradient: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #f97316 100%);
+  /* Purple -> Pink -> Orange */
   --brand-gradient-hover: linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #ea580c 100%);
 
   /* Glassmorphism - Refined */
@@ -248,15 +257,27 @@
 html {
   font-size: var(--font-size);
 }
+
 /* Add to your global CSS */
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
   }
 }
 
@@ -302,6 +323,7 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary)/80;
 }
+
 .scroll-reveal {
 
   margin: 20px 0;

@@ -7,6 +7,9 @@ import AICapabilities from "@/components/AICapabilities";
 import ImpactSection from "@/components/ImpactSection";
 import { useRouter } from "next/navigation";
 
+import V0ParticleAnimation from "@/components/v0-particle-animation";
+import LockScreenLoader from "@/components/LockScreenLoader";
+
 export default function HomePage() {
   const router = useRouter();
 
@@ -18,6 +21,8 @@ export default function HomePage() {
 
   return (
     <>
+      <LockScreenLoader />
+
       {/* Hero Section */}
       <HeroSection
         title="Run Your Business on One Intelligent Platform"
