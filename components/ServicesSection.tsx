@@ -1,65 +1,30 @@
 "use client";
 import React from "react";
 
-import { Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react";
+import { Brain, Cloud, Users, Code, Zap, TrendingUp } from "lucide-react"; // Keep for type safety if needed, or remove if unused. Actually they are not used in file directly now.
+// Removing unused imports completely
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 
-const services = [
-    {
-        icon: Brain,
-        title: "AI & Automation",
-        description: "Automate processes and improve decision-making with cutting-edge AI solutions.",
-        color: "text-purple-500",
-        bg: "bg-purple-500/10",
-    },
-    {
-        icon: Cloud,
-        title: "Cloud Services",
-        description: "Scalable and secure cloud infrastructure to support your growing business needs.",
-        color: "text-blue-500",
-        bg: "bg-blue-500/10",
-    },
-    {
-        icon: Users,
-        title: "Talent Outsourcing",
-        description: "Access top-tier IT talent to augment your team and accelerate development.",
-        color: "text-green-500",
-        bg: "bg-green-500/10",
-    },
-    {
-        icon: Code,
-        title: "Software Dev",
-        description: "Custom software solutions tailored to your specific business challenges.",
-        color: "text-pink-500",
-        bg: "bg-pink-500/10",
-    },
-    {
-        icon: Zap,
-        title: "Digital Transformation",
-        description: "Modernize your operations and stay ahead in the digital age.",
-        color: "text-yellow-500",
-        bg: "bg-yellow-500/10",
-    },
-    {
-        icon: TrendingUp,
-        title: "Business Consulting",
-        description: "Strategic insights to optimize performance and drive sustainable growth.",
-        color: "text-orange-500",
-        bg: "bg-orange-500/10",
-    },
-];
-
+import { services } from "@/lib/data";
+import { useRouter } from "next/navigation";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
 
 export default function ServicesSection() {
+    const router = useRouter();
+
+    const handleServiceClick = (slug: string) => {
+        router.push(`/services/${slug}`);
+    };
+
     const serviceCards: BentoCardProps[] = services.map(service => ({
         title: service.title,
         description: service.description,
         icon: service.icon,
         color: '#000000', // Dark background for cards
         textAutoHide: false,
-        className: "md:col-span-1", // Default to single column
+        className: "md:col-span-1 cursor-pointer", // Default to single column
+        onClick: () => handleServiceClick(service.id),
     }));
 
     return (

@@ -104,7 +104,7 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
               <button
                 key={`mobile-link-${idx}`}
                 onClick={() => handleNavigation(item.link)}
-                className="relative text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors duration-200 py-3 px-4 rounded-lg hover:bg-white/10 dark:hover:bg-white/5 w-full text-left font-medium"
+                className="relative text-foreground/90 dark:text-zinc-200 hover:text-black dark:hover:text-white transition-colors duration-200 py-3 px-4 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 w-full text-left font-medium"
               >
                 <span className="block">{item.name}</span>
               </button>

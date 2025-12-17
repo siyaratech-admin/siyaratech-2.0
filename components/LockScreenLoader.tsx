@@ -5,7 +5,6 @@ import ParticleCanvas from './ParticleCanvas';
 import { ParticleConfig } from '../utils/particleSystem';
 
 
-
 export default function LockScreenLoader() {
     const [logoSrc, setLogoSrc] = useState("/static_images/logo.png");
     const [config, setConfig] = useState<ParticleConfig>({
@@ -20,9 +19,6 @@ export default function LockScreenLoader() {
     });
 
     useEffect(() => {
-        // Force scroll to top on load
-        window.scrollTo(0, 0);
-
         // Handle responsive logo and config
         const handleResize = () => {
             if (window.innerWidth < 768) {
@@ -41,43 +37,13 @@ export default function LockScreenLoader() {
 
         window.addEventListener('resize', handleResize);
 
-        const smoothScrollTo = (targetY: number, duration: number) => {
-            const startY = window.scrollY;
-            const diff = targetY - startY;
-            let startTime: number | null = null;
-
-            const animation = (currentTime: number) => {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-
-                // Easing function (easeInOutCubic)
-                const ease = progress < 0.5
-                    ? 4 * progress * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-                window.scrollTo(0, startY + diff * ease);
-
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                }
-            };
-
-            requestAnimationFrame(animation);
-        };
-
-        const timer = setTimeout(() => {
-            smoothScrollTo(window.innerHeight, 2500); // 2.5 seconds duration
-        }, 5000);
-
         return () => {
-            clearTimeout(timer);
             window.removeEventListener('resize', handleResize);
         };
     }, []);
 
     return (
-        <div className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden snap-start">
+        <div className="fixed inset-0 z-[100] w-full h-screen flex items-center justify-center bg-black overflow-hidden">
             <div className="w-full h-full relative">
                 <ParticleCanvas
                     imageSrc={logoSrc}

@@ -88,7 +88,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       animate={{
         width: visible ? "fit-content" : "90%",
         maxWidth: visible ? "950px" : "100%",
-        minWidth: visible ? "1150px" : "300px",
+        minWidth: visible ? "min(95%, 1150px)" : "300px",
         y: 0,
         scale: visible ? 0.95 : 1,
       }}
@@ -137,7 +137,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full glass-card border-brand-purple/30"
+              className="absolute inset-0 h-full w-full rounded-full bg-secondary/80 dark:bg-white/10"
             />
           )}
           <span className="relative z-20">{item.name}</span>

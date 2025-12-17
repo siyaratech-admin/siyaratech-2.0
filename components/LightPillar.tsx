@@ -256,7 +256,24 @@ const LightPillar: React.FC<LightPillarProps> = ({
         float rnd = noise(gl_FragCoord.xy);
         color -= rnd / 15.0 * uNoiseIntensity;
         
-        gl_FragColor = vec4(color * uIntensity, 1.0);
+        // Normalize color to be vibrant (remove blackness) and use brightness as alpha
+        float brightness = max(max(color.r, color.g), color.b);
+        
+        if(brightness > 0.001) {
+            // Recover the pure color hue by normalizing brightness
+            vec3 pureColor = color / brightness;
+            
+            // Use brightness to control alpha. 
+            // Adjust the curve to ensure smooth falloff.
+            float alpha = smoothstep(0.0, 1.0, brightness * uIntensity);
+            
+            // Hard clamp alpha to prevent issues
+            alpha = clamp(alpha, 0.0, 1.0);
+            
+            gl_FragColor = vec4(pureColor, alpha);
+        } else {
+            gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+        }
       }
     `;
 

@@ -2,15 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import {
-    Heart,
-    DollarSign,
-    Factory,
-    ShoppingBag,
-    GraduationCap,
-    Laptop,
-    Hammer,
-} from "lucide-react";
+
 import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
 import { FeaturesGrid } from "@/components/ui/FeaturesGrid";
 import {
@@ -21,129 +13,26 @@ import {
     IconBulb,
     IconUsersGroup,
 } from "@tabler/icons-react";
+import { industries as industriesData } from "@/lib/data";
 
 export default function IndustriesSection() {
-    const industries = [
-        {
-            Icon: Heart,
-            name: "Healthcare",
-            description:
-                "Revolutionize patient care and streamline operations with our cutting-edge healthcare solutions.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/healthcare.png"
-                    alt="Healthcare background"
-                    fill
-                />
-            ),
-            className: "md:col-span-2",
-        },
-        {
-            Icon: DollarSign,
-            name: "Finance",
-            description:
-                "Transform your financial services with our innovative technology solutions and expert consulting.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/finance.png"
-                    alt="Finance background"
-                    fill
-                />
-            ),
-            className: "md:col-span-1",
-        },
-        {
-            Icon: Factory,
-            name: "Manufacturing",
-            description:
-                "Optimize your manufacturing processes and drive innovation with our industry-specific solutions.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/manufacturing.png"
-                    alt="Manufacturing background"
-                    fill
-                />
-            ),
-            className: "md:col-span-1",
-        },
-        {
-            Icon: ShoppingBag,
-            name: "Retail",
-            description:
-                "Elevate your retail business with our cutting-edge technology solutions and strategic consulting.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/retail.png"
-                    alt="Retail background"
-                    fill
-                />
-            ),
-            className: "md:col-span-1",
-        },
-        {
-            Icon: GraduationCap,
-            name: "Education",
-            description:
-                "Empowering institutions with innovative educational technology solutions.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/education.png"
-                    alt="Education background"
-                    fill
-                />
-            ),
-            className: "md:col-span-1",
-        },
-        {
-            Icon: Laptop,
-            name: "Technology",
-            description:
-                "Partnering with tech companies for innovative software development and IT services.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="/technology.png"
-                    alt="Technology background"
-                    fill
-                />
-            ),
-            className: "md:col-span-3",
-        },
-        {
-            Icon: Hammer,
-            name: "Construction",
-            description:
-                "Streamline project management, safety compliance, and resource allocation with our construction tech solutions.",
-            href: "/contact",
-            cta: "Learn More",
-            background: (
-                <Image
-                    className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
-                    alt="Construction background"
-                    fill
-                />
-            ),
-            className: "md:col-span-1",
-        },
-    ];
+
+    const industries = industriesData.map((industry) => ({
+        Icon: industry.icon,
+        name: industry.name,
+        description: industry.description,
+        href: `/industries/${industry.id}`,
+        cta: industry.cta,
+        background: (
+            <Image
+                className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
+                src={industry.backgroundImage}
+                alt={`${industry.name} background`}
+                fill
+            />
+        ),
+        className: industry.className,
+    }));
 
     const advantages = [
         {

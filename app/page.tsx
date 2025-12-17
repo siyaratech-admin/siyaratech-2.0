@@ -1,13 +1,10 @@
 "use client";
 import React from "react";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
 import ProductsSection from "@/components/ProductsSection";
-import AboutSection from "@/components/AboutSection";
-import IndustriesSection from "@/components/IndustriesSection";
-import CaseStudiesSection from "@/components/CaseStudiesSection";
-import BlogSection from "@/components/BlogSection";
-import LockScreenLoader from "@/components/LockScreenLoader";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import AICapabilities from "@/components/AICapabilities";
+import ImpactSection from "@/components/ImpactSection";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
@@ -21,37 +18,27 @@ export default function HomePage() {
 
   return (
     <>
-      <LockScreenLoader />
       {/* Hero Section */}
       <HeroSection
-        title="Transform Your Business with Cutting-Edge Technology"
-
-        description="We help forward-thinking companies leverage AI, modern web technologies, and digital transformation to achieve unprecedented growth and efficiency."
-        primaryCTA="Start Your Project"
-        secondaryCTA="View Our Work"
+        title="Run Your Business on One Intelligent Platform"
+        description="Siyaratech delivers an all-in-one ERP, CRM & AI Agent ecosystem designed to simplify operations, eliminate manual work, and unlock real-time business insights."
+        primaryCTA="Get Demo"
+        secondaryCTA="Explore Products"
         onPrimaryCTA={() => navigateTo("contact")}
-        onSecondaryCTA={() => navigateTo("case-studies")}
+        onSecondaryCTA={() => navigateTo("#products")}
       />
 
-      {/* Services Section */}
-      <div id="services">
-        <ServicesSection />
-      </div>
+      {/* Why Choose Us */}
+      <WhyChooseUs />
 
-      {/* Products Section */}
+      {/* Products Section (ERP Solutions) */}
       <ProductsSection />
 
-      {/* Industries Section */}
-      <IndustriesSection />
+      {/* AI Capabilities */}
+      <AICapabilities />
 
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
-
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Blog Section */}
-      <BlogSection />
+      {/* Impact & CTA */}
+      <ImpactSection />
     </>
   );
 }

@@ -1,54 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, BarChart3, Briefcase, Layers, ShoppingBag, BookOpen, ShoppingCart, FileText, CheckSquare, LayoutDashboard, Bot, PenTool } from "lucide-react";
+import { ShoppingBag, BookOpen, ShoppingCart, FileText, CheckSquare, LayoutDashboard, Bot, PenTool } from "lucide-react";
 import { CpuArchitecture } from "./ui/cpu-architecture";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
 import { useRouter } from "next/navigation";
-import ServiceCard from "./ServiceCard";
-
-const erpProducts = [
-    {
-        id: "hrms",
-        title: "AI-Driven HRMS",
-        subtitle: "Autonomous Workforce Management",
-        description: "Beyond simple automation. Our HRMS predicts talent needs, optimizes engagement, and automates complex HR workflows intelligently.",
-        icon: Users,
-        gradient: "from-pink-500 to-rose-500",
-        features: ["Talent Prediction", "Smart Recruitment", "Auto-Payroll"],
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-    },
-    {
-        id: "erp",
-        title: "Predictive ERP",
-        subtitle: "Enterprise Resource Planning",
-        description: "An ERP that learns your business. Forecast demand, optimize supply chains, and manage resources with predictive AI models.",
-        icon: Layers,
-        gradient: "from-blue-500 to-cyan-500",
-        features: ["Demand Forecasting", "Supply Chain AI", "Auto-Balancing"],
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    },
-    {
-        id: "crm",
-        title: "Intelligent CRM",
-        subtitle: "Customer Relationship Management",
-        description: "Turn data into relationships. Our CRM analyzes sentiment, predicts churn, and suggests the perfect next step for every lead.",
-        icon: BarChart3,
-        gradient: "from-violet-500 to-purple-500",
-        features: ["Sentiment Analysis", "Churn Prediction", "Smart Outreach"],
-        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
-    },
-    {
-        id: "pm",
-        title: "Adaptive PM",
-        subtitle: "Project Management",
-        description: "Project management that adapts. It reallocates resources in real-time, predicts delays, and keeps your projects on track automatically.",
-        icon: Briefcase,
-        gradient: "from-amber-500 to-orange-500",
-        features: ["Risk Prediction", "Auto-Scheduling", "Resource AI"],
-        image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
-    },
-];
+import { erpSolutions } from "@/lib/data";
+import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
+import Image from "next/image";
 
 const innovativeProducts = [
     {
@@ -136,7 +95,22 @@ const innovativeProducts = [
 export default function ProductsSection() {
     const router = useRouter();
 
-
+    const erpCards = erpSolutions.map((solution) => ({
+        name: solution.title,
+        description: solution.description,
+        href: `/solutions/${solution.id}`,
+        cta: solution.cta, // "Learn More" or similar
+        background: (
+            <Image
+                className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
+                src={solution.image || ""}
+                alt={`${solution.title} background`}
+                fill
+            />
+        ),
+        Icon: solution.icon,
+        className: solution.className,
+    }));
 
     const innovativeCards: BentoCardProps[] = innovativeProducts.map(product => {
         let slug = "";
@@ -157,7 +131,7 @@ export default function ProductsSection() {
     });
 
     return (
-        <section id="products" className="py-24 bg-background relative overflow-hidden">
+        <section id="products" className="py-16 md:py-24 bg-background relative overflow-hidden">
 
             {/* Background Elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -205,18 +179,12 @@ export default function ProductsSection() {
                             Comprehensive enterprise resource planning tools powered by advanced AI to optimize your business operations.
                         </p>
                     </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {erpProducts.map((product, index) => (
-                            <ServiceCard
-                                key={index}
-                                icon={product.icon}
-                                title={product.title}
-                                description={product.description}
-                                features={product.features}
-                                category={product.subtitle}
-                                isPopular={index === 0} // Example logic, maybe make the first one popular
-                            />
-                        ))}
+                    <div className="max-w-5xl mx-auto">
+                        <BentoGrid>
+                            {erpCards.map((card, index) => (
+                                <BentoCard key={index} {...card} />
+                            ))}
+                        </BentoGrid>
                     </div>
                 </div>
 
