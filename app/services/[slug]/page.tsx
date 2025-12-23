@@ -38,9 +38,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     const Icon = service.icon;
 
     return (
-        <div className="min-h-screen bg-background pt-24 pb-12">
+        <div className="min-h-screen bg-transparent pt-24 pb-12">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Link href="/#services" passHref>
+                <Link href="/services" passHref>
                     <Button variant="ghost" className="mb-8 pl-0 hover:pl-2 transition-all">
                         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Services
                     </Button>
@@ -56,9 +56,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     <div className="p-8 md:p-12">
                         <div className="mb-8">
                             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">{service.title}</h1>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
-                                {service.longDescription || service.description}
-                            </p>
+                            {service.content ? (
+                                <div className="prose prose-lg prose-invert max-w-none text-muted-foreground">
+                                    {service.content}
+                                </div>
+                            ) : (
+                                <p className="text-xl text-muted-foreground leading-relaxed">
+                                    {service.longDescription || service.description}
+                                </p>
+                            )}
                         </div>
 
                         <div className="my-12">

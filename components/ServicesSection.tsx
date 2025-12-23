@@ -23,12 +23,13 @@ export default function ServicesSection() {
         icon: service.icon,
         color: '#000000', // Dark background for cards
         textAutoHide: false,
+        image: service.image,
         className: "md:col-span-1 cursor-pointer", // Default to single column
         onClick: () => handleServiceClick(service.id),
     }));
 
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
+        <section className="py-24 bg-transparent relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
                     <Badge variant="outline" className="mb-4 px-4 py-1 border-primary/20 text-primary bg-primary/5">

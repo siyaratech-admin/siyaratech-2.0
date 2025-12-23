@@ -39,9 +39,9 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
     const Icon = industry.icon;
 
     return (
-        <div className="min-h-screen bg-background pt-24 pb-12">
+        <div className="min-h-screen bg-transparent pt-24 pb-12">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Link href="/#industries" passHref>
+                <Link href="/industries" passHref>
                     <Button variant="ghost" className="mb-8 pl-0 hover:pl-2 transition-all">
                         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Industries
                     </Button>
@@ -57,7 +57,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
                                 className="object-cover transition-transform duration-700 hover:scale-105"
                             />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
                         <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20">
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
@@ -74,9 +74,15 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
                     <div className="p-8 md:p-12">
                         <div className="mb-12">
                             <h2 className="text-2xl font-bold mb-4">Overview</h2>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
-                                {industry.longDescription || industry.description}
-                            </p>
+                            {industry.content ? (
+                                <div className="prose prose-lg prose-invert max-w-none text-muted-foreground">
+                                    {industry.content}
+                                </div>
+                            ) : (
+                                <p className="text-xl text-muted-foreground leading-relaxed">
+                                    {industry.longDescription || industry.description}
+                                </p>
+                            )}
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">

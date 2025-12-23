@@ -20,19 +20,19 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
   const navItems = [
     {
       name: "About",
-      link: "/#about",
+      link: "/about",
     },
     {
       name: "Services",
-      link: "/#services",
+      link: "/services",
     },
     {
       name: "Products",
-      link: "/#products",
+      link: "/products",
     },
     {
       name: "Industries",
-      link: "/#industries",
+      link: "/industries",
     },
     {
       name: "Case Studies",
@@ -40,7 +40,7 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
     },
     {
       name: "Blog",
-      link: "/#blog",
+      link: "/blog",
     },
     {
       name: "Careers",
@@ -94,7 +94,7 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
-            className="backdrop-blur-xl bg-white/10 dark:bg-black/10"
+            className="backdrop-blur-xl bg-white/90 dark:bg-black/90"
           >
             {navItems.map((item, idx) => (
               <button

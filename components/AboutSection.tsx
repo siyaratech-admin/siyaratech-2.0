@@ -8,7 +8,7 @@ import FoundersSection from '@/components/FoundersSection';
 
 export default function AboutSection() {
     return (
-        <section id="about" className="py-24 bg-background relative overflow-hidden">
+        <section id="about" className="py-24 bg-transparent relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
@@ -39,7 +39,7 @@ export default function AboutSection() {
                     <div>
                         <h3 className="text-3xl font-bold mb-6">Our Story</h3>
                         <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                            Founded with a vision to bridge the gap between complex technology and business value, FutureTech has grown from a small consultancy to a global technology partner.
+                            Founded with a vision to bridge the gap between complex technology and business value, Siyaratech has grown from a small consultancy to a global technology partner.
                         </p>
                         <p className="text-muted-foreground text-lg leading-relaxed">
                             We believe that technology should be an enabler, not a barrier. Our mission is to democratize access to cutting-edge solutions and empower organizations of all sizes to achieve their full potential.

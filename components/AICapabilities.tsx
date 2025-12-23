@@ -33,7 +33,7 @@ export default function AICapabilities() {
     ];
 
     return (
-        <section className="py-16 md:py-24 bg-gradient-to-b from-background to-accent/5">
+        <section className="py-16 md:py-24 bg-transparent">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>

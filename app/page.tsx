@@ -9,6 +9,10 @@ import { useRouter } from "next/navigation";
 import LockScreenLoader from "@/components/LockScreenLoader";
 import ImpactSection from "@/components/ImpactSection";
 
+import ServicesSection from "@/components/ServicesSection";
+
+import IndustriesSection from "@/components/IndustriesSection";
+
 export default function HomePage() {
   const router = useRouter();
 
@@ -20,7 +24,7 @@ export default function HomePage() {
 
   return (
     <>
-      <LockScreenLoader />
+      <LockScreenLoader checkSession={true} />
 
       {/* Hero Section */}
       <HeroSection
@@ -37,6 +41,12 @@ export default function HomePage() {
 
       {/* Products Section (ERP Solutions) */}
       <ProductsSection />
+
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* Industries Section */}
+      <IndustriesSection />
 
       {/* AI Capabilities */}
       <AICapabilities />

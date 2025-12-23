@@ -33,6 +33,8 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   );
 };
 
+import Link from "next/link";
+
 const BentoCard = ({
   name,
   className,
@@ -55,21 +57,24 @@ const BentoCard = ({
     )}
     {...props}
   >
-    <div className="absolute inset-0 h-[400px] w-full">{background}</div>
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t h-[400px] from-black via-black/10 to-transparent z-10" />
+    {/* Clickable Overlay */}
+    <Link href={href} className="absolute inset-0 z-10" />
 
-    <div className="relative z-20 p-4">
-      <div className="pointer-events-none flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
-        <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75 dark:text-neutral-300" />
-        <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-100">
+    <div className="absolute inset-0 h-[400px] w-full">{background}</div>
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t h-[400px] from-black/80 via-black/20 to-transparent z-10" />
+
+    <div className="relative z-20 p-4 pointer-events-none">
+      <div className="flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
+        <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-100 transition-all duration-300 ease-in-out group-hover:scale-75" />
+        <h3 className="text-xl font-semibold text-neutral-100">
           {name}
         </h3>
-        <p className="max-w-lg text-neutral-400 dark:text-neutral-300">{description}</p>
+        <p className="max-w-lg text-neutral-300">{description}</p>
       </div>
 
       <div
         className={cn(
-          "lg:hidden pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
+          "lg:hidden flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
         )}
       >
         <Button
@@ -78,10 +83,10 @@ const BentoCard = ({
           size="sm"
           className="pointer-events-auto p-0"
         >
-          <a href={href}>
+          <span>
             {cta}
             <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </a>
+          </span>
         </Button>
       </div>
     </div>
@@ -97,10 +102,10 @@ const BentoCard = ({
         size="sm"
         className="pointer-events-auto p-0"
       >
-        <a href={href}>
+        <span>
           {cta}
           <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-        </a>
+        </span>
       </Button>
     </div>
 

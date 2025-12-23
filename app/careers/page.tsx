@@ -114,7 +114,7 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 bg-gradient-to-b from-background to-accent/10 transition-colors duration-300">
+      <section className="py-20 bg-transparent transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">

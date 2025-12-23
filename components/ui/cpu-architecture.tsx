@@ -89,10 +89,7 @@ const CpuArchitecture = ({
           <stop offset="100%" stopColor="#f59e0b" />
         </linearGradient>
 
-        <filter id="cpu-noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
+
 
         <marker
           id="cpu-circle-marker"
@@ -123,7 +120,7 @@ const CpuArchitecture = ({
 
       {/* === BACKGROUND GRID & NOISE === */}
       <rect x="0" y="0" width="100%" height="100%" fill="url(#cpu-grid)" />
-      <rect x="0" y="0" width="100%" height="100%" filter="url(#cpu-noise)" opacity="0.15" fill="transparent" />
+
 
       {/* === BACKGROUND TRACKS === */}
       <g stroke="currentColor" fill="none" strokeWidth="1" strokeOpacity="0.15">

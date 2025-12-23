@@ -69,6 +69,10 @@ const jsonLd = {
   }
 };
 
+import { AnimatedBackgroundBlobs } from "@/components/ui/animated-background-blobs";
+
+// ... imports
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -78,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
+          <AnimatedBackgroundBlobs />
           {children}
           <Footer />
         </Providers>

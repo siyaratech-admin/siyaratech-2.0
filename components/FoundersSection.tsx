@@ -35,11 +35,11 @@ const founders = [
 
 export default function FoundersSection() {
     return (
-        <section className="py-24 bg-black text-white relative overflow-hidden">
+        <section className="py-24 bg-transparent relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-900/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[120px]" />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -50,8 +50,8 @@ export default function FoundersSection() {
                     transition={{ duration: 0.6 }}
                     className="mb-20"
                 >
-                    <h2 className="text-5xl md:text-6xl font-light tracking-tight">
-                        <span className="border-b-4 border-white/20 pb-2">OUR</span> TEAM
+                    <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground">
+                        <span className="border-b-4 border-foreground/20 pb-2">OUR</span> TEAM
                     </h2>
                 </motion.div>
 
@@ -66,9 +66,9 @@ export default function FoundersSection() {
                             className="group"
                         >
                             {/* Image Container */}
-                            <div className="relative aspect-[4/5] mb-8 overflow-hidden bg-neutral-900 rounded-sm">
+                            <div className="relative aspect-[4/5] mb-8 overflow-hidden bg-muted rounded-sm">
                                 {/* Placeholder for image */}
-                                <div className="absolute inset-0 flex items-center justify-center text-neutral-700 bg-neutral-800">
+                                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground bg-accent/50">
                                     <span className="text-xs uppercase tracking-widest">Image Placeholder</span>
                                 </div>
                                 {/* Actual Image Tag (commented out until images are available) */}
@@ -79,20 +79,20 @@ export default function FoundersSection() {
                 /> */}
 
                                 {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
                             </div>
 
                             {/* Content */}
                             <div className="relative">
                                 <div className="flex items-baseline gap-3 mb-2">
-                                    <span className="text-2xl font-light text-white/50">{founder.id}</span>
-                                    <h3 className="text-xl font-bold text-white">{founder.name}</h3>
+                                    <span className="text-2xl font-light text-muted-foreground/50">{founder.id}</span>
+                                    <h3 className="text-xl font-bold text-foreground">{founder.name}</h3>
                                 </div>
-                                <p className="text-sm text-white/70 font-medium mb-4 uppercase tracking-wide whitespace-pre-line">
+                                <p className="text-sm text-foreground/70 font-medium mb-4 uppercase tracking-wide whitespace-pre-line">
                                     {founder.role}
                                 </p>
-                                <div className="w-full h-[1px] bg-white/20 mb-4 transform origin-left transition-transform duration-500 group-hover:scale-x-100 scale-x-50" />
-                                <p className="text-sm text-gray-400 leading-relaxed">
+                                <div className="w-full h-[1px] bg-foreground/20 mb-4 transform origin-left transition-transform duration-500 group-hover:scale-x-100 scale-x-50" />
+                                <p className="text-sm text-muted-foreground leading-relaxed">
                                     {founder.bio}
                                 </p>
                             </div>

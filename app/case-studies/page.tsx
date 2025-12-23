@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
+import PageHeader from '@/components/PageHeader';
 import CaseStudyCard from '@/components/CaseStudyCard';
 import { useRouter } from 'next/navigation';
 
@@ -110,13 +110,11 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="pt-16">
-      <HeroSection
+      <PageHeader
         title="Case Studies"
         subtitle="Proven Success Stories"
         description="Explore real-world examples of how we've helped businesses transform their operations and achieve remarkable growth through technology."
-        primaryCTA="Start Your Success Story"
-        onPrimaryCTA={() => navigateTo('contact')}
-        showStats={false}
+        badge="Success Stories"
       />
 
       <section className="py-20 transition-colors duration-300">

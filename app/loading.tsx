@@ -1,5 +1,5 @@
 import LockScreenLoader from "@/components/LockScreenLoader";
 
 export default function Loading() {
-    return <LockScreenLoader />;
+    return <LockScreenLoader checkSession={false} />;
 }

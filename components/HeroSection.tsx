@@ -59,7 +59,7 @@ export default function HeroSection({
       {/* Bottom Blur Transition */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
 
-      <div className="relative z-40 max-w-4xl text-center mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+      <div className="relative z-40 w-full text-center mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mt-12 md:mb-0">
         {/* Subtitle Badge */}
         {subtitle && (
           <motion.div
@@ -74,13 +74,13 @@ export default function HeroSection({
         )}
 
         {/* Title */}
-        <div className="mb-8 w-full flex justify-center">
+        <div className="mb-8 w-full max-w-full px-2 flex md:justify-center overflow-hidden">
           <BlurText
             text="Run Your Business on One Intelligent Platform"
             delay={50}
             animateBy="words"
             direction="top"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] !text-center"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] !text-center break-words max-w-[90vw] mx-auto flex-wrap justify-center"
             as="h1"
           />
         </div>

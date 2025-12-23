@@ -74,7 +74,7 @@ export default function IndustriesSection() {
     ];
 
     return (
-        <section id="industries" className="py-24 bg-gradient-to-b from-background via-background/95 to-accent/5 transition-colors duration-300">
+        <section id="industries" className="py-24 bg-transparent transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-20">
                     <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 text-sm px-4 py-2">
