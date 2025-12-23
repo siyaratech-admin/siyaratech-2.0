@@ -2,18 +2,11 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import CaseStudyCard from '@/components/CaseStudyCard';
-import { useRouter } from 'next/navigation';
 
 export default function CaseStudiesPage() {
-  const router = useRouter();
 
-  // Function to navigate and scroll to top
-  const navigateTo = (page: string) => {
-    const path = page === 'home' ? '/' : `/${page}`;
-    router.push(path);
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+
+
 
   const caseStudies = [
     {

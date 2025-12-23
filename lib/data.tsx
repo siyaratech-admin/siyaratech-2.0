@@ -16,7 +16,7 @@ import {
     Briefcase,
     Bot,
     BookOpen,
-    ShoppingCart, // Keep for backward compatibility if needed, but prefer specific icons
+
     ShoppingCartIcon,
     FileText,
     LayoutDashboard,
@@ -44,7 +44,7 @@ export const industries = [
                     Data security and interoperability are the cornerstones of our architecture. We understand the sensitivity of health data and adhere to the strictest global standards, including HIPAA and GDPR. our solutions feature advanced encryption and role-based access controls to protect patient privacy without hindering the seamless flow of information between authorized departments. This operational transparency builds trust with patients and protects institutions from costly data breaches and compliance violations.
                 </p>
                 <p>
-                    Looking ahead, we are pioneering the use of AI in diagnostic assistance and operational forecasting. Imagine an ER that predicts patient influx based on seasonal trends or an AI assistant that flags potential drug interactions in real-time. These future-ready features are designed to augment decision-making, reduce human error, and optimize resource allocation. With Siyaratech, healthcare providers are equipped not just for today's challenges but for tomorrow's medical breakthroughs.
+                    Looking ahead, we are pioneering the use of AI in diagnostic assistance and operational forecasting. Imagine an ER that predicts patient influx based on seasonal trends or an AI assistant that flags potential drug interactions in real-time. These future-ready features are designed to augment decision-making, reduce human error, and optimize resource allocation. With Siyaratech, healthcare providers are equipped not just for today&apos;s challenges but for tomorrow&apos;s medical breakthroughs.
                 </p>
                 <p>
                     Our commitment extends beyond software; we partner with hospitals, clinics, and labs to drive measurable outcomes. Whether it is reducing patient wait times, minimizing claim rejections, or improving post-discharge recovery rates, our technology acts as a catalyst for excellence. Join us in shaping a healthier world where technology serves as the heartbeat of modern medicine.
@@ -78,7 +78,7 @@ export const industries = [
                     Security is woven into the DNA of our financial products. Recognizing the escalating innovations in cyber threats, we employ zero-trust architectures and AI-driven fraud detection systems that analyze transaction patterns in milliseconds. This proactive security stance safeguards assets and preserves customer confidence. From multi-factor authentication to blockchain-verified audit trails, we ensure that every digital handshake is authentic and immutable, meeting rigorous compliance standards like PCI-DSS and SOX.
                 </p>
                 <p>
-                    We also unlock the power of data for strategic advantage. Financial institutions sit on mountains of data that often go untapped. Our advanced analytics and machine learning models turn this raw data into actionable insights—predicting market trends, identifying credit risks, and segmenting customers for hyper-personalized offers. This intelligence allows institutions to pivot from being mere transaction processors to becoming trusted financial advisors who anticipate their customers' life goals.
+                    We also unlock the power of data for strategic advantage. Financial institutions sit on mountains of data that often go untapped. Our advanced analytics and machine learning models turn this raw data into actionable insights—predicting market trends, identifying credit risks, and segmenting customers for hyper-personalized offers. This intelligence allows institutions to pivot from being mere transaction processors to becoming trusted financial advisors who anticipate their customers&apos; life goals.
                 </p>
                 <p>
                     Innovation is at our core. We are actively integrating decentralized finance (DeFi) concepts and open banking APIs to create interoperable financial ecosystems. Whether it is building a neo-bank from scratch or integrating a crypto-payment gateway, our agile development teams deliver scalable, future-proof solutions. We empower you to launch new products in weeks rather than months, keeping you ahead of the curve in a fiercely competitive market.
@@ -109,7 +109,7 @@ export const industries = [
         content: (
             <div className="space-y-6">
                 <p>
-                    Manufacturing is evolving into a connected, intelligent ecosystem known as Industry 4.0, and Siyaratech is your partner in this industrial revolution. We move beyond traditional automation to create 'Smart Factories' where machines, sensors, and enterprise systems talk to each other. By converging IT (Information Technology) with OT (Operational Technology), we provide manufacturers with a digital twin of their production floor—enabling real-time visibility into every bolt tightened and every pallet shipped.
+                    Manufacturing is evolving into a connected, intelligent ecosystem known as Industry 4.0, and Siyaratech is your partner in this industrial revolution. We move beyond traditional automation to create &lsquo;Smart Factories&rsquo; where machines, sensors, and enterprise systems talk to each other. By converging IT (Information Technology) with OT (Operational Technology), we provide manufacturers with a digital twin of their production floor—enabling real-time visibility into every bolt tightened and every pallet shipped.
                 </p>
                 <p>
                     Our predictive maintenance solutions are a game-changer for asset-heavy industries. Instead of relying on rigid service schedules or reacting to costly breakdowns, our IoT-enabled systems monitor equipment health 24/7. Vibration analysis, thermal imaging using IoT sensors, and machine learning algorithms predict failures before they happen, allowing you to schedule maintenance during planned downtime. This drastic reduction in unplanned outages translates directly to higher OEE (Overall Equipment Effectiveness) and profit margins.
@@ -146,10 +146,10 @@ export const industries = [
         content: (
             <div className="space-y-6">
                 <p>
-                    Retail is no longer about just selling products; it is about crafting memorable experiences. Siyaratech empowers retailers to bridge the digital and physical divide, creating a unified 'Phygital' commerce strategy. We help brands move away from channel silos to a truly omnichannel state where a customer can start a journey on Instagram, customize a product on your app, and pick it up in-store—all without a hitch. Our platforms centralize customer data, ensuring that your sales associates know VIP preferences the moment they walk through the door.
+                    Retail is no longer about just selling products; it is about crafting memorable experiences. Siyaratech empowers retailers to bridge the digital and physical divide, creating a unified &lsquo;Phygital&rsquo; commerce strategy. We help brands move away from channel silos to a truly omnichannel state where a customer can start a journey on Instagram, customize a product on your app, and pick it up in-store—all without a hitch. Our platforms centralize customer data, ensuring that your sales associates know VIP preferences the moment they walk through the door.
                 </p>
                 <p>
-                    Inventory visibility is the holy grail of modern retail, and our systems deliver it with pinpoint accuracy. Real-time synchronization across warehouses, stores, and drop-ship vendors prevents the dreaded 'out of stock' scenario. We implement smart order routing algorithms that fulfill orders from the nearest location, slashing shipping costs and delivery times. Whether it is BOPIS (Buy Online, Pick Up In-Store) or same-day delivery, our backend logic handles the complexity so you can promise convenience.
+                    Inventory visibility is the holy grail of modern retail, and our systems deliver it with pinpoint accuracy. Real-time synchronization across warehouses, stores, and drop-ship vendors prevents the dreaded &lsquo;out of stock&rsquo; scenario. We implement smart order routing algorithms that fulfill orders from the nearest location, slashing shipping costs and delivery times. Whether it is BOPIS (Buy Online, Pick Up In-Store) or same-day delivery, our backend logic handles the complexity so you can promise convenience.
                 </p>
                 <p>
                     Personalization is at the heart of our customer engagement tools. Using AI and behavioral analytics, we help you deliver hyper-relevant product recommendations and dynamic pricing. We move beyond generic email blasts to triggered, context-aware communication that resonates with individual shoppers. Our loyalty management systems are gamified and flexible, turning casual buyers into brand advocates who feel genuinely valued.
@@ -220,13 +220,13 @@ export const industries = [
         content: (
             <div className="space-y-6">
                 <p>
-                    In the fast-paced world of technology, speed to market is everything. Siyaratech serves as a strategic accelerator for tech companies, startups, and enterprises building software products. We don't just write code; we co-create value. Our engineering pods integrate seamlessly with your internal teams, bringing niche expertise in cloud-native architecture, microservices, and DevOps. We help you clear technical debt, modernize legacy stacks, and scale your infrastructure to handle millions of users.
+                    In the fast-paced world of technology, speed to market is everything. Siyaratech serves as a strategic accelerator for tech companies, startups, and enterprises building software products. We don&apos;t just write code; we co-create value. Our engineering pods integrate seamlessly with your internal teams, bringing niche expertise in cloud-native architecture, microservices, and DevOps. We help you clear technical debt, modernize legacy stacks, and scale your infrastructure to handle millions of users.
                 </p>
                 <p>
                     Our approach to software development is deeply rooted in Agile and DevOps best practices. We implement CI/CD (Continuous Integration/Continuous Deployment) pipelines that automate testing and deployment, allowing you to release features daily with confidence. This reliability allows your product teams to run experiments and iterate faster based on real user feedback. We treat infrastructure as code (IaC), ensuring environments are reproducible, secure, and scalable at the click of a button.
                 </p>
                 <p>
-                    Innovation requires looking beyond the horizon. Our R&D labs explore emerging technologies like Generative AI, Edge Computing, and Web3 so you don't have to. We help you prototype MVP (Minimum Viable Products) rapidly to validate market hypotheses. Whether it is integrating a Large Language Model (LLM) into your SaaS app or building a decentralized identity system, we provide the technical scaffolding to turn ambitious ideas into shipping products.
+                    Innovation requires looking beyond the horizon. Our R&D labs explore emerging technologies like Generative AI, Edge Computing, and Web3 so you don&apos;t have to. We help you prototype MVP (Minimum Viable Products) rapidly to validate market hypotheses. Whether it is integrating a Large Language Model (LLM) into your SaaS app or building a decentralized identity system, we provide the technical scaffolding to turn ambitious ideas into shipping products.
                 </p>
                 <p>
                     Quality Assurance (QA) is not an afterthought; it is shifted left in our process. We employ automated testing frameworks that cover unit, integration, and UI levels, ensuring regression bugs are caught instantly. Our security-first mindset means we conduct vulnerability assessments and penetration testing throughout the SDLC, not just before launch. We build software that is robust, performant, and secure by design.
@@ -260,13 +260,13 @@ export const industries = [
                     The construction industry is notorious for complexity, with projects often plagued by delays and cost overruns. Siyaratech brings clarity to the chaos with specialized Construction Tech solutions. We digitize the job site, moving you away from paper blueprints and clipboard checklists to cloud-based collaboration. Our platforms connect architects, engineers, contractors, and owners in a single data environment (CDE), ensuring everyone builds from the same latest version of the truth.
                 </p>
                 <p>
-                    Project management in construction is about managing dependencies. Our advanced scheduling tools (Gantt/CPM) integrate with resource management to highlight bottlenecks before they stall progress. We track labor productivity and material consumption in real-time, giving you a daily 'Project Health Score'. This financial visibility allows you to detect budget drift early and take corrective action, protecting your razor-thin margins.
+                    Project management in construction is about managing dependencies. Our advanced scheduling tools (Gantt/CPM) integrate with resource management to highlight bottlenecks before they stall progress. We track labor productivity and material consumption in real-time, giving you a daily &lsquo;Project Health Score&rsquo;. This financial visibility allows you to detect budget drift early and take corrective action, protecting your razor-thin margins.
                 </p>
                 <p>
                     Safety is paramount. Our EHS (Environment, Health, and Safety) modules digitize safety inspections, permits to work, and incident reporting. We use mobile apps to ensure compliance checks are done and documented on the ground. By analyzing safety data, we help you identify high-risk activities and conduct targeted training, fostering a culture of safety that protects your most valuable asset: your people.
                 </p>
                 <p>
-                    We are also embracing the future of construction with BIM (Building Information Modeling) integration. Our tools allow field teams to visualize 3D models on tablets, resolving clashes and RFI's (Request for Information) instantly on-site. We are exploring drone mapping for site surveys and IoT sensors for tracking expensive machinery. These technologies reduce rework and accelerate project closeout.
+                    We are also embracing the future of construction with BIM (Building Information Modeling) integration. Our tools allow field teams to visualize 3D models on tablets, resolving clashes and Request for Information (RFIs) instantly on-site. We are exploring drone mapping for site surveys and IoT sensors for tracking expensive machinery. These technologies reduce rework and accelerate project closeout.
                 </p>
                 <p>
                     Siyaratech builds the digital foundation for your physical structures. Whether you are building high-rises, highways, or homes, our technology ensures you deliver on time, on budget, and with superior quality. Let us help you construct the skyline of tomorrow with the efficiency of digital speed.
@@ -305,7 +305,7 @@ export const services = [
                     Natural Language Processing (NLP) is another core strength. We build systems that understand the nuance of human communication. Imagine an internal search engine that understands semantic queries, or a sentiment analysis tool that gauges brand health across millions of social media posts. Our NLP solutions break down language barriers, enabling real-time translation and accessible interfaces for global audiences.
                 </p>
                 <p>
-                    Robotic Process Automation (RPA) serves as the bridge for legacy systems. Where APIs don't exist, our software robots mimic human interactions to move data between disparate applications. This allows you to modernize operations without ripping and replacing your core infrastructure. We design resilient bots that handle exceptions gracefully and scale seamlessly with your workload.
+                    Robotic Process Automation (RPA) serves as the bridge for legacy systems. Where APIs don&apos;t exist, our software robots mimic human interactions to move data between disparate applications. This allows you to modernize operations without ripping and replacing your core infrastructure. We design resilient bots that handle exceptions gracefully and scale seamlessly with your workload.
                 </p>
                 <p>
                     Ethics and explainability are at the forefront of our AI philosophy. We build transparent models where decisions can be audited and understood. As we march towards an AI-native future, Siyaratech ensures that your organization adopts these powerful technologies responsibly, securely, and effectively. Let us help you build the intelligent enterprise of tomorrow.
@@ -335,10 +335,10 @@ export const services = [
                     The cloud is the bedrock of digital agility. Siyaratech provides end-to-end cloud services that guide you through every stage of your cloud journey. Whether you are migrating a monolithic legacy application to the cloud or building a cloud-native microservices architecture, our certified architects ensure a smooth transition. We support multi-cloud and hybrid strategies, giving you the flexibility to choose the best services from AWS, Azure, and Google Cloud without getting locked into a single vendor.
                 </p>
                 <p>
-                    Cost optimization is a critical component of our offering. The cloud's pay-as-you-go model can quickly become expensive without proper governance. We implement FinOps practices to monitor usage patterns, right-size instances, and utilize spot instances for non-critical workloads. Our automated scaling policies ensure that you have enough compute power during peak traffic but aren't paying for idle resources at night. We turn your infrastructure cost from a fixed capital expense into a flexible operational one.
+                    Cost optimization is a critical component of our offering. The cloud&apos;s pay-as-you-go model can quickly become expensive without proper governance. We implement FinOps practices to monitor usage patterns, right-size instances, and utilize spot instances for non-critical workloads. Our automated scaling policies ensure that you have enough compute power during peak traffic but aren&apos;t paying for idle resources at night. We turn your infrastructure cost from a fixed capital expense into a flexible operational one.
                 </p>
                 <p>
-                    Security in the cloud requires a new paradigm. We implement a 'Security by Design' approach, leveraging Infrastructure as Code (IaC) to ensure every environment is hardened from day one. From configuring VPCs and firewalls to managing identity and access (IAM) with least privilege principles, we wrap your data in layers of protection. Our automated compliance checks ensure you meet regulatory standards like GDPR, HIPAA, and SOC2 continuously.
+                    Security in the cloud requires a new paradigm. We implement a &lsquo;Security by Design&rsquo; approach, leveraging Infrastructure as Code (IaC) to ensure every environment is hardened from day one. From configuring VPCs and firewalls to managing identity and access (IAM) with least privilege principles, we wrap your data in layers of protection. Our automated compliance checks ensure you meet regulatory standards like GDPR, HIPAA, and SOC2 continuously.
                 </p>
                 <p>
                     Disaster recovery and business continuity are built-in. We design high-availability architectures that span multiple availability zones and regions. If a data center goes down, your application fails over instantly with zero data loss. Our backup strategies are immutable and air-gapped, protecting you even from ransomware attacks.
@@ -368,7 +368,7 @@ export const services = [
         content: (
             <div className="space-y-6">
                 <p>
-                    The war for talent is fierce, and finding the right skills at the right time can bottleneck your growth. Siyaratech's Talent Outsourcing service connects you with a global pool of pre-vetted, high-caliber IT professionals. We don't just fill seats; we provide engineers, designers, and product managers who possess both technical excellence and cultural adaptability. Whether you need a single specialist to plug a skills gap or a full-stack squad to build a product from scratch, we scale your team on demand.
+                    The war for talent is fierce, and finding the right skills at the right time can bottleneck your growth. Siyaratech&apos;s Talent Outsourcing service connects you with a global pool of pre-vetted, high-caliber IT professionals. We don&apos;t just fill seats; we provide engineers, designers, and product managers who possess both technical excellence and cultural adaptability. Whether you need a single specialist to plug a skills gap or a full-stack squad to build a product from scratch, we scale your team on demand.
                 </p>
                 <p>
                     Our vetting process is rigorous. Only the top 3% of applicants make it through our technical assessments and soft skills interviews. This means the talent you get is ready to contribute from day one. We handle all the administrative burden—hiring, payroll, benefits, and equipment—so you get a simplified monthly invoice. You retain full control over the daily management and direction of your augmented team, ensuring they align perfectly with your internal processes.
@@ -404,10 +404,10 @@ export const services = [
         content: (
             <div className="space-y-6">
                 <p>
-                    Off-the-shelf software often forces you to change your business processes to fit the tool. Siyaratech's Custom Software Development service builds technology that wraps around your unique business needs. We specialize in architecting complex, high-performance applications that serve as the backbone of your operations. From enterprise resource planning extensions to customer-facing portals, our solutions are built to be robust, secure, and infinitely scalable.
+                    Off-the-shelf software often forces you to change your business processes to fit the tool. Siyaratech&apos;s Custom Software Development service builds technology that wraps around your unique business needs. We specialize in architecting complex, high-performance applications that serve as the backbone of your operations. From enterprise resource planning extensions to customer-facing portals, our solutions are built to be robust, secure, and infinitely scalable.
                 </p>
                 <p>
-                    Our engineering philosophy is rooted in craftsmanship. We write clean, testable, and documented code that is easy to maintain and extend. We use modern tech stacks—React, Node.js, Python, Go—that offer the best balance of performance and developer community support. We don't just build for launch; we build for longevity. Our architectural choices anticipate future growth, ensuring that your application doesn't become a legacy burden in two years.
+                    Our engineering philosophy is rooted in craftsmanship. We write clean, testable, and documented code that is easy to maintain and extend. We use modern tech stacks—React, Node.js, Python, Go—that offer the best balance of performance and developer community support. We don&apos;t just build for launch; we build for longevity. Our architectural choices anticipate future growth, ensuring that your application doesn&apos;t become a legacy burden in two years.
                 </p>
                 <p>
                     Mobile first is not just a buzzword for us; it is a mandate. We develop native (iOS/Android) and cross-platform (Flutter/React Native) mobile apps that deliver silky-smooth user experiences. We understand the nuances of touch interfaces, offline capabilities, and battery optimization. Whether it is a consumer app for millions of users or a rugged field app for industrial workers, we deliver excellence in the palm of your hand.
@@ -440,19 +440,19 @@ export const services = [
         content: (
             <div className="space-y-6">
                 <p>
-                    Digital Transformation is more than just digitizing paper records; it is a fundamental reimagining of how an organization creates value. Siyaratech guides legacy enterprises through this metamorphosis. We start by auditing your current processes, identifying bottlenecks where technology can inject speed and accuracy. Our goal is to create a 'Digital Core' for your business—a unified platform where data flows in real-time between sales, operations, and finance.
+                    Digital Transformation is more than just digitizing paper records; it is a fundamental reimagining of how an organization creates value. Siyaratech guides legacy enterprises through this metamorphosis. We start by auditing your current processes, identifying bottlenecks where technology can inject speed and accuracy. Our goal is to create a &lsquo;Digital Core&rsquo; for your business—a unified platform where data flows in real-time between sales, operations, and finance.
                 </p>
                 <p>
-                    Customer experience (CX) is often the primary driver of transformation. Today's customers expect Amazon-like convenience from every service provider. We help you map customer journeys and identify friction points. By implementing self-service portals, omnichannel support, and personalized engagement engines, we help you exceed modern expectations. We turn passive customers into active participants in your digital ecosystem.
+                    Customer experience (CX) is often the primary driver of transformation. Today&apos;s customers expect Amazon-like convenience from every service provider. We help you map customer journeys and identify friction points. By implementing self-service portals, omnichannel support, and personalized engagement engines, we help you exceed modern expectations. We turn passive customers into active participants in your digital ecosystem.
                 </p>
                 <p>
-                    Culture change is the hardest part of digital transformation, and we tackle it head-on. Technology implementation fails if people don't use it. We provide change management consulting, training your workforce to embrace new tools and data-driven mindsets. We help you move from hierarchical decision-making to agile, data-backed experimentation. We empower your employees to be innovators.
+                    Culture change is the hardest part of digital transformation, and we tackle it head-on. Technology implementation fails if people don&apos;t use it. We provide change management consulting, training your workforce to embrace new tools and data-driven mindsets. We help you move from hierarchical decision-making to agile, data-backed experimentation. We empower your employees to be innovators.
                 </p>
                 <p>
                     Data capitalization is the final pillar. We help you break down data silos and build a data lake that serves as a single source of truth. With advanced analytics and BI dashboards, we give your leadership team the cockpit visibility they need to steer the ship. Decisions are no longer based on gut feeling but on hard, real-time evidence.
                 </p>
                 <p>
-                    Siyaratech is your navigator in the digital storm. We help you balance the need for speed with the need for stability. Whether you are a bank competing with fintechs or a retailer competing with e-commerce giants, we provide the strategy and execution muscle to ensure you don't just survive the digital age, but thrive in it.
+                    Siyaratech is your navigator in the digital storm. We help you balance the need for speed with the need for stability. Whether you are a bank competing with fintechs or a retailer competing with e-commerce giants, we provide the strategy and execution muscle to ensure you don&apos;t just survive the digital age, but thrive in it.
                 </p>
             </div>
         ),
@@ -476,7 +476,7 @@ export const services = [
         content: (
             <div className="space-y-6">
                 <p>
-                    In a volatile economic landscape, strategy is your compass. Siyaratech's Business Consulting practice bridges the gap between high-level strategy and ground-level execution. We don't just deliver PowerPoint decks; we deliver outcomes. Our consultants are industry veterans who have walked the path before. We work side-by-side with your leadership team to diagnose root causes of stagnation, whether they are operational inefficiencies, market misalignment, or organizational inertia.
+                    In a volatile economic landscape, strategy is your compass. Siyaratech&apos;s Business Consulting practice bridges the gap between high-level strategy and ground-level execution. We don&apos;t just deliver PowerPoint decks; we deliver outcomes. Our consultants are industry veterans who have walked the path before. We work side-by-side with your leadership team to diagnose root causes of stagnation, whether they are operational inefficiencies, market misalignment, or organizational inertia.
                 </p>
                 <p>
                     Market analysis is the starting point. We conduct deep-dive research into your competitors, customer demographics, and emerging trends. We help you identify &lsquo;Blue Ocean&rsquo; opportunities—uncontested market spaces where you can grow without fierce competition. We help you refine your value proposition, ensuring it resonates clearly with your target audience.
@@ -669,14 +669,14 @@ export const erpSolutions = [
         title: "Project Manager",
         subtitle: "Deliver Projects Faster",
         description: "Plan, execute & track projects with clarity and control. Ensure your projects stay on schedule and within budget.",
-        longDescription: "Complex projects require more than just tasks; they need structure. Siyaratech Project Manager offers robust tools for resource allocation, budgeting, and milestone tracking. Ideal for agencies, construction, and software teams, it gives you a bird's-eye view of your portfolio while allowing granular control over every sprint and deliverable.",
+        longDescription: "Complex projects require more than just tasks; they need structure. Siyaratech Project Manager offers robust tools for resource allocation, budgeting, and milestone tracking. Ideal for agencies, construction, and software teams, it gives you a bird&apos;s-eye view of your portfolio while allowing granular control over every sprint and deliverable.",
         content: (
             <div className="space-y-6">
                 <p>
                     Delivering projects on time and within budget is the hallmark of a successful enterprise. Siyaratech Project Manager provides the structural rigor needed to handle complex, multi-year initiatives. Unlike simple to-do lists, our platform is built for portfolio management. You can define milestones, dependencies, and critical paths using advanced Gantt charts. This allows you to visualize the ripple effect of a delay in one task across the entire timeline, enabling proactive risk mitigation.
                 </p>
                 <p>
-                    Resource management is often the hardest puzzle to solve. Our system gives you a heat map of your team's allocation across all projects. You can instantly see who is bench-warming and who is burning out, allowing you to rebalance resources with a click. We integrate timesheets directly into the project flow, ensuring that every billable hour is captured and accounted for. This precise tracking improves your estimation accuracy for future bids.
+                    Resource management is often the hardest puzzle to solve. Our system gives you a heat map of your team&apos;s allocation across all projects. You can instantly see who is bench-warming and who is burning out, allowing you to rebalance resources with a click. We integrate timesheets directly into the project flow, ensuring that every billable hour is captured and accounted for. This precise tracking improves your estimation accuracy for future bids.
                 </p>
                 <p>
                     Financial discipline is integrated into the project lifecycle. You can set budgets for time, materials, and expenses for each phase. As the project progresses, we track actuals against the budget in real-time. If a project starts bleeding margin, you get alerts immediately, not weeks after the fact. This helps you protect your profitability and negotiate change orders with data-backed evidence.
@@ -726,13 +726,13 @@ export const erpSolutions = [
         content: (
             <div className="space-y-6">
                 <p>
-                    For industries like construction, manufacturing, and logistics, the workforce is the most valuable and volatile asset. Siyaratech Labour Management System (LMS) replaces the chaotic paper muster rolls with a digital command center. We track the entire lifecycle of a daily wager or contract worker—from onboarding and verification to daily attendance and wage disbursement. Our biometric integration ensures that 'ghost workers'—a common source of fund leakage—are eliminated completely.
+                    For industries like construction, manufacturing, and logistics, the workforce is the most valuable and volatile asset. Siyaratech Labour Management System (LMS) replaces the chaotic paper muster rolls with a digital command center. We track the entire lifecycle of a daily wager or contract worker—from onboarding and verification to daily attendance and wage disbursement. Our biometric integration ensures that &lsquo;ghost workers&rsquo;—a common source of fund leakage—are eliminated completely.
                 </p>
                 <p>
                     Complex shift rostering is handled effortlessly. Whether you run three shifts ina factory or have variable site timings, our algorithm optimizes roster planning to ensure adequate coverage without excessive overtime costs. We track overtime hours in real-time and calculate payouts based on configurable rules (e.g., double pay on holidays). This transparency ensures that workers are paid fairly and on time, which significantly reduces labor unrest and attrition.
                 </p>
                 <p>
-                    Contractor management is another pain point we solve. You can onboard multiple labor contractors and track the performance and compliance of their deployed workforce. We ensure that every worker on your site has valid I-cards, safety training, and statutory enrollments (PF/ESIC). If a contractor's license is expiring, the system alerts you to stop work orders, protecting you from legal liability.
+                    Contractor management is another pain point we solve. You can onboard multiple labor contractors and track the performance and compliance of their deployed workforce. We ensure that every worker on your site has valid I-cards, safety training, and statutory enrollments (PF/ESIC). If a contractor&apos;s license is expiring, the system alerts you to stop work orders, protecting you from legal liability.
                 </p>
                 <p>
                     Productivity tracking is granular. You can tag labor hours to specific cost centers or project tasks (e.g., bricklaying vs. plastering). This allows you to calculate the labor cost per unit of output accurately. If a team is falling behind schedule, you can deploy additional resources instantly based on real-time data.
@@ -774,7 +774,7 @@ export const erpSolutions = [
         content: (
             <div className="space-y-6">
                 <p>
-                    In asset-heavy industries, machine downtime is a profit killer. Siyaratech Plant & Machinery module is designed to maximize the Overall Equipment Effectiveness (OEE) of your fleet. We move you from reactive 'break-fix' maintenance to a proactive, data-driven strategy. By tracking the running hours and health parameters of every excavator, crane, or CNC machine, we schedule preventive maintenance exactly when it is needed—preventing costly catastrophic failures.
+                    In asset-heavy industries, machine downtime is a profit killer. Siyaratech Plant & Machinery module is designed to maximize the Overall Equipment Effectiveness (OEE) of your fleet. We move you from reactive &lsquo;break-fix&rsquo; maintenance to a proactive, data-driven strategy. By tracking the running hours and health parameters of every excavator, crane, or CNC machine, we schedule preventive maintenance exactly when it is needed—preventing costly catastrophic failures.
                 </p>
                 <p>
                     Fuel cost is often the largest operating expense. Our system integrates with fuel sensors and GPS trackers to monitor consumption patterns in real-time. We detect anomalies like sudden drops in fuel levels (theft) or excessive idling, allowing you to take immediate action. We also track the location and utilization of every asset. If a machine is sitting idle at Site A while Site B is renting equipment, the system suggests an internal transfer, saving rental costs.
@@ -783,7 +783,7 @@ export const erpSolutions = [
                     Inventory management for spare parts is streamlined. We track the consumption of filters, lubricants, and tires, auto-alerting your procurement team when stock levels dip below safety thresholds. This ensures that a lack of a $10 part never grounds a $100,000 machine. We maintain a full history of repairs and costs for every asset, helping you decide when to repair and when to retire/replace.
                 </p>
                 <p>
-                    Safety and compliance are integrated. We can manage operator licenses, fitness certificates, and insurance renewals digitally. The system won't generate a gate pass for a vehicle with expired papers, ensuring 100% compliance on the road and at the site.
+                    Safety and compliance are integrated. We can manage operator licenses, fitness certificates, and insurance renewals digitally. The system won&apos;t generate a gate pass for a vehicle with expired papers, ensuring 100% compliance on the road and at the site.
                 </p>
                 <p>
                     Siyaratech gives you total control over your iron fleet. We extend the life of your assets, reduce operating costs, and ensure that your machinery is always a reliable partner in your production process.
@@ -822,7 +822,7 @@ export const erpSolutions = [
         content: (
             <div className="space-y-6">
                 <p>
-                    In the digital age, speed to lead is the biggest differentiator. Siyaratech CRM isn't just a database of contacts; it is an intelligent engine that drives revenue. Our AI Agent acts as a 24/7 SDR (Sales Development Rep), engaging instantly with leads who visit your website or fill out a form. It answers queries, qualifies intent, and schedules meetings for your human sales team, ensuring that you never miss an opportunity while you sleep.
+                    In the digital age, speed to lead is the biggest differentiator. Siyaratech CRM isn&apos;t just a database of contacts; it is an intelligent engine that drives revenue. Our AI Agent acts as a 24/7 SDR (Sales Development Rep), engaging instantly with leads who visit your website or fill out a form. It answers queries, qualifies intent, and schedules meetings for your human sales team, ensuring that you never miss an opportunity while you sleep.
                 </p>
                 <p>
                     Pipeline visibility is crystal clear. We provide a visual Kanban view of your deals, allowing you to drag and drop opportunities through stages. Our forecasting algorithms analyze historical win rates to predict your monthly revenue with high accuracy. You can see which deals are stalling and where to focus your energy. Automated workflows take care of the busy work—sending follow-up emails, creating tasks, and updating deal statuses—so your reps can focus on closing.
@@ -910,7 +910,7 @@ export const innovativeProducts = [
                     Data transparency is a key pillar. Creators get a real-time dashboard showing not just clicks, but actual sales, returned orders, and commission payouts. They can see which products resonate with their audience and optimize their content strategy accordingly. Brands, in turn, get granular data on which influencer is driving which demographic, allowing for hyper-targeted marketing spend.
                 </p>
                 <p>
-                    This is not just an e-commerce site; it is a creator economy operating system. By handling the 'boring' bits of business—logistics, payments, legal—we empower creative individuals to build sustainable, scalable retail empires.
+                    This is not just an e-commerce site; it is a creator economy operating system. By handling the &lsquo;boring&rsquo; bits of business—logistics, payments, legal—we empower creative individuals to build sustainable, scalable retail empires.
                 </p>
             </div>
         ),
@@ -940,10 +940,10 @@ export const innovativeProducts = [
                     TechDiveHub is an innovative educational platform designed to revolutionize the learning experience by making complex concepts accessible and enjoyable. By seamlessly blending real-life examples with an engaging teaching approach, the platform breaks down educational barriers and transforms traditional learning into an interactive, fun-filled adventure. Students and learners are empowered to grasp challenging subjects through conversational, relatable explanations that simplify intricate topics and make knowledge acquisition both effortless and exciting.
                 </p>
                 <p>
-                    The platform distinguishes itself with its 'Code-First' philosophy. Unlike traditional video courses where you watch and forget, TechDiveHub integrates a powerful browser-based IDE. Learners can pause a video, type code in the adjacent window, and see the output instantly. This active learning loop reinforces concepts immediately. We support multiple languages including Python, JavaScript, Go, and Rust, allowing for a diverse curriculum.
+                    The platform distinguishes itself with its &lsquo;Code-First&rsquo; philosophy. Unlike traditional video courses where you watch and forget, TechDiveHub integrates a powerful browser-based IDE. Learners can pause a video, type code in the adjacent window, and see the output instantly. This active learning loop reinforces concepts immediately. We support multiple languages including Python, JavaScript, Go, and Rust, allowing for a diverse curriculum.
                 </p>
                 <p>
-                    Community is at the heart of learning. TechDiveHub features cohort-based courses where students start and finish together. Real-time discussion forums, peer-review systems for assignments, and virtual study rooms create a campus-like atmosphere. Mentors can jump into a student's code session to debug live, bridging the gap between self-paced learning and personalized tutoring.
+                    Community is at the heart of learning. TechDiveHub features cohort-based courses where students start and finish together. Real-time discussion forums, peer-review systems for assignments, and virtual study rooms create a campus-like atmosphere. Mentors can jump into a student&apos;s code session to debug live, bridging the gap between self-paced learning and personalized tutoring.
                 </p>
                 <p>
                     Gamification drives retention. We have replaced boring progress bars with an RPG-style experience system. Users earn XP for completing lessons, unlock badges for streaks, and climb leaderboards for helping others in the forum. This taps into the psychological drivers of achievement and competition, keeping motivation high even when the subject matter gets tough.
@@ -992,7 +992,7 @@ export const innovativeProducts = [
                     Managing a catalog of thousands of SKUs is simple with our PIM (Product Information Management) system. Bulk edits, variant management, and multi-warehouse inventory tracking are standard features. We also integrate with major shipping carriers to generate labels and track packages automatically.
                 </p>
                 <p>
-                    Security is non-negotiable. ShopSphere is PCI-DSS compliant and includes fraud detection algorithms that flag suspicious transactions before they charge back. We protect your business and your customers' data with enterprise-grade encryption and regular security audits.
+                    Security is non-negotiable. ShopSphere is PCI-DSS compliant and includes fraud detection algorithms that flag suspicious transactions before they charge back. We protect your business and your customers&apos; data with enterprise-grade encryption and regular security audits.
                 </p>
             </div>
         ),
@@ -1026,7 +1026,7 @@ export const innovativeProducts = [
                     ByteBlog is a modern blogging platform designed to facilitate the sharing of stories and creative ideas. It offers a user-friendly interface that allows users to explore various categories, such as &quot;Tech News,&quot; and discover new content effortlessly. The platform&#39;s clean design and intuitive navigation enhance the reading experience, making it easy for users to engage with diverse topics.
                 </p>
                 <p>
-                    We built ByteBlog specifically for the developer community. The editor supports Markdown natively, with syntax highlighting for over 100 programming languages. Embedding Gists, CodePens, or interactive stack blitz snippets is as easy as pasting a URL. We know that technical writing requires technical tools, and we've removed the friction of formatting code in a rich-text editor.
+                    We built ByteBlog specifically for the developer community. The editor supports Markdown natively, with syntax highlighting for over 100 programming languages. Embedding Gists, CodePens, or interactive stack blitz snippets is as easy as pasting a URL. We know that technical writing requires technical tools, and we&apos;ve removed the friction of formatting code in a rich-text editor.
                 </p>
                 <p>
                     Discovery is powered by a semantic tagging system. Unlike generic platforms, our algorithm understands the relationship between &lsquo;React&rsquo;, &lsquo;JavaScript&rsquo;, and &lsquo;Frontend&rsquo;. This ensures that your deep-dive article on React Hooks reaches the right audience, not just random passersby. Features like &lsquo;Series&rsquo; allow authors to chain multiple posts into a coherent course or tutorial, increasing reader retention.
@@ -1069,10 +1069,10 @@ export const innovativeProducts = [
                     CollabEase is a task management application designed to streamline team collaboration and enhance productivity. It offers features such as swift task delegation, customizable digital forms and checklists, task automation, and dedicated communication channels for each task. These functionalities ensure clear delegation, efficient workflow automation, and focused communication, enabling teams to operate seamlessly and achieve their goals effectively.
                 </p>
                 <p>
-                    The modern workspace is fragmented across emails, chat apps, and file drives. CollabEase unifies these into a 'Project Hub'. Every project has a chat room, a task board, and a file repository. When you upload a design mockup to the chat, it is automatically linked to the relevant task and stored in the files tab. This context preservation saves hours of searching for 'that file you sent last Tuesday'.
+                    The modern workspace is fragmented across emails, chat apps, and file drives. CollabEase unifies these into a &lsquo;Project Hub&rsquo;. Every project has a chat room, a task board, and a file repository. When you upload a design mockup to the chat, it is automatically linked to the relevant task and stored in the files tab. This context preservation saves hours of searching for &lsquo;that file you sent last Tuesday&rsquo;.
                 </p>
                 <p>
-                    Automation is democratic here. You don't need a developer to set up workflows. Our &lsquo;If This Then That&rsquo; builder allows any user to create rules like &lsquo;When a task is moved to Review, notify the QA lead&rsquo; or &lsquo;Every Monday, create a recurring task for Weekly Report&rsquo;. These micro-automations add up to massive time savings across the organization.
+                    Automation is democratic here. You don&apos;t need a developer to set up workflows. Our &lsquo;If This Then That&rsquo; builder allows any user to create rules like &lsquo;When a task is moved to Review, notify the QA lead&rsquo; or &lsquo;Every Monday, create a recurring task for Weekly Report&rsquo;. These micro-automations add up to massive time savings across the organization.
                 </p>
                 <p>
                     Visual collaboration is a standout feature. Our built-in whiteboard allows teams to sketch ideas, sticky-note brainstorms, and wireframe interfaces in real-time during video calls. The whiteboard is infinite and persistent—you can come back to it a week later and pick up right where you left off.
@@ -1155,13 +1155,13 @@ export const innovativeProducts = [
                     An advanced AI-powered platform that provides realistic, interactive interview simulations designed to help job seekers build confidence, refine communication skills, and prepare comprehensively for professional interviews. Using sophisticated artificial intelligence, the simulator generates contextual questions, provides real-time feedback, analyzes verbal and non-verbal communication, and offers personalized insights to help users master interview techniques across various industries and job roles.
                 </p>
                 <p>
-                    The core of the technology is our NLP engine, fine-tuned on thousands of actual interview transcripts. It doesn't just check for keywords; it assesses the structure, clarity, and relevance of your answers using the STAR method (Situation, Task, Action, Result). Whether you are preparing for a coding interview, a behavioral HR round, or a system design deep dive, the AI adapts its persona and difficulty level to match the target company's culture.
+                    The core of the technology is our NLP engine, fine-tuned on thousands of actual interview transcripts. It doesn&apos;t just check for keywords; it assesses the structure, clarity, and relevance of your answers using the STAR method (Situation, Task, Action, Result). Whether you are preparing for a coding interview, a behavioral HR round, or a system design deep dive, the AI adapts its persona and difficulty level to match the target company&apos;s culture.
                 </p>
                 <p>
                     Voice analysis adds another layer of depth. We analyze your tone, pace, and filler words (ums, ahs). Are you speaking too fast? Do you sound uncertain? The feedback is granular and objective. We even use computer vision (optional) to analyze your posture and eye contact via webcam, ensuring you project confidence.
                 </p>
                 <p>
-                    Review and learn. After every session, you get a detailed scorecard. You can listen to your recordings, read the AI's suggested improvements, and even hear a 'model answer' generated by the system. This iterative practice loop—Simulate, Analyze, Improve—is the fastest way to interview mastery.
+                    Review and learn. After every session, you get a detailed scorecard. You can listen to your recordings, read the AI&apos;s suggested improvements, and even hear a &lsquo;model answer&rsquo; generated by the system. This iterative practice loop—Simulate, Analyze, Improve—is the fastest way to interview mastery.
                 </p>
                 <p>
                     For universities and placement cells, this is a force multiplier. Instead of scheduling limited mock interviews with alumni, every student can practice unlimited times. Placement officers get a dashboard of student readiness, allowing them to intervene with coaching where it is needed most. We bridge the gap between campus and corporate.

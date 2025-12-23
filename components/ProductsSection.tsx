@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag, BookOpen, ShoppingCart, FileText, CheckSquare, LayoutDashboard, Bot, PenTool } from "lucide-react";
+import { } from "lucide-react";
 import { CpuArchitecture } from "./ui/cpu-architecture";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
 import { useRouter } from "next/navigation";

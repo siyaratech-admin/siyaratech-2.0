@@ -180,7 +180,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                             <p className="text-muted-foreground max-w-2xl mx-auto">Designed to solve the most critical challenges in your workflow.</p>
                         </div>
                         <div className="grid md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-                            {solution.benefits.map((benefit: any, index: number) => (
+                            {solution.benefits.map((benefit: { title: string; description: string }, index: number) => (
                                 <div
                                     key={index}
                                     className={`p-8 rounded-3xl border border-border/50 bg-gradient-to-br from-card to-card/50 hover:from-secondary/20 hover:to-secondary/5 transition-colors shadow-lg
@@ -203,7 +203,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                     <section className="max-w-3xl mx-auto w-full">
                         <h3 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
                         <div className="space-y-4">
-                            {solution.faq.map((item: any, index: number) => (
+                            {solution.faq.map((item: { question: string; answer: string }, index: number) => (
                                 <details key={index} className="group border border-border/50 rounded-2xl bg-card overflow-hidden transition-all duration-300 open:border-primary/30 open:shadow-lg open:shadow-primary/5">
                                     <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-semibold text-lg text-foreground group-hover:bg-accent/5">
                                         {item.question}
