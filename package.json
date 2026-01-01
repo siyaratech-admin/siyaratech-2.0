@@ -53,6 +53,7 @@
     "input-otp": "^1.4.2",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.539.0",
+    "mermaid": "^11.12.2",
     "motion": "^12.23.12",
     "motion-utils": "^12.23.6",
     "next": "^15.4.6",

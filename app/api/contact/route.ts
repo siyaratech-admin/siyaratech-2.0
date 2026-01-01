@@ -60,8 +60,8 @@ export async function POST(request: NextRequest) {
     const contactResult = await contactResponse.json();
     console.log('Contact created successfully:', contactResult);
 
-    // Step 2: Create Lead
-    console.log('Creating lead for:', formData.email);
+    // Step 2: Create CRM Lead
+    console.log('Creating CRM Lead for:', formData.email);
 
     const leadPayload = {
       lead_name: `${formData.firstName} ${formData.lastName}`,
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       description: formData.description
     };
 
-    const leadResponse = await fetch(`${erpnextUrl}/api/resource/Lead`, {
+    const leadResponse = await fetch(`${erpnextUrl}/api/resource/CRM Lead`, {
       method: 'POST',
       headers: {
         'Authorization': `token ${apiKey}:${apiSecret}`,
@@ -83,18 +83,18 @@ export async function POST(request: NextRequest) {
 
     if (!leadResponse.ok) {
       const errorText = await leadResponse.text();
-      console.error('Lead creation failed:', errorText);
+      console.error('CRM Lead creation failed:', errorText);
       // Return partial success since contact was created
       return NextResponse.json({
         success: true,
         contact: contactResult,
         lead: null,
-        warning: `Contact created but lead creation failed: ${leadResponse.status}`
+        warning: `Contact created but CRM Lead creation failed: ${leadResponse.status}`
       });
     }
 
     const leadResult = await leadResponse.json();
-    console.log('Lead created successfully:', leadResult);
+    console.log('CRM Lead created successfully:', leadResult);
 
     return NextResponse.json({
       success: true,

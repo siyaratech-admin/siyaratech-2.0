@@ -69,8 +69,7 @@ function extendMaterial<T extends THREE.Material = THREE.Material>(
     vertexShader: vert,
     fragmentShader: frag,
     lights: true,
-    fog: !!cfg.material?.fog,
-    vertexColors: !!cfg.material?.vertexColors
+    fog: !!cfg.material?.fog
   });
 
   return mat;
@@ -171,26 +170,24 @@ interface BeamsProps {
   beamWidth?: number;
   beamHeight?: number;
   beamNumber?: number;
-  beamSpacing?: number;
   lightColor?: string;
   speed?: number;
   noiseIntensity?: number;
   scale?: number;
   rotation?: number;
-  colors?: string[];
+  backgroundColor?: string;
 }
 
 const Beams: FC<BeamsProps> = ({
   beamWidth = 2,
   beamHeight = 15,
   beamNumber = 12,
-  beamSpacing = 0.1,
   lightColor = '#ffffff',
   speed = 2,
   noiseIntensity = 1.75,
   scale = 0.2,
   rotation = 0,
-  colors = ['#ffffff']
+  backgroundColor = '#000000'
 }) => {
   const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null!);
 
@@ -238,30 +235,28 @@ const Beams: FC<BeamsProps> = ({
         },
         material: { fog: true },
         uniforms: {
-          diffuse: new THREE.Color(...hexToNormalizedRGB(lightColor)),
+          diffuse: new THREE.Color(...hexToNormalizedRGB(backgroundColor)), // Match diffuse base to background
           time: { shared: true, mixed: true, linked: true, value: 0 },
-          roughness: 0.2,
-          metalness: 0.9,
+          roughness: 0.3,
+          metalness: 0.3,
           uSpeed: { shared: true, mixed: true, linked: true, value: speed },
-          envMapIntensity: 1.0,
+          envMapIntensity: 10,
           uNoiseIntensity: noiseIntensity,
           uScale: scale
         }
       }),
-    [speed, noiseIntensity, scale, lightColor]
+    [speed, noiseIntensity, scale, backgroundColor]
   );
 
   return (
     <CanvasWrapper>
       <group rotation={[0, 0, degToRad(rotation)]}>
-        <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} spacing={beamSpacing} />
-        <DirLight colors={colors} position={[-20, 0, 10]} targetPosition={[-20, 0, 0]} />
-        <DirLight colors={colors} position={[0, 0, 10]} targetPosition={[0, 0, 0]} />
-        <DirLight colors={colors} position={[20, 0, 10]} targetPosition={[20, 0, 0]} />
+        <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
+        <DirLight color={lightColor} position={[0, 3, 10]} />
       </group>
-      <ambientLight intensity={0.1} />
-      <color attach="background" args={['#000000']} />
-      <PerspectiveCamera makeDefault position={[0, 0, 35]} fov={30} />
+      <ambientLight intensity={1} />
+      <color attach="background" args={[backgroundColor]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={30} />
     </CanvasWrapper>
   );
 };
@@ -288,7 +283,7 @@ function createStackedPlanesBufferGeometry(
 
   for (let i = 0; i < n; i++) {
     const xOffset = xOffsetBase + i * (width + spacing);
-    const uvXOffset = Math.random() * 400;
+    const uvXOffset = Math.random() * 300;
     const uvYOffset = Math.random() * 300;
 
     for (let j = 0; j <= heightSegments; j++) {
@@ -327,14 +322,13 @@ const MergedPlanes = forwardRef<
     width: number;
     count: number;
     height: number;
-    spacing: number;
   }
->(({ material, width, count, height, spacing }, ref) => {
+>(({ material, width, count, height }, ref) => {
   const mesh = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null!);
   useImperativeHandle(ref, () => mesh.current);
   const geometry = useMemo(
-    () => createStackedPlanesBufferGeometry(count, width, height, spacing, 100),
-    [count, width, height, spacing]
+    () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
+    [count, width, height]
   );
   useFrame((_, delta) => {
     mesh.current.material.uniforms.time.value += 0.1 * delta;
@@ -350,40 +344,14 @@ const PlaneNoise = forwardRef<
     width: number;
     count: number;
     height: number;
-    spacing: number;
   }
 >((props, ref) => (
-  <MergedPlanes ref={ref} material={props.material} width={props.width} count={props.count} height={props.height} spacing={props.spacing} />
+  <MergedPlanes ref={ref} material={props.material} width={props.width} count={props.count} height={props.height} />
 ));
 PlaneNoise.displayName = 'PlaneNoise';
 
-const DirLight: FC<{ position: [number, number, number]; targetPosition?: [number, number, number]; colors: string[] }> = ({ position, targetPosition, colors }) => {
+const DirLight: FC<{ position: [number, number, number]; color: string }> = ({ position, color }) => {
   const dir = useRef<THREE.DirectionalLight>(null!);
-  const targetRef = useRef<THREE.Object3D>(new THREE.Object3D());
-  const colorIndex = useRef(0);
-  const colorProgress = useRef(0);
-
-  useEffect(() => {
-    if (targetPosition) {
-      targetRef.current.position.set(...targetPosition);
-      dir.current.target = targetRef.current;
-    }
-  }, [targetPosition]);
-
-  useFrame((_, delta) => {
-    if (!dir.current || !colors || colors.length === 0) return;
-
-    colorProgress.current += delta * 0.2; // Slower color change
-    if (colorProgress.current >= 1) {
-      colorProgress.current = 0;
-      colorIndex.current = (colorIndex.current + 1) % colors.length;
-    }
-
-    const c1 = new THREE.Color(colors[colorIndex.current]);
-    const c2 = new THREE.Color(colors[(colorIndex.current + 1) % colors.length]);
-    dir.current.color.lerpColors(c1, c2, colorProgress.current);
-  });
-
   useEffect(() => {
     if (!dir.current) return;
     const cam = dir.current.shadow.camera as THREE.Camera & {
@@ -393,19 +361,14 @@ const DirLight: FC<{ position: [number, number, number]; targetPosition?: [numbe
       right: number;
       far: number;
     };
-    cam.top = 100;
-    cam.bottom = -100;
-    cam.left = -100;
-    cam.right = 100;
+    cam.top = 24;
+    cam.bottom = -24;
+    cam.left = -24;
+    cam.right = 24;
     cam.far = 64;
     dir.current.shadow.bias = -0.004;
   }, []);
-  return (
-    <>
-      <primitive object={targetRef.current} />
-      <directionalLight ref={dir} intensity={2} position={position} />
-    </>
-  );
+  return <directionalLight ref={dir} color={color} intensity={1} position={position} />;
 };
 
 export default Beams;

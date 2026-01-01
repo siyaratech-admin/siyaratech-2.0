@@ -5,7 +5,7 @@ import { ArrowRight, Play } from 'lucide-react';
 import BlurText from '@/components/TextAnimations/BlurText/BlurText';
 import { motion } from 'framer-motion';
 import GradientParticleCanvas from './GradientParticleCanvas';
-import Beams from './Beams';
+import ThemeAwareBeams from './ThemeAwareBeams';
 
 interface HeroSectionProps {
     title: string;
@@ -30,17 +30,7 @@ export default function HeroSectionGradient({
     return (
         <section className="relative w-screen min-h-screen flex items-center justify-center overflow-hidden bg-none">
             <div className="absolute inset-0 w-full h-full z-0">
-                <Beams
-                    beamWidth={4}
-                    beamHeight={30}
-                    beamNumber={24}
-                    lightColor="#ffffff"
-                    speed={2}
-                    noiseIntensity={1.75}
-                    scale={0.1}
-                    rotation={30}
-                    colors={['#5adb40ff', '#833AB4', '#FD1D1D', '#FCB045']}
-                />
+                <ThemeAwareBeams />
             </div>
 
             <div className="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
@@ -59,15 +49,15 @@ export default function HeroSectionGradient({
                     </motion.div>
 
                     {/* Title */}
-                    <div className="max-w-2xl mb-8">
+                    <h1 className="max-w-2xl mb-8">
                         <BlurText
                             text={title}
                             delay={50}
                             animateBy="words"
                             direction="top"
-                            className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]"
+                            className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide uppercase text-foreground leading-[1.1]"
                         />
-                    </div>
+                    </h1>
 
                     {/* Description */}
                     <motion.p

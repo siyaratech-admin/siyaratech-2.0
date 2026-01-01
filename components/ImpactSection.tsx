@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Layers, Cloud } from 'lucide-react';
 import { NavbarButton } from './ui/resizable-navbar';
+import { useRouter } from 'next/navigation';
 
 export default function ImpactSection() {
     const stats = [
@@ -20,6 +21,8 @@ export default function ImpactSection() {
         { title: "Cloud + Mobile-first", text: "Work anytime, anywhere", icon: Cloud },
         { title: "Secure Architecture", text: "Enterprise-grade protection", icon: Shield },
     ];
+
+    const router = useRouter();
 
     return (
         <section className="py-16 md:py-24 relative overflow-hidden">
@@ -68,24 +71,32 @@ export default function ImpactSection() {
                 </div>
 
                 {/* Call to Action */}
-                <div className="relative rounded-3xl overflow-hidden bg-black border border-white/10 p-12 md:p-20 text-center">
-                    <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-500/20 blur-[100px] rounded-full" />
-                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/20 blur-[100px] rounded-full" />
+                <div className="relative rounded-3xl overflow-hidden bg-white dark:bg-black border border-border dark:border-white/10 p-12 md:p-20 text-center shadow-2xl shadow-brand-purple/5 dark:shadow-none">
+                    <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full" />
+                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/10 dark:bg-blue-500/20 blur-[100px] rounded-full" />
 
                     <div className="relative z-10 max-w-3xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                        <h2 className="text-4xl md:text-5xl font-light tracking-wide uppercase text-foreground dark:text-white mb-6">
                             Ready to modernize your business operations?
                         </h2>
-                        <div className="text-2xl font-light text-white/80 mb-8">
-                            Siyaratech — <span className="font-bold text-white">ERP. CRM. AI.</span>
+                        <div className="text-2xl font-light text-muted-foreground dark:text-white/80 mb-8">
+                            Siyaratech — <span className="font-bold text-foreground dark:text-white">ERP. CRM. AI.</span>
                             <br />
                             <span className="text-lg mt-2 block opacity-70">Everything your enterprise needs to scale.</span>
                         </div>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <NavbarButton variant="gradient" className="px-8 py-6 text-lg">
+                            <NavbarButton
+                                variant="gradient"
+                                className="px-8 py-6 text-lg"
+                                onClick={() => router.push('/contact')}
+                            >
                                 Request Free Demo
                             </NavbarButton>
-                            <NavbarButton variant="secondary" className="px-8 py-6 text-lg bg-white/10 border-white/20 text-white hover:bg-white/20">
+                            <NavbarButton
+                                variant="secondary"
+                                className="px-8 py-6 text-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:bg-white/10 dark:border-white/20 dark:text-white dark:hover:bg-white/20"
+                                onClick={() => router.push('/contact')}
+                            >
                                 Talk to an Expert
                             </NavbarButton>
                         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 import { Providers } from "./providers";
 
 const geistSans = Geist({
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AnimatedBackgroundBlobs />
           {children}
           <Footer />
+          <ChatWidget />
         </Providers>
       </body>
     </html>

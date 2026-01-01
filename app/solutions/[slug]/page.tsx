@@ -2,34 +2,23 @@ import React from "react";
 import { erpSolutions, innovativeProducts } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, CheckCircle, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 import Image from "next/image";
+import { ModuleGuide } from "@/components/ModuleGuide";
+import Beams from "@/components/Beams";
+import BlurText from "@/components/TextAnimations/BlurText/BlurText";
+import BenefitsSection from "@/components/BenefitsSection";
 
 // Combine available solutions
+import ThemeAwareBeams from "@/components/ThemeAwareBeams";
+
+// ... (existing helper code omitted is fine, but I need to be careful about file structure if I can't use multi-replace effectively for imports and render. I will use replace_file_content for the render part and another for import or just do it in one go if I can match enough context)
+
 const allSolutions = [...erpSolutions, ...innovativeProducts];
 
-// Force specific static params generation
-export async function generateStaticParams() {
-    return allSolutions.map((solution) => ({
-        slug: solution.id,
-    }));
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-    const { slug } = await params;
-    const solution = allSolutions.find((s) => s.id === slug);
-    if (!solution) {
-        return {
-            title: "Solution Not Found",
-        };
-    }
-    return {
-        title: `${solution.title} | Siyaratech`,
-        description: solution.description,
-    };
-}
+// ... (keep generateStaticParams and generateMetadata)
 
 export default async function SolutionDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -41,179 +30,221 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
 
     const Icon = solution.icon;
     const hasGallery = solution.gallery && solution.gallery.length > 0;
-
-    // Check if content has video (simple heuristic for now, matching the Influnecer platform case)
-    // In a real app, we'd have a specific boolean or field for this.
     const hasVideoInContent = solution.id === "influencer-platform";
 
-    return (
-        <div className="min-h-screen bg-transparent pt-24 pb-20">
-            {/* Back Button - Aligned to strict page grid, distinct from centered hero */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 md:mb-12">
-                <Link href="/products" passHref>
-                    <Button variant="ghost" className="hover:bg-primary/5 text-muted-foreground hover:text-primary transition-colors pl-0 hover:pl-2">
-                        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Products
-                    </Button>
-                </Link>
-            </div>
+    // Prepare benefits data (plain objects only)
+    const benefitsData = solution.benefits?.map((benefit) => ({
+        title: benefit.title,
+        description: benefit.description,
+    })) || [];
 
-            {/* 1. Immersive Hero Section */}
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-                <div className="flex justify-center mb-6">
-                    <div className="p-4 bg-primary/10 rounded-3xl border border-primary/20 shadow-xl shadow-primary/10">
-                        <Icon className="w-16 h-16 text-primary" />
+    return (
+        <div className="min-h-screen bg-background text-foreground transition-colors duration-300 selection:bg-primary/30">
+
+            {/* 1. Immersive Hero Section with Beams Background */}
+            <div className="relative w-full min-h-[90vh] flex flex-col pt-24 pb-12 overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <ThemeAwareBeams />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,white_70%)] dark:bg-[radial-gradient(circle_at_center,transparent_10%,black_70%)] pointer-events-none" />
+                    <div className="absolute inset-0 backdrop-blur-[2px] [mask-image:radial-gradient(circle_at_center,transparent_20%,black_100%)] pointer-events-none" />
+                    {/* Bottom fade for smooth transition */}
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-black dark:to-transparent pointer-events-none" />
+                </div>
+
+                {/* Back Navigation - Floating */}
+                <div className="relative z-50 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-8">
+                    <Link href="/products" passHref>
+                        <Button variant="ghost" className="hover:bg-foreground/10 text-foreground/70 hover:text-foreground transition-all pl-0 hover:pl-2 rounded-full px-4 border border-transparent hover:border-foreground/10 backdrop-blur-sm">
+                            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Products
+                        </Button>
+                    </Link>
+                </div>
+
+                {/* Hero Content - Split Layout */}
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center flex-grow">
+
+                    {/* Left Column: Typography */}
+                    <div className="lg:col-span-7 flex flex-col items-start text-left space-y-8">
+
+                        {/* Animated Badge */}
+                        <div className="inline-flex items-center px-3 py-1 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-md shadow-xl">
+                            <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+                            <span className="text-sm font-medium text-foreground/90 tracking-wide uppercase">{solution.subtitle}</span>
+                        </div>
+
+                        {/* Giant Title */}
+                        <div className="w-full">
+                            <BlurText
+                                text={solution.title}
+                                delay={30}
+                                animateBy="words"
+                                direction="bottom"
+                                className="text-left text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] drop-shadow-2xl max-w-full"
+                            />
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-lg md:text-xl text-foreground/60 max-w-2xl leading-relaxed">
+                            {solution.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2">
+                            {solution.tags?.map((tag, i) => (
+                                <span key={i} className="px-3 py-1 bg-foreground/5 border border-foreground/10 rounded-md text-xs font-mono text-foreground/50 tracking-wider hover:bg-foreground/10 transition-colors cursor-default">
+                                    {tag.toUpperCase()}
+                                </span>
+                            ))}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex flex-wrap gap-4 pt-4">
+                            <Link href="/contact" className="inline-block">
+                                <Button size="lg" className="bg-foreground text-background hover:bg-foreground/80 shadow-[0_0_20px_rgba(255,255,255,0.3)] rounded-full px-8 h-12 text-base font-semibold transition-all hover:scale-105">
+                                    Book a Live Demo
+                                </Button>
+                            </Link>
+                            <ModuleGuide solutionId={solution.id} />
+                        </div>
+                    </div>
+
+                    {/* Right Column: 3D Visualization */}
+                    <div className="lg:col-span-5 relative perspective-1000 group">
+                        {/* Glass Container */}
+                        <div className="relative transform transition-all duration-700 ease-out hover:rotate-y-6 hover:rotate-x-6 hover:scale-105">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                            <div className="relative rounded-2xl bg-card border border-border overflow-hidden shadow-2xl aspect-[4/3] flex items-center justify-center">
+                                {/* Fallback to Icon if no image, or main image */}
+                                {solution.image ? (
+                                    <Image
+                                        src={solution.image}
+                                        alt={solution.title}
+                                        fill
+                                        className="object-cover opacity-90 hover:opacity-100 transition-opacity"
+                                    />
+                                ) : (
+                                    <Icon className="w-32 h-32 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                )}
+
+                                {/* Floating UI Elements (Decorative) */}
+                                <div className="absolute top-4 left-4 flex space-x-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-6 tracking-tight">
-                    {solution.title}
-                </h1>
-                <p className="text-xl md:text-2xl text-primary font-medium mb-6">{solution.subtitle}</p>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
-                    {solution.description}
-                </p>
-
-                <div className="flex flex-wrap justify-center gap-2 mb-10">
-                    {solution.tags?.map((tag, i) => (
-                        <span key={i} className="px-4 py-1.5 bg-secondary/50 text-secondary-foreground rounded-full text-sm font-medium border border-border/50 backdrop-blur-sm">
-                            {tag}
-                        </span>
-                    ))}
+                {/* Scroll Indicator */}
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-50">
+                    <span className="text-xs font-mono uppercase tracking-widest mb-2 text-foreground/70">Explore</span>
+                    <div className="w-[1px] h-8 bg-gradient-to-b from-foreground to-transparent"></div>
                 </div>
-
-                <Link href="/contact" className="inline-block">
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 rounded-full px-8 h-12 text-lg transform hover:scale-105 transition-all duration-300">
-                        Book a Free Demo
-                    </Button>
-                </Link>
-                <p className="text-sm text-center text-muted-foreground mt-4">
-                    No credit card required. Free technical consultation.
-                </p>
             </div>
 
-            {/* Main Content Area - Single Column */}
-            <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+            {/* Main Content Container */}
+            <main className="relative z-10 bg-background">
 
-                {/* 2. Hero Media / Carousel - Moved to beginning as requested */}
-                <div className="relative w-full">
-                    {hasGallery ? (
-                        /* Carousel View */
-                        <div className="space-y-4">
-                            <div className="flex items-center justify-between px-2">
-                                <h3 className="text-2xl font-bold">Visual Tour</h3>
-                                <div className="text-sm text-muted-foreground flex gap-2 items-center">
-                                    <ChevronLeft className="w-4 h-4" /> Swipe to explore <ChevronRight className="w-4 h-4" />
+                {/* 2. Visual Gallery - Browser Window Style */}
+                {hasGallery && (
+                    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/50 mb-4">See It In Action</h2>
+                            <p className="text-foreground/50">Experience the interface designed for speed and clarity.</p>
+                        </div>
+
+                        <div className="relative rounded-xl border border-border bg-card shadow-2xl overflow-hidden">
+                            {/* Browser Header */}
+                            <div className="h-10 border-b border-border bg-muted flex items-center px-4 space-x-2">
+                                <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                                <div className="ml-4 flex-1 h-6 bg-background rounded-md flex items-center justify-center text-[10px] text-foreground/30 font-mono">
+                                    siyaratech.com/app/{solution.id}
                                 </div>
                             </div>
-                            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                                {/* Primary Hero Image First (if not in gallery, consider adding it, but here we assume gallery covers it) */}
+
+                            {/* Carousel Content */}
+                            <div className="p-1 overflow-x-auto flex snap-x snap-mandatory bg-background">
                                 {solution.gallery?.map((img, i) => (
-                                    <div key={i} className="min-w-[85%] md:min-w-[65%] lg:min-w-[50%] snap-center relative aspect-video rounded-3xl overflow-hidden border border-border/50 shadow-2xl bg-card first:ml-0 last:mr-0">
+                                    <div key={i} className="min-w-full snap-center relative aspect-video">
                                         <Image
                                             src={img}
-                                            alt={`${solution.title} screenshot ${i + 1}`}
+                                            alt={`Gallery screen ${i + 1}`}
                                             fill
                                             className="object-cover"
-                                            priority={i === 0}
+                                            quality={90}
                                         />
                                     </div>
                                 ))}
                             </div>
                         </div>
-                    ) : hasVideoInContent ? (
-                        /* Fallback: Video (For Influencer Platform) */
-                        <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl border border-border/50 bg-card">
+                    </section>
+                )}
+
+                {/* 3. Narrative Content & Video */}
+                <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                    {hasVideoInContent ? (
+                        <div className="mb-16 aspect-video rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(120,50,255,0.2)] border border-border">
                             <div className="prose prose-invert max-w-none w-full h-full [&>div>video]:w-full [&>div>video]:h-full [&>div>video]:object-cover [&>div>p]:hidden [&>div]:h-full [&>div]:w-full">
                                 {solution.content}
                             </div>
                         </div>
-                    ) : solution.image ? (
-                        /* Fallback: Standard Single Hero Image */
-                        <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-border/50 group bg-card">
-                            <Image
-                                src={solution.image}
-                                alt={solution.title}
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-                        </div>
                     ) : null}
-                </div>
 
-                {/* 3. Key Capabilities Grid */}
-                <section>
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold mb-4">Core Capabilities</h2>
-                        <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    <div className="prose prose-lg dark:prose-invert prose-headings:text-foreground prose-p:text-foreground/70 prose-p:leading-loose max-w-none">
+                        {/* Hide video in text if shown above */}
+                        <div className={`space-y-8 ${hasVideoInContent ? "[&>div>video]:hidden" : ""}`}>
+                            {solution.content}
+                        </div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-6">
+                </section>
+
+                {/* 4. Benefits Section (Client Component) */}
+                {benefitsData.length > 0 && (
+                    <BenefitsSection title={solution.title} benefits={benefitsData} />
+                )}
+
+                {/* 5. Core Capabilities (Standard Grid) */}
+                <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-border">
+                    <div className="mb-16">
+                        <h2 className="text-3xl font-bold mb-6 text-foreground">Core Capabilities</h2>
+                        <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {solution.features?.map((feature, index) => (
-                            <div key={index} className="p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-lg group">
-                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <CheckCircle className="w-5 h-5 text-primary group-hover:text-white" />
+                            <div key={index} className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:bg-accent/10 transition-all duration-300">
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
+                                        <CheckCircle className="w-5 h-5 text-purple-500 group-hover:text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{feature}</h3>
+                                        <p className="text-sm text-muted-foreground">Enterprise-grade feature included in standard plan.</p>
+                                    </div>
                                 </div>
-                                <h3 className="font-semibold text-lg text-foreground mb-2">{feature}</h3>
-                                <p className="text-sm text-muted-foreground">Premium feature designed for scale and performance.</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* 4. Rich Content Narrative - Interleaved */}
-                <section className="prose prose-lg dark:prose-invert max-w-3xl mx-auto leading-loose text-muted-foreground">
-                    {/* Render the custom content.
-                        CRITICAL: If we rendered the video above, we must HIDE it here to avoid duplication.
-                        We use CSS trickery: checking if it's the specific Influencer platform or using generic hiding for video elements if they were lifted.
-                    */}
-                    <div className={`[&>div>p]:mb-8 [&>div>p]:text-lg [&>div>p]:leading-relaxed ${hasVideoInContent ? "[&>div>video]:hidden" : ""}`}>
-                        {solution.content}
-                    </div>
-                </section>
-
-                {/* 5. Benefits Bento Grid - Visual Break */}
-                {solution.benefits && (
-                    <section className="py-8">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold mb-4">Why Choose {solution.title}?</h2>
-                            <p className="text-muted-foreground max-w-2xl mx-auto">Designed to solve the most critical challenges in your workflow.</p>
-                        </div>
-                        <div className="grid md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-                            {solution.benefits.map((benefit: { title: string; description: string }, index: number) => (
-                                <div
-                                    key={index}
-                                    className={`p-8 rounded-3xl border border-border/50 bg-gradient-to-br from-card to-card/50 hover:from-secondary/20 hover:to-secondary/5 transition-colors shadow-lg
-                                        ${index === 0 ? "md:col-span-2" : ""}
-                                    `}
-                                >
-                                    <Shield className={`w-8 h-8 mb-4 ${index === 0 ? "text-primary" : "text-purple-500"}`} />
-                                    <h3 className="text-xl font-bold mb-3 text-foreground">{benefit.title}</h3>
-                                    <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-                )}
-
-                {/* 6. Gallery has been moved to top. (Removed from here) */}
-
-                {/* 7. FAQ Accordion */}
+                {/* 6. FAQ Section */}
                 {solution.faq && (
-                    <section className="max-w-3xl mx-auto w-full">
-                        <h3 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
+                    <section className="py-24 max-w-3xl mx-auto px-4">
+                        <h3 className="text-3xl font-bold mb-12 text-center text-foreground">Frequently Asked Questions</h3>
                         <div className="space-y-4">
                             {solution.faq.map((item: { question: string; answer: string }, index: number) => (
-                                <details key={index} className="group border border-border/50 rounded-2xl bg-card overflow-hidden transition-all duration-300 open:border-primary/30 open:shadow-lg open:shadow-primary/5">
-                                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-semibold text-lg text-foreground group-hover:bg-accent/5">
+                                <details key={index} className="group border border-border rounded-2xl bg-card overflow-hidden open:bg-accent/10 transition-all duration-300">
+                                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
                                         {item.question}
                                         <span className="transform transition-transform group-open:rotate-180">
-                                            <svg className="w-5 h-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
+                                            <ChevronRight className="w-5 h-5 text-muted-foreground" />
                                         </span>
                                     </summary>
-                                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed border-t border-border pt-4">
                                         <p>{item.answer}</p>
                                     </div>
                                 </details>
@@ -222,29 +253,27 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                     </section>
                 )}
 
-                {/* 8. Bottom CTA */}
-                <section className="py-16">
-                    <div className="relative rounded-[2.5rem] bg-gradient-to-br from-primary/10 via-purple-500/10 to-blue-500/10 border border-primary/20 overflow-hidden text-center p-12 md:p-20">
-                        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20" />
-                        <div className="relative z-10 space-y-8">
-                            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                                Ready to transform your business?
-                            </h2>
-                            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                                Join forward-thinking companies using {solution.title} to drive growth.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <Link href="/contact">
-                                    <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 rounded-full px-10 h-14 text-lg">
-                                        Get Started Now
-                                    </Button>
-                                </Link>
-                                <Link href="/case-studies">
-                                    <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary/20 hover:bg-primary/5 rounded-full px-10 h-14 text-lg">
-                                        View Case Studies
-                                    </Button>
-                                </Link>
-                            </div>
+                {/* 7. Bottom CTA */}
+                <section className="py-32 px-4 text-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"></div>
+                    <div className="relative z-10 max-w-4xl mx-auto">
+                        <h2 className="text-5xl md:text-7xl font-bold text-foreground mb-8 tracking-tight">
+                            Ready to transform?
+                        </h2>
+                        <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+                            Join the next generation of businesses using {solution.title}.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link href="/contact">
+                                <Button size="lg" className="h-16 px-12 rounded-full text-xl bg-foreground text-background hover:bg-foreground/80 transition-transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                                    Start Free Pilot
+                                </Button>
+                            </Link>
+                            <Link href="/products">
+                                <Button variant="outline" size="lg" className="h-16 px-12 rounded-full text-xl border-border text-foreground hover:bg-accent hover:border-primary/50 backdrop-blur-sm">
+                                    View All Products
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </section>

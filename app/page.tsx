@@ -12,6 +12,7 @@ import ImpactSection from "@/components/ImpactSection";
 import ServicesSection from "@/components/ServicesSection";
 
 import IndustriesSection from "@/components/IndustriesSection";
+import ClienteleSection from "@/components/ClienteleSection";
 
 export default function HomePage() {
   const router = useRouter();
@@ -50,6 +51,9 @@ export default function HomePage() {
 
       {/* AI Capabilities */}
       <AICapabilities />
+
+      {/* Clientele Section */}
+      <ClienteleSection />
 
       {/* Impact & CTA */}
       <ImpactSection />

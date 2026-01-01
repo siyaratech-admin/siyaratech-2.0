@@ -1,3 +1,4 @@
+"use client";
 /*
   Installed from https://reactbits.dev/ts/tailwind/
 */
@@ -103,7 +104,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   );
 
   return (
-    <Component ref={ref} className={`blur-text text-center ${className} flex `}>
+    <Component ref={ref} className={`blur-text ${className} flex flex-wrap`}>
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
@@ -128,8 +129,8 @@ const BlurText: React.FC<BlurTextProps> = ({
               willChange: "transform, filter, opacity",
             }}
           >
-            {segment === " " ? "\u00A0" : segment}
-            {animateBy === "words" && index < elements.length - 1 && "\u00A0"}
+            {segment === ' ' ? '\u00A0' : segment}
+            {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
           </motion.span>
         );
       })}

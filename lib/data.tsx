@@ -508,42 +508,33 @@ export const services = [
 export const erpSolutions = [
     {
         id: "hrms",
-        title: "HRMS",
+        title: "AI Powered HRMS Module",
         subtitle: "Human Resource Reinvented",
-        description: "Put your workforce on autopilot with AI-driven HR operations. Automate recruitment, attendance, payroll, and compliance.",
-        longDescription: "Transform your Human Resources department from a cost center to a strategic asset. Siyaratech HRMS uses advanced AI to screen resumes, manage attendance with geofencing and facial recognition, and process payroll with one-click statutory compliance. Our system predicts attrition risks and suggests engagement strategies, keeping your workforce happy and productive.",
+        description: "Modern AI-powered HRMS module with ERP integration. Features include AI resume scanning, AI calling agent, face recognition & geo-tagged attendance to automate HR operations and boost productivity.",
+        longDescription: "A modern HRMS module within an ERP system transforms traditional human resource operations into a smart, automated, and data-driven experience. Our advanced AI-powered HRMS is designed to simplify recruitment, attendance, payroll, and employee lifecycle management on a single platform.",
         content: (
             <div className="space-y-6">
                 <p>
-                    Managing a modern workforce requires more than just spreadsheets; it demands a strategic platform that empowers employees and simplifies administration. Siyaratech HRMS is a comprehensive Human Resource Management System designed to manage the entire employee lifecycle—from recruitment to retirement. We automate the mundane, such as leave tracking and payroll calculation, allowing HR leaders to focus on culture and talent development. Our AI-driven recruitment module scans thousands of resumes in seconds, ranking candidates based on relevance and skill fit, cutting hiring time by half.
+                    A modern HRMS module within an ERP system transforms traditional human resource operations into a smart, automated, and data-driven experience. Our advanced AI-powered HRMS is designed to simplify recruitment, attendance, payroll, and employee lifecycle management on a single platform. With AI resume scanning, the system automatically shortlists the best candidates by matching skills, experience, and job requirements, reducing hiring time significantly. An AI calling agent conducts initial candidate screening calls, asks predefined questions, records responses, and shares insights with the HR team. The HRMS also includes face recognition attendance with geo-tagging, ensuring accurate, fraud-free attendance tracking for on-site, remote, and field employees. Integrated seamlessly with ERP, the HRMS enables real-time data flow across departments, improving transparency and operational efficiency.
                 </p>
                 <p>
-                    One of the biggest leakages in operational cost is inaccurate attendance tracking. Our solution introduces geo-fencing and facial recognition technology, enabling a touchless, fraud-proof attendance system. Whether your employees are in the office, at a construction site, or working remotely, their check-ins are verified instantly. This data flows seamlessly into our payroll engine, which calculates salaries, taxes, and statutory deductions (PF, ESIC, PT) with zero errors. We turn payroll from a multi-day headache into a one-click process.
-                </p>
-                <p>
-                    Employee engagement is critical for retention. Our self-service mobile app empowers employees to view payslips, apply for leave, and raise requests without chasing HR personnel. We include sentiment analysis tools that gauge organizational mood through pulse surveys, alerting you to potential burnout or dissatisfaction before it leads to attrition. Our performance management module replaces annual reviews with continuous feedback loops, fostering a culture of growth and transparency.
-                </p>
-                <p>
-                    Compliance is often a minefield for organizations. Siyaratech HRMS stays updated with the latest labor laws and tax regulations. We generate all necessary reports for government filings automatically, ensuring that you are always audit-ready. From handling complex shift rosters to managing separation and full-and-final settlements, our system handles the nuances of Indian and global labor markets with ease.
-                </p>
-                <p>
-                    We believe that great companies are built by great people. Siyaratech HRMS provides the digital foundation to attract, manage, and retain top talent. By reducing administrative friction, we create a workplace where employees feel valued and HR teams are strategic partners in business growth.
+                    Implementing a smart HRMS solution helps organizations work faster, smarter, and more compliantly. Automated attendance, leave, payroll, and compliance reduce manual errors and administrative workload, allowing HR teams to focus on strategic initiatives. AI-driven hiring improves workforce quality, while geo-tagged and face-based attendance enhances accountability and productivity. With centralized employee data, performance tracking, and customizable workflows, organizations gain better decision-making capabilities and scalability. Our ERP HRMS module empowers businesses to improve employee experience, optimize costs, and drive sustainable growth using intelligent automation and AI-driven insights.
                 </p>
             </div>
         ),
         icon: Users,
         features: [
-            "AI-Powered Recruitment Scanner",
-            "Face & Geo-tagged Attendance",
-            "One-Click Payroll & Tax Filing",
-            "Employee Self-Service App",
-            "Performance & Appraisal Management",
-            "Attrition Prediction Analytics"
+            "AI Resume Scanning & Shortlisting",
+            "AI Calling Agent for Screening",
+            "Face Recognition & Geo-tagging",
+            "Automated Payroll & Compliance",
+            "Employee Lifecycle Management",
+            "Real-time Data Integration"
         ],
         benefits: [
-            { title: "Reduce Hiring Time by 60%", description: "Let AI filter thousands of resumes to find the perfect candidates instantly." },
-            { title: "Zero Payroll Errors", description: "Automated calculations ensure 100% accuracy in salary and tax processing." },
-            { title: "Boost Employee Retention", description: "Identify unhappy employees early with sentiment analysis and engagement surveys." }
+            { title: "Reduce Hiring Time", description: "AI automates resume screening and initial calls, speeding up recruitment." },
+            { title: "Fraud-Free Attendance", description: "Geo-tagged face recognition ensures 100% accurate attendance tracking." },
+            { title: "Strategic HR Focus", description: "Automating admin tasks allows HR to focus on culture and growth." }
         ],
         faq: [
             { question: "Is the attendance system compatible with biometrics?", answer: "Yes, we integrate seamlessly with most standard biometric devices and also offer mobile-based facial recognition." },
@@ -556,46 +547,37 @@ export const erpSolutions = [
         ],
         className: "md:col-span-1",
         cta: "Explore HRMS",
-        tags: ["HR", "Automation", "Payroll"],
+        tags: ["HR", "AI", "Automation"],
     },
     {
         id: "task-manager",
-        title: "Task Manager",
+        title: "ERP Task Manager Module",
         subtitle: "Intelligent Work Execution",
-        description: "Plan, monitor, and deliver work with AI assisting every step. Replace scattered spreadsheets and never-ending follow-ups.",
-        longDescription: "Stop micromanaging and start leading. Our Task Manager isn't just a to-do list; it's an intelligent project co-pilot. It assigns tasks based on team capacity, chases follow-ups automatically via WhatsApp/Email, and predicts project delays weeks in advance. Visualise work with Kanban, Gantt, and Calendar views tailored for high-performance teams.",
+        description: "Manage tasks, track employee performance daily, monitor projects, and get real-time notifications with Siyaratech’s ERP Task Manager module.",
+        longDescription: "Siyaratech’s ERP Task Manager module is designed to bring complete visibility and control over daily operations. It enables organizations to assign, track, and monitor employee tasks on a daily basis while aligning them with ongoing projects and business goals.",
         content: (
             <div className="space-y-6">
                 <p>
-                    Chaos is the enemy of productivity. In fast-growing teams, tasks often slip through the cracks of email threads and Slack messages. Siyaratech Task Manager brings order to this chaos by centralized work execution in a single, intuitive platform. It is not just about listing to-dos; it is about intelligent orchestration. Our system allows you to break down complex projects into actionable sub-tasks, assign them to team members, and set dependencies. Everyone knows exactly what they need to do and when.
+                    Siyaratech’s ERP Task Manager module is designed to bring complete visibility and control over daily operations. It enables organizations to assign, track, and monitor employee tasks on a daily basis while aligning them with ongoing projects and business goals. Managers can view real-time task status, deadlines, workload distribution, and employee performance from a single dashboard. With automated notifications, reminders, and priority alerts, teams never miss critical updates, approvals, or milestones. The Task Manager seamlessly integrates with other ERP modules, ensuring smooth coordination between departments and eliminating manual follow-ups.
                 </p>
                 <p>
-                    The &lsquo;Follow-up Fatigue&rsquo; is a major productivity killer. Managers spend hours just asking &lsquo;What is the status?&rsquo;. Our AI agent takes over this role. It automatically sends reminders via Email and WhatsApp to assignees as deadlines approach. If a task is at risk of delay, the system flags it proactively, allowing you to intervene early. This automated governance ensures that projects stay on track without micromanagement.
-                </p>
-                <p>
-                    Visualizing work is key to balancing workloads. We offer multiple views—Kanban boards for agile sprints, Gantt charts for timeline planning, and Calendar views for daily schedules. Our capacity planning tool shows you who is overloaded and who has bandwidth, enabling you to distribute work fairly and prevent burnout. This transparency builds trust and accountability within the team.
-                </p>
-                <p>
-                    Collaboration happens right where the work is. Each task has a dedicated activity stream where team members can discuss updates, share files, and tag colleagues. This contextual communication eliminates the need for long meetings to get status updates. All decisions and assets are stored within the task, creating a permanent system of record.
-                </p>
-                <p>
-                    Siyaratech Task Manager is the operating system for high-performance teams. Whether you are a marketing agency managing campaigns or a software team shipping code, we help you close the gap between strategy and execution. Stop managing tasks; start delivering results.
+                    The Task Manager module improves productivity, accountability, and transparency across the organization. By tracking employee performance daily, management can identify bottlenecks, optimize resource allocation, and ensure timely project delivery. Clear task ownership and progress tracking reduce delays and miscommunication, while data-driven insights help leaders make faster, smarter decisions. Whether managing small teams or large, multi-project environments, Siyaratech’s ERP Task Manager helps organizations streamline workflows, enhance employee efficiency, and achieve operational excellence.
                 </p>
             </div>
         ),
         icon: CheckSquare,
         features: [
-            "Smart Task Assignment",
-            "Automated Follow-ups (Email/WhatsApp)",
-            "Delay Prediction Engine",
-            "Kanban & Gantt Views",
-            "Team Workload Balancing",
-            "Priority Matrix Management"
+            "Real-time Task Status & Deadlines",
+            "Automated Notifications & Reminders",
+            "Employee Performance Tracking",
+            "Workload Distribution Dashboard",
+            "Seamless ERP Integration",
+            "Priority Alerts Management"
         ],
         benefits: [
-            { title: "Eliminate Follow-up Meetings", description: "The system chases status updates for you, saving hours of meeting time." },
-            { title: "Prevent Burnout", description: "Visual workload balancing ensures no team member is overloaded." },
-            { title: "Never Miss a Deadline", description: "AI alerts you to potential delays long before they impact the project." }
+            { title: "Enhance Efficiency", description: "Streamline workflows and eliminate manual follow-ups for better productivity." },
+            { title: "Improve Accountability", description: "Clear task ownership and daily tracking reduce delays and miscommunication." },
+            { title: "Data-Driven Decisions", description: "Gain insights into bottlenecks and resource allocation for smarter management." }
         ],
         faq: [
             { question: "Can I invite external clients?", answer: "Yes, you can give clients restricted 'Guest' access to view progress without seeing internal chats." },
@@ -609,46 +591,37 @@ export const erpSolutions = [
         ],
         className: "md:col-span-1",
         cta: "Explore Task Manager",
-        tags: ["Tasks", "Productivity", "AI"],
+        tags: ["Tasks", "Productivity", "Management"],
     },
     {
         id: "accounts-billing",
-        title: "Accounts & Billing",
+        title: "Smart Accounting & Invoicing Solution",
         subtitle: "Accuracy Meets Automation",
-        description: "Handle your finances with precision, transparency, and speed. From invoicing to GST to expense tracking.",
-        longDescription: "Financial clarity is the backbone of business growth. Our Accounts & Billing solution automates the tedious parts of finance—invoices, reconciliations, and tax filings—so you can focus on strategy. With real-time cash flow dashboards and automated payment reminders, you'll get paid faster and keep your books audit-ready 24/7.",
+        description: "Siyaratech Accounts and Billing ERP automates invoicing, GST compliance, payments, and financial reporting. A smart, AI-driven accounting solution for every business.",
+        longDescription: "Siyaratech Accounts and Billing Module is a powerful, intelligent ERP solution designed to simplify and automate end-to-end financial operations for businesses across all industries. From real-time accounting, invoicing, GST compliance, and expense tracking to automated billing cycles and financial reporting...",
         content: (
             <div className="space-y-6">
                 <p>
-                    Finance is the lifeblood of any business, yet many companies struggle with manual bookkeeping, delayed invoicing, and opaque cash flow. Siyaratech Accounts & Billing transforms your financial operations into a streamlined, automated engine. We enable you to create professional, GST-compliant invoices in seconds and send them to clients via WhatsApp and Email. Our system tracks when a client views an invoice and automates payment reminders, significantly reducing your Days Sales Outstanding (DSO).
+                    Siyaratech Accounts and Billing Module is a powerful, intelligent ERP solution designed to simplify and automate end-to-end financial operations for businesses across all industries. From real-time accounting, invoicing, GST compliance, and expense tracking to automated billing cycles and financial reporting, this module ensures complete control and visibility over your finances. Built with flexibility and customization at its core, Siyaratech’s AI-driven ERP adapts seamlessly to your business processes—whether you are a startup, SME, construction company, manufacturing unit, service provider, or enterprise. By integrating accounts, billing, sales, purchases, and taxation on a single platform, businesses can eliminate manual errors, reduce dependency on spreadsheets, and ensure accurate, audit-ready financial data at all times.
                 </p>
                 <p>
-                    Reconciliation is often a nightmare of spreadsheets and bank statements. We integrate directly with your bank accounts to fetch transaction feeds in real-time. Our intelligent matching algorithm pairs payments with invoices automatically, leaving you with only exceptions to review. This real-time reconciliation means your P&L (Profit and Loss) and Balance Sheet are always up to date, giving you a true picture of your financial health at any moment.
-                </p>
-                <p>
-                    Expense management is another area of leakage we plug. Employees can scan receipts using our mobile app, and the AI extracts vendor details and tax amounts instantly. Approval workflows ensure that no unauthorized expense slips through. We also handle multi-currency transactions, making it easy for export-oriented businesses to manage forex gains and losses seamlessly.
-                </p>
-                <p>
-                    Compliance is baked into the code. Whether it is GST GSTR-1/3B filings in India or VAT in other regions, our system generates the necessary JSON files for direct upload to government portals. We also support E-Invoicing and E-Way Bill generation directly from the platform, keeping you compliant without the need for external tools.
-                </p>
-                <p>
-                    Siyaratech gives you the clarity to make bold financial decisions. Our dashboard widgets show you your cash runway, burn rate, and top revenue sources instantly. We empower you to move from being a reactive bookkeeper to a proactive CFO. Take control of your finances and fuel your growth with accurate data.
+                    The Siyaratech Accounts and Billing Module helps every business improve cash flow, accelerate billing, and make data-driven financial decisions with ease. Automated invoice generation, payment tracking, credit/debit notes, bank reconciliation, and multi-payment gateway support ensure faster collections and smoother financial workflows. With real-time dashboards, profit & loss statements, balance sheets, and compliance-ready reports, business owners and finance teams gain instant insights into financial health and performance. Whether managing high transaction volumes or complex project-based billing, Siyaratech empowers organizations to scale efficiently, stay compliant, and achieve financial clarity—making it a reliable ERP accounting solution built your way.
                 </p>
             </div>
         ),
         icon: DollarSign,
         features: [
-            "One-Click GST Invoicing",
-            "Automated Payment Reminders",
+            "Automated Invoicing & GST Compliance",
+            "Real-time Payment Tracking",
             "Bank Reconciliation Integration",
-            "Expense & Vendor Management",
-            "Real-time Cash Flow Dashboards",
-            "Multi-Currency Support"
+            "Expense & Purchase Management",
+            "P&L, Balance Sheet & Reports",
+            "Multi-Payment Gateway Support"
         ],
         benefits: [
-            { title: "Get Paid 3x Faster", description: "Automated reminders and easy payment links reduce outstanding dues significantly." },
-            { title: "Audit-Ready Books", description: "Every transaction is automatically categorized and compliant with latest tax laws." },
-            { title: "360° Financial View", description: "See your profit, loss, and cash runway in real-time widgets." }
+            { title: "Accelerate Billing", description: "Automated invoice generation and payment tracking speed up cash flow." },
+            { title: "Audit-Ready Data", description: "Real-time accuracy and compliance ensure your books are always ready." },
+            { title: "Financial Clarity", description: "Instant insights into financial health empower better decision-making." }
         ],
         faq: [
             { question: "Can I generate E-way bills?", answer: "Yes, E-invoicing and E-way bill generation are integrated directly into the workflow." },
@@ -666,42 +639,33 @@ export const erpSolutions = [
     },
     {
         id: "project-manager",
-        title: "Project Manager",
+        title: "AI-Powered ERP Project Management Software",
         subtitle: "Deliver Projects Faster",
-        description: "Plan, execute & track projects with clarity and control. Ensure your projects stay on schedule and within budget.",
-        longDescription: "Complex projects require more than just tasks; they need structure. Siyaratech Project Manager offers robust tools for resource allocation, budgeting, and milestone tracking. Ideal for agencies, construction, and software teams, it gives you a bird&apos;s-eye view of your portfolio while allowing granular control over every sprint and deliverable.",
+        description: "Siyaratech Project Manager Module is an AI-driven ERP solution for planning, tracking, and delivering projects efficiently. Ideal for all industries to improve productivity, control costs, and ensure on-time project completion.",
+        longDescription: "Siyaratech Project Manager Module is a powerful, AI-enabled ERP solution designed to help businesses plan, execute, and deliver projects on time and within budget. Built for flexibility, this module enables organizations across industries—construction, IT, manufacturing, consulting, healthcare, and service-based businesses—to manage projects from initiation to closure on a single, centralized platform.",
         content: (
             <div className="space-y-6">
                 <p>
-                    Delivering projects on time and within budget is the hallmark of a successful enterprise. Siyaratech Project Manager provides the structural rigor needed to handle complex, multi-year initiatives. Unlike simple to-do lists, our platform is built for portfolio management. You can define milestones, dependencies, and critical paths using advanced Gantt charts. This allows you to visualize the ripple effect of a delay in one task across the entire timeline, enabling proactive risk mitigation.
+                    Siyaratech Project Manager Module is a powerful, AI-enabled ERP solution designed to help businesses plan, execute, and deliver projects on time and within budget. Built for flexibility, this module enables organizations across industries—construction, IT, manufacturing, consulting, healthcare, and service-based businesses—to manage projects from initiation to closure on a single, centralized platform. With features like project planning, task allocation, milestone tracking, real-time progress monitoring, and resource utilization, businesses gain complete visibility into every stage of a project. Automated workflows, smart alerts, and seamless integration with accounts, billing, HRMS, and task management modules ensure better coordination, reduced delays, and improved accountability.
                 </p>
                 <p>
-                    Resource management is often the hardest puzzle to solve. Our system gives you a heat map of your team&apos;s allocation across all projects. You can instantly see who is bench-warming and who is burning out, allowing you to rebalance resources with a click. We integrate timesheets directly into the project flow, ensuring that every billable hour is captured and accounted for. This precise tracking improves your estimation accuracy for future bids.
-                </p>
-                <p>
-                    Financial discipline is integrated into the project lifecycle. You can set budgets for time, materials, and expenses for each phase. As the project progresses, we track actuals against the budget in real-time. If a project starts bleeding margin, you get alerts immediately, not weeks after the fact. This helps you protect your profitability and negotiate change orders with data-backed evidence.
-                </p>
-                <p>
-                    Collaboration extends to external stakeholders as well. Our client portal allows you to share progress reports, timelines, and deliverables with customers in a branded, secure environment. This transparency reduces anxiety and builds long-term trust. You can also manage sub-contractors and vendors within the same ecosystem, ensuring that the extended team is aligned.
-                </p>
-                <p>
-                    Siyaratech Project Manager is designed for those who build the world—be it software products, marketing campaigns, or physical infrastructure. We provide the tools to master the triple constraints of scope, time, and cost. Deliver with confidence, every time.
+                    what makes the Siyaratech Project Manager truly valuable for every business is its customization and AI-driven insights. Whether managing small internal projects or large multi-site operations, the module adapts to your business processes and scales as you grow. Managers can track timelines, costs, manpower, materials, and dependencies in real time, while AI-powered analytics help predict risks, control overruns, and improve decision-making. By eliminating manual tracking and disconnected tools, Siyaratech Project Manager boosts productivity, enhances collaboration among teams, and ensures profitable project delivery—making it an essential ERP module for businesses aiming for efficiency, transparency, and sustainable growth.
                 </p>
             </div>
         ),
         icon: Briefcase,
         features: [
-            "Advanced Gantt Charts",
-            "Resource Capacity Planning",
-            "Project Budgeting & Costing",
-            "Milestone Tracking & Alerts",
-            "Client Portfolio Dashboard",
-            "Time Tracking & Timesheets"
+            "Project Planning & Task Allocation",
+            "Milestone Tracking & Progress Monitoring",
+            "Resource Utilization Management",
+            "Automated Workflows & Smart Alerts",
+            "Integration with HRMS & Billing",
+            "AI-Powered Risk Prediction"
         ],
         benefits: [
-            { title: "Maximize Billable Hours", description: "Precise time tracking ensures every minute of work is accounted for and billed." },
-            { title: "Optimize Resource Usage", description: "See who is free and who is overloaded to assign work efficiently." },
-            { title: "Stay Under Budget", description: "Real-time cost tracking against budget alerts you before overruns occur." }
+            { title: "Complete Visibility", description: "Gain insights into every stage of your project from a single platform." },
+            { title: "Control Costs", description: "Real-time tracking of costs and resources prevents budget overruns." },
+            { title: "Improve Collaboration", description: "Seamless integration across modules enhances coordination and accountability." }
         ],
         faq: [
             { question: "Does it support Agile/Scrum?", answer: "Yes, we have dedicated Sprint views and Backlog management for Agile teams." },
@@ -719,42 +683,33 @@ export const erpSolutions = [
     },
     {
         id: "labour-management",
-        title: "Labour Management",
+        title: "Siyaratech Labour Management Module",
         subtitle: "Workforce Made Intelligent",
-        description: "Manage your labour force with precision and transparency. Ideal for manufacturing, construction, logistics, and field teams.",
-        longDescription: "Managing a blue-collar workforce comes with unique challenges: shift planning, overtime calculations, and safety compliance. Our Labour Management system digitizes the entire process. From biometric entry to daily wage calculation, we bring transparency and efficiency to your site operations, ensuring fair pay and maximizing productivity.",
+        description: "Manage workforce efficiently with Siyaratech Labour Management Module. Automate attendance, wages, compliance & productivity with AI-driven ERP solutions built your way.",
+        longDescription: "Siyaratech Labour Management Module is a powerful ERP solution designed to help businesses efficiently manage their workforce, reduce operational costs, and improve productivity. Whether you operate in construction, manufacturing, logistics, infrastructure, retail, or service-based industries, this module gives you complete control over labour planning and execution.",
         content: (
             <div className="space-y-6">
                 <p>
-                    For industries like construction, manufacturing, and logistics, the workforce is the most valuable and volatile asset. Siyaratech Labour Management System (LMS) replaces the chaotic paper muster rolls with a digital command center. We track the entire lifecycle of a daily wager or contract worker—from onboarding and verification to daily attendance and wage disbursement. Our biometric integration ensures that &lsquo;ghost workers&rsquo;—a common source of fund leakage—are eliminated completely.
+                    Siyaratech Labour Management Module is a powerful ERP solution designed to help businesses efficiently manage their workforce, reduce operational costs, and improve productivity. Whether you operate in construction, manufacturing, logistics, infrastructure, retail, or service-based industries, this module gives you complete control over labour planning and execution. From worker onboarding, attendance tracking, shift scheduling, and wage calculation to compliance management and real-time reporting, Siyaratech ensures every labour-related process is automated and error-free. With centralized data and smart dashboards, management teams gain full visibility into labour utilization, helping them make faster and more informed decisions.
                 </p>
                 <p>
-                    Complex shift rostering is handled effortlessly. Whether you run three shifts ina factory or have variable site timings, our algorithm optimizes roster planning to ensure adequate coverage without excessive overtime costs. We track overtime hours in real-time and calculate payouts based on configurable rules (e.g., double pay on holidays). This transparency ensures that workers are paid fairly and on time, which significantly reduces labor unrest and attrition.
-                </p>
-                <p>
-                    Contractor management is another pain point we solve. You can onboard multiple labor contractors and track the performance and compliance of their deployed workforce. We ensure that every worker on your site has valid I-cards, safety training, and statutory enrollments (PF/ESIC). If a contractor&apos;s license is expiring, the system alerts you to stop work orders, protecting you from legal liability.
-                </p>
-                <p>
-                    Productivity tracking is granular. You can tag labor hours to specific cost centers or project tasks (e.g., bricklaying vs. plastering). This allows you to calculate the labor cost per unit of output accurately. If a team is falling behind schedule, you can deploy additional resources instantly based on real-time data.
-                </p>
-                <p>
-                    Siyaratech LMS brings dignity to the worker and control to the employer. By digitizing specific records and payments, we create a transparent ecosystem where efficiency thrives. Manage your workforce with the precision of a Swiss watch, no matter the scale of operations.
+                    what makes the Siyaratech Labour Management Module truly valuable is its flexibility and AI-driven capabilities, built to suit businesses of all sizes. The system adapts to permanent, contractual, and daily wage workers while seamlessly integrating with payroll, accounts, and project management modules of the ERP. Businesses can track productivity, reduce labour leakage, ensure statutory compliance, and optimize manpower allocation across sites or departments. By eliminating manual records and fragmented systems, Siyaratech empowers organizations to work smarter, scale faster, and maintain transparency—said differently, a future-ready labour management solution built your way.
                 </p>
             </div>
         ),
         icon: Users,
         features: [
-            "Shift Planning & Rostering",
-            "Overtime & Wage Automation",
-            "Contractor/Agency Management",
-            "Site Safety Compliance Check",
-            "Mobile Muster Roll",
-            "Productivity Tracking"
+            "Worker Onboarding & Verification",
+            "Shift Scheduling & Wage Calculation",
+            "Compliance Management & Reporting",
+            "Real-time Labour Utilization",
+            "AI-Driven Productivity Tracking",
+            "Seamless Payroll Integration"
         ],
         benefits: [
-            { title: "Eliminate Ghost Workers", description: "Biometric and Aadhaar-linked verification ensures you only pay for actual work." },
-            { title: "100% Statutory Compliance", description: "Automated PF/ESIC deductions keep you safe from legal penalties." },
-            { title: "Real-time Site Visibility", description: "Know exactly how many workers are at each site from your HQ dashboard." }
+            { title: "Eliminate Labour Leakage", description: "Automated tracking ensures you pay only for valid work hours." },
+            { title: "Ensure Compliance", description: "Stay audit-ready with automated statutory compliance features." },
+            { title: "Optimize Workforce", description: "Gain insights to allocate manpower effectively across sites." }
         ],
         faq: [
             { question: "Does it work offline?", answer: "Yes, the mobile app works offline and syncs when connectivity is restored." },
@@ -767,42 +722,33 @@ export const erpSolutions = [
     },
     {
         id: "plant-machinery",
-        title: "Plant & Machinery",
+        title: "Plant & Machinery ERP Software",
         subtitle: "Zero Downtime. Full Control.",
-        description: "Optimize the life and performance of every machine you own. Reduce breakdowns and manage maintenance.",
-        longDescription: "Your machinery is your biggest asset; don't let breakdowns eat into your profits. Our Plant & Machinery module digitizes maintenance schedules, tracks fuel consumption, and monitors asset health. Shift from reactive repairs to predictive maintenance, ensuring your equipment is always ready to perform when you need it.",
+        description: "Manage plant and machinery efficiently with Siyaratech ERP. Track assets, maintenance, utilization, costs, and performance with an AI-driven, customizable ERP solution for all industries.",
+        longDescription: "Siyaratech’s Plant and Machinery ERP Module is a powerful, AI-driven solution designed to help businesses efficiently manage their equipment, assets, and heavy machinery from a single, centralized platform. Whether you operate in construction, manufacturing, infrastructure, logistics, mining, or any asset-intensive industry, this module gives you complete visibility into machine lifecycle management.",
         content: (
             <div className="space-y-6">
                 <p>
-                    In asset-heavy industries, machine downtime is a profit killer. Siyaratech Plant & Machinery module is designed to maximize the Overall Equipment Effectiveness (OEE) of your fleet. We move you from reactive &lsquo;break-fix&rsquo; maintenance to a proactive, data-driven strategy. By tracking the running hours and health parameters of every excavator, crane, or CNC machine, we schedule preventive maintenance exactly when it is needed—preventing costly catastrophic failures.
+                    Siyaratech’s Plant and Machinery ERP Module is a powerful, AI-driven solution designed to help businesses efficiently manage their equipment, assets, and heavy machinery from a single, centralized platform. Whether you operate in construction, manufacturing, infrastructure, logistics, mining, or any asset-intensive industry, this module gives you complete visibility into machine lifecycle management. From asset registration, usage tracking, and preventive maintenance scheduling to breakdown history, AMC management, and cost tracking, Siyaratech ensures your plant and machinery operate at peak efficiency. With real-time dashboards and intelligent alerts, businesses can reduce downtime, avoid unexpected failures, and extend the lifespan of critical equipment while maintaining compliance and audit readiness.
                 </p>
                 <p>
-                    Fuel cost is often the largest operating expense. Our system integrates with fuel sensors and GPS trackers to monitor consumption patterns in real-time. We detect anomalies like sudden drops in fuel levels (theft) or excessive idling, allowing you to take immediate action. We also track the location and utilization of every asset. If a machine is sitting idle at Site A while Site B is renting equipment, the system suggests an internal transfer, saving rental costs.
-                </p>
-                <p>
-                    Inventory management for spare parts is streamlined. We track the consumption of filters, lubricants, and tires, auto-alerting your procurement team when stock levels dip below safety thresholds. This ensures that a lack of a $10 part never grounds a $100,000 machine. We maintain a full history of repairs and costs for every asset, helping you decide when to repair and when to retire/replace.
-                </p>
-                <p>
-                    Safety and compliance are integrated. We can manage operator licenses, fitness certificates, and insurance renewals digitally. The system won&apos;t generate a gate pass for a vehicle with expired papers, ensuring 100% compliance on the road and at the site.
-                </p>
-                <p>
-                    Siyaratech gives you total control over your iron fleet. We extend the life of your assets, reduce operating costs, and ensure that your machinery is always a reliable partner in your production process.
+                    The Siyaratech Plant and Machinery Module is built to support businesses of every size by improving productivity, controlling operational costs, and enabling smarter decision-making. Integrated seamlessly with other ERP modules like Project Management, Accounts & Billing, Inventory, and Labour Management, it provides accurate machinery costing, fuel and spare consumption tracking, and performance analytics. AI-powered insights help organizations plan maintenance proactively, optimize machine utilization, and improve ROI on high-value assets. Fully customizable and scalable, Siyaratech’s ERP adapts to your unique business processes, making it the ideal plant and machinery management solution for businesses looking to grow faster, smarter, and more profitably.
                 </p>
             </div>
         ),
         icon: Factory,
         features: [
-            "Preventive Maintenance Schedules",
-            "breakdown & Repair History",
-            "Fuel & Usage Tracking",
-            "Spare Parts Inventory",
-            "Asset Depreciation tracking",
-            "IoT Sensor Integration"
+            "Asset Registration & Tracking",
+            "Preventive Maintenance Scheduling",
+            "Breakdown History & Cost Tracking",
+            "Fuel & Spare Consumption",
+            "Real-time Dashboard & Alerts",
+            "AI-Powered Utilization Insights"
         ],
         benefits: [
-            { title: "Reduce Downtime by 40%", description: "Scheduled maintenance alerts ensure machines don't fail unexpectedly." },
-            { title: "Lower Fuel Costs", description: "Track consumption patterns to identify theft or inefficient usage." },
-            { title: "Extend Asset Life", description: "Proper maintenance history adds years to your expensive machinery." }
+            { title: "Reduce Downtime", description: "Prevent unexpected failures with intelligent alerts and scheduled maintenance." },
+            { title: "Optimize Utilization", description: "Track asset usage and performance to maximize ROI." },
+            { title: "Control Costs", description: "Monitor fuel and spare parts consumption to eliminate waste." }
         ],
         faq: [
             { question: "Can I track vehicle location?", answer: "Yes, via GPS integration you can track live location and route history." },
@@ -815,42 +761,33 @@ export const erpSolutions = [
     },
     {
         id: "crm-ai-agent",
-        title: "CRM With AI Agent",
+        title: "AI CRM with ERP Integration",
         subtitle: "Your Smart Sales Co-Pilot",
-        description: "Turn every lead into a revenue opportunity with AI. Your sales team gets a 24×7 AI assistant.",
-        longDescription: "Sales is a numbers game, and Siyaratech CRM stacks the odds in your favor. It's not just a database; it's an active sales participant. The AI Agent scores incoming leads, nurtures them with personalized content, and alerts your team when a prospect is ready to buy. Close deals faster with automated proposals and e-signatures.",
+        description: "Siyaratech CRM with ERP automates lead generation from Instagram, LinkedIn & websites using AI calling agents. Identify hot leads, boost sales & grow faster.",
+        longDescription: "Siyaratech, AI-driven customer relationship management solution designed to help businesses capture, manage, and convert leads faster from multiple digital channels. Our CRM automates lead generation from Instagram, LinkedIn, websites, Facebook, and other platforms, ensuring that no opportunity is missed.",
         content: (
             <div className="space-y-6">
                 <p>
-                    In the digital age, speed to lead is the biggest differentiator. Siyaratech CRM isn&apos;t just a database of contacts; it is an intelligent engine that drives revenue. Our AI Agent acts as a 24/7 SDR (Sales Development Rep), engaging instantly with leads who visit your website or fill out a form. It answers queries, qualifies intent, and schedules meetings for your human sales team, ensuring that you never miss an opportunity while you sleep.
+                    Siyaratech, AI-driven customer relationship management solution designed to help businesses capture, manage, and convert leads faster from multiple digital channels. Our CRM automates lead generation from Instagram, LinkedIn, websites, Facebook, and other platforms, ensuring that no opportunity is missed. Every inquiry is automatically captured, stored, and tracked in a centralized dashboard. With an AI calling agent, Siyaratech CRM instantly contacts new leads, engages them through intelligent conversations, follows up automatically, and identifies hot, warm, and cold leads based on real-time responses and intent analysis. This eliminates manual calling, reduces response time, and enables your sales team to focus only on high-potential prospects.
                 </p>
                 <p>
-                    Pipeline visibility is crystal clear. We provide a visual Kanban view of your deals, allowing you to drag and drop opportunities through stages. Our forecasting algorithms analyze historical win rates to predict your monthly revenue with high accuracy. You can see which deals are stalling and where to focus your energy. Automated workflows take care of the busy work—sending follow-up emails, creating tasks, and updating deal statuses—so your reps can focus on closing.
-                </p>
-                <p>
-                    Communication is omnichannel. You can call, email, or WhatsApp your prospects directly from the CRM, with every interaction logged automatically. This gives you a 360-degree view of the customer conversation history. No more &lsquo;I didn&apos;t know you spoke to him yesterday&rsquo; moments. Our mobile app ensures that your field sales team has access to customer data and can update visits on the go.
-                </p>
-                <p>
-                    Reporting is actionable. We go beyond vanity metrics to show you what really matters: CAC (Customer Acquisition Cost), LTV (Lifetime Value), and conversion rates by channel. You can track the performance of every sales rep and gamify targets to boost motivation.
-                </p>
-                <p>
-                    Siyaratech CRM empowers you to build lasting relationships. By automating the science of sales, we give you the freedom to master the art of the deal. Turn your sales team into a precision-guided revenue machine.
+                    What makes Siyaratech CRM powerful for every business is its seamless integration with ERP modules such as sales, accounts, billing, inventory, project management, and customer lifecycle tracking. From startups to enterprises, our CRM helps organizations improve sales productivity, shorten sales cycles, and increase conversion rates through AI-powered automation. Businesses gain complete visibility into customer interactions, payment status, order history, and follow-ups on a single platform. Whether you are in real estate, construction, manufacturing, retail, healthcare, education, or services, Siyaratech CRM adapts to your workflow and scales as your business grows—truly delivering Smart, AI-Driven Solutions – Built Your Way.
                 </p>
             </div>
         ),
         icon: Bot,
         features: [
-            "AI Lead Scoring & Prioritization",
-            "Omnichannel Communication (Email/Call/WhatsApp)",
-            "Visual Sales Pipeline",
-            "Automated Drip Campaigns",
-            "Quotation to Cash Workflow",
-            "Sales Forecasting"
+            "Automated Lead Generation (Social/Web)",
+            "AI Calling Agent for Instant Engagement",
+            "Real-time Lead Scoring (Hot/Warm/Cold)",
+            "Seamless ERP Integration",
+            "Centralized Interaction Dashboard",
+            "Sales Pipeline Visibility"
         ],
         benefits: [
-            { title: "2x Conversion Rates", description: "Focus only on high-intent leads identified by our AI scoring engine." },
-            { title: "Zero Lead Leakage", description: "Capture leads from web, social, and chat automatically 24/7." },
-            { title: "Shorten Sales Cycle", description: "Automated follow-ups keep the conversation going without manual effort." }
+            { title: "Boost Conversions", description: "Instant engagement and lead scoring ensure you never miss a hot lead." },
+            { title: "Save Time", description: "Automated calling and follow-ups free your team to focus on closing." },
+            { title: "Complete Visibility", description: "See all customer interactions and history on a single platform." }
         ],
         faq: [
             { question: "Does it integrate with WhatsApp?", answer: "Yes, send official WhatsApp API messages directly from the CRM." },
