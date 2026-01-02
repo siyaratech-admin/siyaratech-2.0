@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
     template: "%s | SIYARATECH INNOVATIONS"
   },
-  description: "Transform your business with SIYARATECH INNOVATIONS. We specialize in AI, machine learning, cloud services, and custom software development to drive growth.",
+  description: "Transform your business with SIYARATECH INNOVATIONS. Specializing in AI, machine learning, cloud services, and custom software development.",
   keywords: ["AI Consulting", "Digital Transformation", "Software Development", "Cloud Services", "Machine Learning", "Web Development", "Siyaratech"],
   authors: [{ name: "SIYARATECH INNOVATIONS" }],
   creator: "SIYARATECH INNOVATIONS",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     url: "https://siyaratechin.com",
     siteName: "SIYARATECH INNOVATIONS",
     title: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
-    description: "Transform your business with SIYARATECH INNOVATIONS. We specialize in AI, machine learning, cloud services, and custom software development.",
+    description: "Transform your business with SIYARATECH INNOVATIONS. Specializing in AI, machine learning, cloud services, and custom software.",
     images: [
       {
         url: "/static_images/og-image.jpg", // Ensure this image exists or use a placeholder

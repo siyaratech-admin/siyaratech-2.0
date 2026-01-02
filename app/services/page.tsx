@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from "next/image";
 import PageHeader from '@/components/PageHeader';
 import { useRouter } from "next/navigation";
 import { services } from "@/lib/data";

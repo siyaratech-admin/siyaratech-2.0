@@ -58,7 +58,7 @@ export const industries = [
             "HIPAA-Compliant Cloud Solutions",
             "Patient Engagement Portals"
         ],
-        cta: "Learn More",
+        cta: "Healthcare Solutions",
         backgroundImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
         className: "md:col-span-2",
     },
@@ -95,7 +95,7 @@ export const industries = [
             "Automated Trading Systems",
             "Secure Payment Gateways"
         ],
-        cta: "Learn More",
+        cta: "Finance Solutions",
         backgroundImage: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
         className: "md:col-span-1",
     },
@@ -132,7 +132,7 @@ export const industries = [
             "Production Planning & Scheduling",
             "Quality Control Automation"
         ],
-        cta: "Learn More",
+        cta: "Manufacturing Tech",
         backgroundImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
         className: "md:col-span-1",
     },
@@ -169,7 +169,7 @@ export const industries = [
             "Customer Loyalty Programs",
             "Omnichannel Retail Strategies"
         ],
-        cta: "Learn More",
+        cta: "Retail Innovation",
         backgroundImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
         className: "md:col-span-1",
     },
@@ -206,7 +206,7 @@ export const industries = [
             "E-learning Content Development",
             "Campus Management Software"
         ],
-        cta: "Learn More",
+        cta: "Education Tech",
         backgroundImage: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
         className: "md:col-span-1",
     },
@@ -243,7 +243,7 @@ export const industries = [
             "QA & Testing Services",
             "IT Staff Augmentation"
         ],
-        cta: "Learn More",
+        cta: "Tech Services",
         backgroundImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
         className: "md:col-span-3",
     },
@@ -280,7 +280,7 @@ export const industries = [
             "Safety Compliance Tools",
             "Construction ERP & Accounting"
         ],
-        cta: "Learn More",
+        cta: "Construction Tech",
         backgroundImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
         className: "md:col-span-2",
     },

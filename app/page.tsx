@@ -42,6 +42,19 @@ export default function HomePage() {
         onSecondaryCTA={() => navigateTo("#products")}
       />
 
+      {/* About Siyaratech (SEO Content) */}
+      <section className="py-16 bg-background">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6 text-foreground">Innovating for the Future</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            SIYARATECH INNOVATIONS is at the forefront of the digital revolution, providing cutting-edge solutions that bridge the gap between complex technology and business needs.
+            We are dedicated to empowering organizations through Artificial Intelligence, Machine Learning, and robust Cloud Infrastructure.
+            Our team of experts works tirelessly to deliver custom software, enterprise resource planning (ERP) systems, and AI-driven automation that streamline operations and drive exponential growth.
+            Whether you are a startup looking to scale or an enterprise seeking digital transformation, Siyaratech is your trusted partner in navigating the ever-evolving tech landscape.
+          </p>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <WhyChooseUs />
 
