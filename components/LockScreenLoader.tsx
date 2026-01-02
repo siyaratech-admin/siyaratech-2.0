@@ -15,6 +15,14 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
         }
     }, [checkSession]);
 
+    // Auto-close since video is disabled
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(false);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, []);
+
     const handleVideoEnd = () => {
         // Delay slightly before triggering exit to ensure video holds last frame
         setTimeout(() => {
@@ -33,14 +41,16 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="fixed inset-0 z-[100] w-full h-[100dvh] flex items-center justify-center bg-black overflow-hidden"
             >
-                <video
+                {/* Video commented out as requested */}
+                {/* <video
                     src="/Logo_Animation.mp4"
                     autoPlay
                     muted
                     playsInline
                     className="w-full h-full object-contain md:object-cover"
                     onEnded={handleVideoEnd}
-                />
+                /> */}
+                <div className="text-white">Loading...</div>
             </motion.div>
         </AnimatePresence>
     );

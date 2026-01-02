@@ -1,21 +1,19 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { useRouter, useParams } from "next/navigation"
-// import { NeuralGrid } from "@/components/neural-grid"
-// import BrandGlassCard from "@/components/brand-glass-card"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-// import BlurFade from "@/components/ui/blur-fade"
-import { CreditCard, User, Mail, Phone, Building } from "lucide-react"
+import { CreditCard, User, Mail, Phone, Building, Smartphone } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import axios from "axios"
 
 // Placeholder for missing components
 const BrandGlassCard = ({ children, className }: { children: React.ReactNode; className?: string; variant?: unknown; intensity?: unknown }) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
-const BlurFade = ({ children }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
+const BlurFade = ({ children, inView }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
 
 interface Course {
   id: string
@@ -27,46 +25,27 @@ interface Course {
   thumbnail: string
 }
 
-const courses: Course[] = [
-  {
-    id: "1",
-    title: "React Fundamentals",
-    description: "Learn the basics of React and start building your first component.",
-    content: "In this course, you'll learn the core concepts of React, including components, props, and state.",
-    instructor: "Jane Doe",
-    price: 4999,
-    thumbnail: "/react.png",
-  },
-  {
-    id: "2",
-    title: "Advanced React Patterns",
-    description: "Dive deep into advanced React patterns and optimize your applications.",
-    content: "This course covers advanced React patterns such as render props, higher-order components, and hooks.",
-    instructor: "John Smith",
-    price: 7999,
-    thumbnail: "/reactAdvanced.jpg",
-  },
-  {
-    id: "3",
-    title: "React with TypeScript",
-    description: "Harness the power of TypeScript in your React applications.",
-    content: "Combine the power of React with the safety and tooling of TypeScript.",
-    instructor: "Alice Johnson",
-    price: 6999,
-    thumbnail: "/reactTS.png",
-  },
-]
+const loadScript = (src: string) => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script")
+    script.src = src
+    script.onload = () => {
+      resolve(true)
+    }
+    script.onerror = () => {
+      resolve(false)
+    }
+    document.body.appendChild(script)
+  })
+}
 
 export default function Checkout() {
-  // const { courseId } = useParams<{ courseId: string }>() // Next.js params are different, usually passed as props to page, but for client component useParams works if inside provider
-  // For simplicity in this port, we'll assume courseId might be passed via query or we default to something for now as logic might need adjustment for Next.js routing
-  // Actually, useParams in Next.js returns an object.
-  const params = useParams()
-  const courseId = params?.courseId as string
+  const searchParams = useSearchParams()
+  const courseId = searchParams?.get("courseId")
 
   const router = useRouter()
 
-  const course = courses.find((c) => c.id === courseId) || courses[0] // Default to first course if not found for demo
+  const [course, setCourse] = useState<Course | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -74,6 +53,35 @@ export default function Checkout() {
     company: "",
   })
   const [loading, setLoading] = useState(false)
+  const [fetchingCourse, setFetchingCourse] = useState(true)
+  const [paymentMethod, setPaymentMethod] = useState<'razorpay' | 'phonepe'>('razorpay')
+
+  useEffect(() => {
+    loadScript("https://checkout.razorpay.com/v1/checkout.js")
+
+    const fetchCourse = async () => {
+      if (!courseId) return;
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_COURSE_PLATFORM_URL || "https://techdivehub.siyaratechin.com"
+        const response = await axios.get(`${baseUrl}/api/courses/${courseId}`)
+        setCourse(response.data)
+      } catch (error) {
+        console.error("Error fetching course:", error)
+      } finally {
+        setFetchingCourse(false)
+      }
+    }
+    fetchCourse()
+  }, [courseId])
+
+
+  if (fetchingCourse) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#833AB4]"></div>
+      </div>
+    )
+  }
 
   if (!course) {
     return (
@@ -103,16 +111,132 @@ export default function Checkout() {
     })
   }
 
+  const initiatePhonePePayment = async () => {
+    try {
+      if (!course) return;
+
+      const totalAmount = Math.round((course.price / 100) * 1.18);
+
+      const response = await fetch('https://payment-gateway-dun-eight.vercel.app/api/initiate-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Origin': window.location.origin
+        },
+        body: JSON.stringify({
+          amount: String(totalAmount),
+          currency: "INR",
+          mobileNumber: formData.phone,
+          userId: formData.email,
+          callbackUrl: window.location.origin + "/api/payment-callback"
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      } else {
+        throw new Error('Payment initiation failed');
+      }
+    } catch (err) {
+      console.error('PhonePe error:', err);
+      alert("Failed to initiate PhonePe payment");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      if (paymentMethod === 'phonepe') {
+        await initiatePhonePePayment();
+        return;
+      }
 
-    setLoading(false)
-    console.log("Processing payment for:", course.title, formData)
-    router.push("/courses")
+      // Razorpay logic
+      const res = await fetch("/api/razorpay/order", {
+        method: "POST",
+        body: JSON.stringify({
+          amount: Math.round((course.price / 100) * 1.18), // Total amount in Rupees (API route handles * 100)
+          currency: "INR",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+
+      const data = await res.json();
+
+      if (data.id) {
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_placeholder", // Replace with your public key using env
+          amount: data.amount,
+          currency: data.currency,
+          name: "Siyaratech",
+          description: `Payment for ${course.title}`,
+          image: "/logo.png", // Add your logo path
+          order_id: data.id,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          handler: async function (response: any) {
+            // Validate payment
+            try {
+              const verifyRes = await fetch("/api/razorpay/verify", {
+                method: "POST",
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                }
+              });
+              const verifyData = await verifyRes.json();
+              if (verifyData.success) {
+                alert("Payment Successful!");
+                router.push("/courses");
+              } else {
+                alert("Payment verification failed.");
+              }
+            } catch (err) {
+              console.error("Verification error", err);
+              alert("Payment verification error.");
+            }
+          },
+          prefill: {
+            name: formData.name,
+            email: formData.email,
+            contact: formData.phone,
+          },
+          notes: {
+            course_id: course.id,
+            company: formData.company,
+          },
+          theme: {
+            color: "#833AB4",
+          },
+        };
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const paymentObject = new (window as any).Razorpay(options);
+        paymentObject.open();
+
+      } else {
+        alert("Failed to create order on server");
+      }
+
+    } catch (err) {
+      console.error("Error creating order", err);
+      alert("Something went wrong while initiating payment");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -211,7 +335,7 @@ export default function Checkout() {
                     <span>Instructor: {course.instructor}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-white">₹{course.price.toLocaleString()}</span>
+                    <span className="text-2xl font-bold text-white">₹{(course.price / 100).toLocaleString()}</span>
                     <span className="text-sm text-gray-400">+ 18% GST</span>
                   </div>
                 </BrandGlassCard>
@@ -296,17 +420,43 @@ export default function Checkout() {
                     </div>
 
                     <div className="pt-4 border-t border-white/20">
+                      <div className="mb-6">
+                        <Label className="text-gray-300 mb-3 block">Payment Method</Label>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div
+                            onClick={() => setPaymentMethod('razorpay')}
+                            className={`cursor-pointer p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${paymentMethod === 'razorpay'
+                                ? 'bg-[#833AB4]/20 border-[#833AB4] text-white'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                              }`}
+                          >
+                            <CreditCard className="w-6 h-6" />
+                            <span className="font-medium">Razorpay</span>
+                          </div>
+                          <div
+                            onClick={() => setPaymentMethod('phonepe')}
+                            className={`cursor-pointer p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${paymentMethod === 'phonepe'
+                                ? 'bg-[#5f259f]/20 border-[#5f259f] text-white'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                              }`}
+                          >
+                            <Smartphone className="w-6 h-6" />
+                            <span className="font-medium">PhonePe</span>
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="flex justify-between items-center mb-4">
                         <span className="text-gray-300">Course Price:</span>
-                        <span className="text-white">₹{course.price.toLocaleString()}</span>
+                        <span className="text-white">₹{(course.price / 100).toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between items-center mb-4">
                         <span className="text-gray-300">GST (18%):</span>
-                        <span className="text-white">₹{Math.round(course.price * 0.18).toLocaleString()}</span>
+                        <span className="text-white">₹{Math.round((course.price / 100) * 0.18).toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between items-center mb-6 text-lg font-bold">
                         <span className="text-white">Total Amount:</span>
-                        <span className="text-white">₹{Math.round(course.price * 1.18).toLocaleString()}</span>
+                        <span className="text-white">₹{Math.round((course.price / 100) * 1.18).toLocaleString()}</span>
                       </div>
                     </div>
 
@@ -322,8 +472,8 @@ export default function Checkout() {
                         </>
                       ) : (
                         <>
-                          <CreditCard className="w-4 h-4 mr-2" />
-                          Enroll Now - ₹{Math.round(course.price * 1.18).toLocaleString()}
+                          {paymentMethod === 'razorpay' ? <CreditCard className="w-4 h-4 mr-2" /> : <Smartphone className="w-4 h-4 mr-2" />}
+                          Pay via {paymentMethod === 'razorpay' ? 'Razorpay' : 'PhonePe'} - ₹{Math.round((course.price / 100) * 1.18).toLocaleString()}
                         </>
                       )}
                     </Button>

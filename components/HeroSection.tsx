@@ -38,8 +38,8 @@ export default function HeroSection({
       <div className="absolute inset-0 w-full h-full z-0">
         <LightPillar
           topColor={isLight ? "#9333ea" : "#3b0764"} // Vibrant Purple for light mode
-          bottomColor={isLight ? "#fbbf24" : "#f59e0b"} // Soft Amber for light mode
-          middleColor={isLight ? "#f97316" : "#ea580c"} // Bright Orange for light mode
+          bottomColor={isLight ? "#fbbf24" : "#f97316"} // Orange instead of Amber to reduce yellow
+          middleColor={isLight ? "#f97316" : "#db2777"} // Pink instead of Orange for smoother gradient
           intensity={isLight ? 0.6 : 1.0} // Soft intensity
           rotationSpeed={0.8}
           glowAmount={isLight ? 0.005 : 0.007}

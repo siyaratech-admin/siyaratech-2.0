@@ -40,6 +40,7 @@ export default function ProductsSection() {
             textAutoHide: false,
             image: product.image,
             onClick: () => router.push(`/solutions/${product.id}`),
+            className: product.className,
         };
     });
 

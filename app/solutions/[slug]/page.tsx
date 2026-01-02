@@ -10,6 +10,7 @@ import { ModuleGuide } from "@/components/ModuleGuide";
 import Beams from "@/components/Beams";
 import BlurText from "@/components/TextAnimations/BlurText/BlurText";
 import BenefitsSection from "@/components/BenefitsSection";
+import ProductGallery from "@/components/ProductGallery";
 
 // Combine available solutions
 import ThemeAwareBeams from "@/components/ThemeAwareBeams";
@@ -155,32 +156,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                             <p className="text-foreground/50">Experience the interface designed for speed and clarity.</p>
                         </div>
 
-                        <div className="relative rounded-xl border border-border bg-card shadow-2xl overflow-hidden">
-                            {/* Browser Header */}
-                            <div className="h-10 border-b border-border bg-muted flex items-center px-4 space-x-2">
-                                <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                                <div className="ml-4 flex-1 h-6 bg-background rounded-md flex items-center justify-center text-[10px] text-foreground/30 font-mono">
-                                    siyaratech.com/app/{solution.id}
-                                </div>
-                            </div>
-
-                            {/* Carousel Content */}
-                            <div className="p-1 overflow-x-auto flex snap-x snap-mandatory bg-background">
-                                {solution.gallery?.map((img, i) => (
-                                    <div key={i} className="min-w-full snap-center relative aspect-video">
-                                        <Image
-                                            src={img}
-                                            alt={`Gallery screen ${i + 1}`}
-                                            fill
-                                            className="object-cover"
-                                            quality={90}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <ProductGallery gallery={solution.gallery || []} solutionId={solution.id} />
                     </section>
                 )}
 

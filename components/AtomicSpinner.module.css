@@ -1,0 +1,76 @@
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    perspective: 400px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.plane {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.main {
+    animation: rotate 10s infinite linear;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    border-radius: 100%;
+    box-sizing: border-box;
+
+    /* Use currentColor to inherit the dynamic brand color set in JS */
+    border: 2px solid currentColor;
+    box-shadow: 0 0 20px currentColor, inset 0 0 20px currentColor;
+}
+
+.circle::before,
+.circle::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 10%;
+    height: 10%;
+    border-radius: 100%;
+
+    /* Dots also use the current color for unity */
+    background: currentColor;
+    box-shadow: 0 0 10px 2px currentColor;
+}
+
+.circle::before {
+    transform: translateZ(-28px);
+}
+
+.circle::after {
+    transform: translateZ(28px);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}

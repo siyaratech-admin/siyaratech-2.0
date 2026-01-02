@@ -17,34 +17,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Siyaratech Innovations | AI & Digital Transformation",
-    template: "%s | Siyaratech Innovations"
+    default: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
+    template: "%s | SIYARATECH INNOVATIONS"
   },
-  description: "Transform your business with Siyaratech Innovations. We specialize in AI, machine learning, cloud services, and custom software development to drive growth.",
+  description: "Transform your business with SIYARATECH INNOVATIONS. We specialize in AI, machine learning, cloud services, and custom software development to drive growth.",
   keywords: ["AI Consulting", "Digital Transformation", "Software Development", "Cloud Services", "Machine Learning", "Web Development", "Siyaratech"],
-  authors: [{ name: "Siyaratech Innovations" }],
-  creator: "Siyaratech Innovations",
-  publisher: "Siyaratech Innovations",
+  authors: [{ name: "SIYARATECH INNOVATIONS" }],
+  creator: "SIYARATECH INNOVATIONS",
+  publisher: "SIYARATECH INNOVATIONS",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://siyaratechin.com",
-    siteName: "Siyaratech Innovations",
-    title: "Siyaratech Innovations | AI & Digital Transformation",
-    description: "Transform your business with Siyaratech Innovations. We specialize in AI, machine learning, cloud services, and custom software development.",
+    siteName: "SIYARATECH INNOVATIONS",
+    title: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
+    description: "Transform your business with SIYARATECH INNOVATIONS. We specialize in AI, machine learning, cloud services, and custom software development.",
     images: [
       {
         url: "/static_images/og-image.jpg", // Ensure this image exists or use a placeholder
         width: 1200,
         height: 630,
-        alt: "Siyaratech Innovations",
+        alt: "SIYARATECH INNOVATIONS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Siyaratech Innovations | AI & Digital Transformation",
-    description: "Transform your business with Siyaratech Innovations. We specialize in AI, machine learning, cloud services, and custom software development.",
+    title: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
+    description: "Transform your business with SIYARATECH INNOVATIONS. We specialize in AI, machine learning, cloud services, and custom software development.",
     images: ["/static_images/og-image.jpg"],
   },
   icons: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Siyaratech Innovations",
+  "name": "SIYARATECH INNOVATIONS",
   "url": "https://siyaratechin.com",
   "logo": "https://siyaratechin.com/static_images/logo.png",
   "sameAs": [

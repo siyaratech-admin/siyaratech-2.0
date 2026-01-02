@@ -56,6 +56,7 @@ export default function Footer() {
       title: 'Company',
       links: [
         { name: 'About Us', page: 'about' as const },
+        { name: 'Courses', page: 'courses' as const },
         { name: 'Case Studies', page: 'case-studies' as const },
         { name: 'Blog', page: 'blog' as const },
         { name: 'Careers', page: 'careers' as const },
@@ -131,15 +132,19 @@ export default function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-5 h-5 mr-3 text-primary" />
-                  <span>hello@siyaratech.com</span>
+                  <span>support@siyaratechin.com</span>
                 </div>
-                <div className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                {/* <div className="flex items-center text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 mr-3 text-primary" />
                   <span>+1 (555) 123-4567</span>
+                </div> */}
+                <div className="flex items-start text-muted-foreground hover:text-primary transition-colors">
+                  <MapPin className="w-5 h-5 mr-3 text-primary shrink-0 mt-1" />
+                  <span>Prabhat Road, Pune, 411004</span>
                 </div>
-                <div className="flex items-center text-muted-foreground hover:text-primary transition-colors">
-                  <MapPin className="w-5 h-5 mr-3 text-primary" />
-                  <span>123 Innovation Street, Tech City, TC 12345</span>
+                <div className="flex items-start text-muted-foreground hover:text-primary transition-colors">
+                  <MapPin className="w-5 h-5 mr-3 text-primary shrink-0 mt-1" />
+                  <span>Flat No-17, Indraprasatha Park Soc., Nashik Road, Deolali, Nashik, Maharashtra, 422101</span>
                 </div>
               </div>
             </div>
@@ -173,7 +178,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center text-muted-foreground mb-4 md:mb-0">
-              <span>© 2024 SIYARA TECH. Made with</span>
+              <span>© 2026 SIYARATECH INNOVATIONS PVT LTD. Made with</span>
               <Heart className="w-4 h-4 mx-2 text-chart-1 fill-current animate-pulse" />
               <span>for innovation.</span>
             </div>

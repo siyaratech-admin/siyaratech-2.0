@@ -260,59 +260,58 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-primary mt-1 mr-4 group-hover:scale-110 transition-transform duration-200" />
                     <div>
                       <div className="font-medium">Email</div>
-                      <div className="text-muted-foreground hover:text-primary cursor-pointer transition-colors">hello@futuretech.com</div>
-                      <div className="text-muted-foreground hover:text-primary cursor-pointer transition-colors">support@futuretech.com</div>
+                      <div className="text-muted-foreground hover:text-primary cursor-pointer transition-colors">support@siyaratechin.com</div>
                     </div>
                   </div>
-                  <div className="flex items-start group">
-                    <Phone className="w-6 h-6 text-primary mt-1 mr-4 group-hover:scale-110 transition-transform duration-200" />
-                    <div>
-                      <div className="font-medium">Phone</div>
-                      <div className="text-muted-foreground hover:text-primary cursor-pointer transition-colors">+1 (555) 123-4567</div>
-                      <div className="text-muted-foreground hover:text-primary cursor-pointer transition-colors">+1 (555) 765-4321</div>
-                    </div>
-                  </div>
+
                   <div className="flex items-start group">
                     <MapPin className="w-6 h-6 text-primary mt-1 mr-4 group-hover:scale-110 transition-transform duration-200" />
                     <div>
-                      <div className="font-medium">Offices</div>
-                      <div className="text-muted-foreground">San Francisco, CA</div>
-                      <div className="text-muted-foreground">New York, NY</div>
-                      <div className="text-muted-foreground">London, UK</div>
+                      <div>
+                        <div className="font-medium">Headquarters</div>
+                        <div className="text-muted-foreground">Flat No-17, Indraprasatha Park Soc.,</div>
+                        <div className="text-muted-foreground">Nashik Road, Deolali,</div>
+                        <div className="text-muted-foreground">Nashik, Maharashtra, 422101</div>
+                      </div>
+                      <div className="mt-4">
+                        <div className="font-medium">Corporate Office</div>
+                        <div className="text-muted-foreground">Prabhat Road,</div>
+                        <div className="text-muted-foreground">Pune, 411004</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Quick Actions */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Quick Actions</h3>
-                <div className="grid gap-4">
-                  <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Schedule 30-min Consultation
-                  </Button>
-                  <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
-                    <Star className="w-4 h-4 mr-2" />
-                    Request Project Quote
-                  </Button>
-                  <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
-                    <Globe className="w-4 h-4 mr-2" />
-                    Download Service Brochure
-                  </Button>
+                {/* Quick Actions */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Quick Actions</h3>
+                  <div className="grid gap-4">
+                    <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Schedule 30-min Consultation
+                    </Button>
+                    <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
+                      <Star className="w-4 h-4 mr-2" />
+                      Request Project Quote
+                    </Button>
+                    <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
+                      <Globe className="w-4 h-4 mr-2" />
+                      Download Service Brochure
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
-              {/* Response Time */}
-              <Card className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-chart-1/5 border-primary/20 hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                  <span className="font-medium">Quick Response Guaranteed</span>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  We respond to all inquiries within 2 hours during business hours and within 24 hours on weekends.
-                </p>
-              </Card>
+                {/* Response Time */}
+                <Card className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-chart-1/5 border-primary/20 hover:shadow-lg transition-shadow duration-300">
+                  <div className="flex items-center mb-2">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                    <span className="font-medium">Quick Response Guaranteed</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    We respond to all inquiries within 2 hours during business hours and within 24 hours on weekends.
+                  </p>
+                </Card>
+              </div>
             </div>
           </div>
         </div>

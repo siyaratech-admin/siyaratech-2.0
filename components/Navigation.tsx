@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function Navigation({ children }: { children?: React.ReactNode }) {
-  const router = useRouter();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     {
@@ -35,6 +35,10 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
       link: "/industries",
     },
     {
+      name: "Courses",
+      link: "/courses",
+    },
+    {
       name: "Case Studies",
       link: "/case-studies",
     },
@@ -47,15 +51,6 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
       link: "/careers",
     },
   ];
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleNavigation = (path: string) => {
-    setIsMobileMenuOpen(false);
-    router.push(path);
-    // Smooth scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <div className="relative w-full">
@@ -71,7 +66,7 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
             <ThemeToggle />
             <NavbarButton
               variant="primary"
-              onClick={() => handleNavigation('/contact')}
+              href="/contact"
             >
               Contact Us
             </NavbarButton>
@@ -97,19 +92,21 @@ export function Navigation({ children }: { children?: React.ReactNode }) {
             className="backdrop-blur-xl bg-white/90 dark:bg-black/90"
           >
             {navItems.map((item, idx) => (
-              <button
+              <Link
                 key={`mobile-link-${idx}`}
-                onClick={() => handleNavigation(item.link)}
+                href={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="relative text-foreground/90 dark:text-zinc-200 hover:text-black dark:hover:text-white transition-colors duration-200 py-3 px-4 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 w-full text-left font-medium"
               >
                 <span className="block">{item.name}</span>
-              </button>
+              </Link>
             ))}
 
             {/* Mobile CTA Buttons */}
             <div className="flex w-full flex-col gap-3 mt-6 pt-6 border-t border-white/20 dark:border-white/10">
               <NavbarButton
-                onClick={() => handleNavigation('/contact')}
+                href="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full justify-center text-secondary "
               >

@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
 import PageHeader from "@/components/PageHeader";
-import ProductsSection from "@/components/ProductsSection";
+import dynamic from "next/dynamic";
+const ProductsSection = dynamic(() => import("@/components/ProductsSection"), {
+    loading: () => <div className="min-h-[60vh] flex items-center justify-center">Loading Products...</div>,
+    ssr: false // Since it has heavy animations that are client-side only
+});
 
 export default function ProductsPage() {
     return (

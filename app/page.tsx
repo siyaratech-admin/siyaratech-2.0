@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import ProductsSection from "@/components/ProductsSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -16,6 +16,11 @@ import ClienteleSection from "@/components/ClienteleSection";
 
 export default function HomePage() {
   const router = useRouter();
+
+  // Force scroll to top on load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigateTo = (page: string) => {
     const path = page === "home" ? "/" : `/${page}`;

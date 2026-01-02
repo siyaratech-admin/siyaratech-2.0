@@ -111,13 +111,6 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
-  const router = useRouter();
-
-  const handleItemClick = (link: string) => {
-    if (onItemClick) onItemClick();
-    router.push(link);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <motion.div
@@ -128,10 +121,11 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <button
+        <Link
           key={`link-${idx}`}
+          href={item.link}
           onMouseEnter={() => setHovered(idx)}
-          onClick={() => handleItemClick(item.link)}
+          onClick={onItemClick}
           className="relative px-4 py-2 text-foreground hover:text-foreground transition-colors duration-200 font-semibold"
         >
           {hovered === idx && (
@@ -141,7 +135,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             />
           )}
           <span className="relative z-20">{item.name}</span>
-        </button>
+        </Link>
       ))}
     </motion.div>
   );
@@ -258,19 +252,7 @@ export const NavbarLogo = () => {
             <Image src={"/static_images/logo.png"} alt="Siyaratech" width={256} height={128} className="object-cover" />
           </div>
         </div>
-        {/* Glow effect */}
-        {/* <div className="absolute inset-0 bg-brand-gradient rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10"></div> */}
       </div>
-
-      {/* Company Name */}
-      {/* <div className="flex flex-col">
-        <span className="font-bold text-md text-foreground group-hover:text-brand-purple transition-colors duration-300">
-          Siyaratech
-        </span>
-        <span className="font-bold text-md text-foreground group-hover:text-brand-purple transition-colors duration-300">
-          Innovations
-        </span>
-      </div> */}
     </Link>
   );
 };
@@ -303,13 +285,13 @@ export const NavbarButton = ({
 
   if (href) {
     return (
-      <a
+      <Link
         href={href}
         className={cn(baseStyles, variantStyles[variant], className)}
-        {...(props as React.ComponentPropsWithoutRef<"a">)}
+        {...(props as any)}
       >
         {children}
-      </a>
+      </Link>
     );
   }
 

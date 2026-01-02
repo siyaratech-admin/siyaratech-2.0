@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "About Us",
-    description: "Learn about Siyaratech Innovations, our mission, values, and the team driving digital transformation.",
+    description: "Learn about SIYARATECH INNOVATIONS, our mission, values, and the team driving digital transformation.",
 };
 
 export default function AboutLayout({

@@ -282,7 +282,7 @@ export const industries = [
         ],
         cta: "Learn More",
         backgroundImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-        className: "md:col-span-1",
+        className: "md:col-span-2",
     },
 ];
 
@@ -864,7 +864,9 @@ export const innovativeProducts = [
             "/images/IS_Wishlist.png"
         ],
         tags: ["Social Commerce", "Influencers", "E-commerce"],
+        className: "md:col-span-1 lg:col-span-2 lg:row-span-2",
     },
+
     {
         id: "techdivehub",
         title: "TechDiveHub",
@@ -907,6 +909,54 @@ export const innovativeProducts = [
             "/images/coursevidhya_2.png"
         ],
         tags: ["EdTech", "Learning", "Community"],
+        link: "https://techdivehub.siyaratechin.com",
+        className: "lg:col-span-2",
+
+    },
+    {
+        id: "construction-erp",
+        title: "BuildSmart ERP",
+        subtitle: "Construction Management",
+        description: "End-to-end ERP for construction: Project tracking, inventory, and labor management.",
+        longDescription: "BuildSmart ERP is built for the unique demands of the construction industry. It seamlessly integrates project management, inventory control, and billing. Track material consumption against BOQ, manage sub-contractor billings, and ensure your sites are profitable. From ground-breaking to handover, we cover every stage.",
+        content: (
+            <div className="space-y-6">
+                <p>
+                    Construction projects are notorious for cost overruns and delays. BuildSmart ERP is the antidote. Tailored specifically for the AEC (Architecture, Engineering, and Construction) industry, it connects your site office to your head office in real-time. It starts with BOQ (Bill of Quantities) management, allowing you to create precise estimates. As the project executes, actual consumption of cement, steel, and sand is tracked against these estimates, alerting you to material wastage or theft immediately.
+                </p>
+                <p>
+                    Sub-contractor management is robust. You can issue work orders with specific rates and terms. The system handles RA (Running Account) bills, automatically deducting advances, retention money, and TDS. This ensures that you never overpay and your financial liabilities are always clear. We also handle the complex compliance requirements of construction labor (BOCW cess, PF, etc.).
+                </p>
+                <p>
+                    Equipment management is integrated. Track the location, fuel consumption, and running hours of your yellow machinery. Schedule maintenance to prevent breakdowns that halt site progress. The system calculates the internal hire charges, giving you the true cost of using your own equipment on a project.
+                </p>
+                <p>
+                    Financials are project-centric. Unlike generic accounting software, BuildSmart gives you a P&L for every single project. You can see which sites are profitable and which are bleeding cash. Cash flow forecasting helps you manage liquidity, ensuring you can pay suppliers and workers on time to keep the work moving.
+                </p>
+                <p>
+                    Mobile apps for site engineers allow them to upload daily progress reports (DPRs) with photos from the site. This gives stakeholders visual proof of progress. Siyaratech BuildSmart ERP builds the digital infrastructure that allows you to build the physical world efficiently.
+                </p>
+            </div>
+        ),
+        icon: CheckSquare,
+        gradient: "from-yellow-500 to-amber-600",
+        features: ["React", "NodeJS", "PostgreSQL", "BOQ Management", "Billing Engine"],
+        benefits: [
+            { title: "Prevent Material Theft", description: "Strict inventory controls and alerts prevent pilferage at sites." },
+            { title: "Accurate Costing", description: "Track every bag of cement and hour of labor against specific project codes." },
+            { title: "Sub-contractor Management", description: "Handle complex work orders, advances, and retentions effortlessly." }
+        ],
+        faq: [
+            { question: "Can it handle multiple sites?", answer: "Yes, it supports unlimited sites with consolidated HQ reporting." }
+        ],
+        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+        gallery: [
+            "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
+            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+            "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?w=800&q=80"
+        ],
+        className: "md:col-span-1 lg:col-span-3 lg:row-span-3",
+        tags: ["Construction", "ERP", "Management"],
     },
     {
         id: "shopsphere",
@@ -950,6 +1000,7 @@ export const innovativeProducts = [
             "/images/shopshere2.png"
         ],
         tags: ["E-commerce", "Retail", "Platform"],
+        className: "lg:col-span-1",
     },
     {
         id: "byteblog",
@@ -1037,6 +1088,7 @@ export const innovativeProducts = [
         ],
         tags: ["Productivity", "Task Mgmt", "Collaboration"],
     },
+
     {
         id: "ecommerce-dashboard",
         title: "E-commerce Dashboard",
@@ -1166,48 +1218,5 @@ export const innovativeProducts = [
         ],
         tags: ["Design", "Collaboration", "Creative"],
     },
-    {
-        id: "construction-erp",
-        title: "BuildSmart ERP",
-        subtitle: "Construction Management",
-        description: "End-to-end ERP for construction: Project tracking, inventory, and labor management.",
-        longDescription: "BuildSmart ERP is built for the unique demands of the construction industry. It seamlessly integrates project management, inventory control, and billing. Track material consumption against BOQ, manage sub-contractor billings, and ensure your sites are profitable. From ground-breaking to handover, we cover every stage.",
-        content: (
-            <div className="space-y-6">
-                <p>
-                    Construction projects are notorious for cost overruns and delays. BuildSmart ERP is the antidote. Tailored specifically for the AEC (Architecture, Engineering, and Construction) industry, it connects your site office to your head office in real-time. It starts with BOQ (Bill of Quantities) management, allowing you to create precise estimates. As the project executes, actual consumption of cement, steel, and sand is tracked against these estimates, alerting you to material wastage or theft immediately.
-                </p>
-                <p>
-                    Sub-contractor management is robust. You can issue work orders with specific rates and terms. The system handles RA (Running Account) bills, automatically deducting advances, retention money, and TDS. This ensures that you never overpay and your financial liabilities are always clear. We also handle the complex compliance requirements of construction labor (BOCW cess, PF, etc.).
-                </p>
-                <p>
-                    Equipment management is integrated. Track the location, fuel consumption, and running hours of your yellow machinery. Schedule maintenance to prevent breakdowns that halt site progress. The system calculates the internal hire charges, giving you the true cost of using your own equipment on a project.
-                </p>
-                <p>
-                    Financials are project-centric. Unlike generic accounting software, BuildSmart gives you a P&L for every single project. You can see which sites are profitable and which are bleeding cash. Cash flow forecasting helps you manage liquidity, ensuring you can pay suppliers and workers on time to keep the work moving.
-                </p>
-                <p>
-                    Mobile apps for site engineers allow them to upload daily progress reports (DPRs) with photos from the site. This gives stakeholders visual proof of progress. Siyaratech BuildSmart ERP builds the digital infrastructure that allows you to build the physical world efficiently.
-                </p>
-            </div>
-        ),
-        icon: CheckSquare,
-        gradient: "from-yellow-500 to-amber-600",
-        features: ["React", "NodeJS", "PostgreSQL", "BOQ Management", "Billing Engine"],
-        benefits: [
-            { title: "Prevent Material Theft", description: "Strict inventory controls and alerts prevent pilferage at sites." },
-            { title: "Accurate Costing", description: "Track every bag of cement and hour of labor against specific project codes." },
-            { title: "Sub-contractor Management", description: "Handle complex work orders, advances, and retentions effortlessly." }
-        ],
-        faq: [
-            { question: "Can it handle multiple sites?", answer: "Yes, it supports unlimited sites with consolidated HQ reporting." }
-        ],
-        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-        gallery: [
-            "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-            "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?w=800&q=80"
-        ],
-        tags: ["Construction", "ERP", "Management"],
-    },
+
 ];
