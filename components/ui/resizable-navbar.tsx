@@ -9,7 +9,6 @@ import {
 } from "motion/react";
 
 import React, { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -288,6 +287,7 @@ export const NavbarButton = ({
       <Link
         href={href}
         className={cn(baseStyles, variantStyles[variant], className)}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         {...(props as any)}
       >
         {children}

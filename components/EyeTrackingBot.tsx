@@ -6,11 +6,10 @@ const lerp = (start: number, end: number, factor: number) => {
   return start + (end - start) * factor;
 };
 
-type Expression = 'neutral' | 'happy' | 'excited' | 'surprised' | 'angry' | 'love' | 'dead' | 'wink';
+type Expression = 'neutral' | 'happy' | 'excited' | 'surprised' | 'angry' | 'love' | 'dead' | 'wink' | 'sad';
 
 export default function EyeTrackingBot() {
   const [expression, setExpression] = useState<Expression>('neutral');
-  const [isWaving, setIsWaving] = useState(false);
 
   // Refs for direct DOM manipulation to avoid React re-renders
   const eyesGroupRef = useRef<SVGGElement>(null);
@@ -23,13 +22,8 @@ export default function EyeTrackingBot() {
     const triggerRandomAction = () => {
       const roll = Math.random();
 
-      // 20% chance to Wave
+      // 20% chance to Wave (removed) -> 20% to Happy
       if (roll < 0.2) {
-        setIsWaving(true);
-        setTimeout(() => setIsWaving(false), 2500);
-      }
-      // 20% chance to get Happy
-      else if (roll < 0.4) {
         setExpression('happy');
         setTimeout(() => setExpression('neutral'), 2000);
       }

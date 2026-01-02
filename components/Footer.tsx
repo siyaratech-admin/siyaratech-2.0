@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 import {
   Mail,
-  Phone,
+  // Phone,
   MapPin,
   Linkedin,
   Twitter,

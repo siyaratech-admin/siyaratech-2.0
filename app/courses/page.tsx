@@ -6,11 +6,12 @@ import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
 import axios from "axios"
-import Cookies from "js-cookie"
+// import Cookies from "js-cookie"
+import Image from "next/image"
 
 // Placeholder for missing components
-const BrandGlassCard = ({ children, className, variant, intensity }: { children: React.ReactNode; className?: string; variant?: unknown; intensity?: unknown }) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
-const BlurFade = ({ children, inView, duration, delay }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
+const BrandGlassCard = ({ children, className }: { children: React.ReactNode; className?: string; variant?: unknown; intensity?: unknown }) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
+const BlurFade = ({ children }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
 
 interface Course {
     id: string
@@ -27,9 +28,10 @@ interface Course {
 }
 
 // Helper to determine region (placeholder logic)
-const getRegion = () => {
-    return Cookies.get("region") || "IN"
-}
+// Helper to determine region (placeholder logic)
+// const getRegion = () => {
+//     return Cookies.get("region") || "IN"
+// }
 
 const CourseCard = ({ course, index }: { course: Course; index: number }) => {
     const router = useRouter()
@@ -42,10 +44,12 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
                 {/* Image Container with Overlay */}
                 <div className="relative h-48 overflow-hidden rounded-t-xl mb-4">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                    <img
+                    <Image
                         src={course.thumbnail} // Use direct URL from API
                         alt={course.title}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        fill
+                        className="object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        unoptimized
                     />
                     <Badge variant="secondary" className="absolute top-3 right-3 z-20 backdrop-blur-md bg-black/30 text-white border-white/20">
                         {course.instructor}
@@ -115,13 +119,12 @@ export default function Courses() {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const region = getRegion()
                 // Use env var or fallback to the known URL
                 const baseUrl = process.env.NEXT_PUBLIC_COURSE_PLATFORM_URL || "https://techdivehub.siyaratechin.com"
 
                 // Fetch user purchased courses (Mocking userId for now as we don't have auth context fully ported)
                 // In a real scenario, you'd get userId from auth context
-                const userId = "guest"
+                // const userId = "guest"
 
                 const response = await axios.get(`${baseUrl}/api/courses`)
 

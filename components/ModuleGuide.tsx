@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import mermaid from "mermaid";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Maximize2, Move, ZoomIn, ZoomOut, X } from "lucide-react";
+import { Maximize2, X } from "lucide-react";
 
 // --- FLOWCHART DEFINITIONS (Simplified for brevity, can be expanded) ---
 const FLOWCHARTS: Record<string, string> = {
@@ -82,21 +82,21 @@ export function ModuleGuide({ solutionId }: ModuleGuideProps) {
     }, []);
 
     useEffect(() => {
+        const renderDiagram = async () => {
+            const chart = FLOWCHARTS[solutionId] || FLOWCHARTS["default"];
+            try {
+                const { svg } = await mermaid.render(`mermaid-${solutionId}`, chart);
+                setSvgContent(svg);
+            } catch (e) {
+                console.error("Mermaid render error:", e);
+                setSvgContent("Error rendering flowchart.");
+            }
+        };
+
         if (isOpen) {
             renderDiagram();
         }
     }, [isOpen, solutionId]);
-
-    const renderDiagram = async () => {
-        const chart = FLOWCHARTS[solutionId] || FLOWCHARTS["default"];
-        try {
-            const { svg } = await mermaid.render(`mermaid-${solutionId}`, chart);
-            setSvgContent(svg);
-        } catch (e) {
-            console.error("Mermaid render error:", e);
-            setSvgContent("Error rendering flowchart.");
-        }
-    };
 
     // Click handler to detect node clicks (using event delegation on SVG)
     const handleDiagramClick = (e: React.MouseEvent<HTMLDivElement>) => {

@@ -13,7 +13,7 @@ import axios from "axios"
 
 // Placeholder for missing components
 const BrandGlassCard = ({ children, className }: { children: React.ReactNode; className?: string; variant?: unknown; intensity?: unknown }) => <div className={`bg-gray-800/50 p-4 rounded-xl ${className}`}>{children}</div>
-const BlurFade = ({ children, inView }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
+const BlurFade = ({ children }: { children: React.ReactNode; inView?: boolean; duration?: number; delay?: number }) => <div>{children}</div>
 
 interface Course {
   id: string
@@ -426,8 +426,8 @@ export default function Checkout() {
                           <div
                             onClick={() => setPaymentMethod('razorpay')}
                             className={`cursor-pointer p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${paymentMethod === 'razorpay'
-                                ? 'bg-[#833AB4]/20 border-[#833AB4] text-white'
-                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                              ? 'bg-[#833AB4]/20 border-[#833AB4] text-white'
+                              : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
                               }`}
                           >
                             <CreditCard className="w-6 h-6" />
@@ -436,8 +436,8 @@ export default function Checkout() {
                           <div
                             onClick={() => setPaymentMethod('phonepe')}
                             className={`cursor-pointer p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${paymentMethod === 'phonepe'
-                                ? 'bg-[#5f259f]/20 border-[#5f259f] text-white'
-                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                              ? 'bg-[#5f259f]/20 border-[#5f259f] text-white'
+                              : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
                               }`}
                           >
                             <Smartphone className="w-6 h-6" />

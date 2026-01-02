@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Cpu, Building2, Factory, Users, ShoppingCart } from "lucide-react";
 
@@ -34,7 +34,6 @@ const clients = [
 
 const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
     const divRef = useRef<HTMLDivElement>(null);
-    const [isFocused, setIsFocused] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
 
@@ -48,12 +47,10 @@ const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode
     };
 
     const handleFocus = () => {
-        setIsFocused(true);
         setOpacity(1);
     };
 
     const handleBlur = () => {
-        setIsFocused(false);
         setOpacity(0);
     };
 

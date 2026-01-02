@@ -23,12 +23,12 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
         return () => clearTimeout(timer);
     }, []);
 
-    const handleVideoEnd = () => {
-        // Delay slightly before triggering exit to ensure video holds last frame
-        setTimeout(() => {
-            setIsVisible(false);
-        }, 200);
-    };
+    // const handleVideoEnd = () => {
+    //     // Delay slightly before triggering exit to ensure video holds last frame
+    //     setTimeout(() => {
+    //         setIsVisible(false);
+    //     }, 200);
+    // };
 
     if (!isVisible) return null;
 

@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Loader2, Minimize2, Maximize2, Bot } from 'lucide-react';
+import { MessageSquare, X, Send, Loader2, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area';
+// import { Card } from '@/components/ui/card';
+// import { ScrollArea } from '@/components/ui/scroll-area';
 import { motion, AnimatePresence } from 'framer-motion';
 import EyeTrackingBot from './EyeTrackingBot';
 
