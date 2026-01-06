@@ -150,7 +150,7 @@ export default function Footer() {
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link
-                        href={link.page === 'home' ? '/' : `/${link.page}`}
+                        href={(link.page as string) === 'home' ? '/' : `/${link.page}`}
                         className="text-muted-foreground hover:text-primary transition-colors duration-200"
                       >
                         {link.name}
