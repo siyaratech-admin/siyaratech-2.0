@@ -268,8 +268,7 @@ export default function ContactPage() {
                     <div>
                       <div>
                         <div className="font-medium">Headquarters</div>
-                        <div className="text-muted-foreground">Flat No-17, Indraprasatha Park Soc.,</div>
-                        <div className="text-muted-foreground">Nashik Road, Deolali,</div>
+                        <div className="text-muted-foreground">Nashik Road,</div>
                         <div className="text-muted-foreground">Nashik, Maharashtra, 422101</div>
                       </div>
                       <div className="mt-4">
@@ -282,7 +281,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Quick Actions */}
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Quick Actions</h3>
                   <div className="grid gap-4">
                     <Button variant="outline" className="justify-start hover:scale-105 transition-transform duration-200">
@@ -298,7 +297,7 @@ export default function ContactPage() {
                       Download Service Brochure
                     </Button>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Response Time */}
                 <Card className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-chart-1/5 border-primary/20 hover:shadow-lg transition-shadow duration-300">

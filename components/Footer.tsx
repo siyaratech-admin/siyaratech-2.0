@@ -13,8 +13,10 @@ import {
   Github,
   Facebook,
   ArrowRight,
-  Heart
+  Heart,
+  Instagram
 } from 'lucide-react';
+import { icon } from 'mermaid/dist/rendering-util/rendering-elements/shapes/icon.js';
 const logoText = '/static_images/siyaratech_logo_name_below_tagline.png';
 const logoIcon = '/static_images/siyaratech_logo_transparent.png';
 
@@ -66,10 +68,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', name: 'LinkedIn' },
-    { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Github, href: '#', name: 'GitHub' },
-    { icon: Facebook, href: '#', name: 'Facebook' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/siyaratech-innovations/', name: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/p/Siyaratech-Innovations-LLP-61571050325494/', name: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/siyaratech_innovations/', name: 'Instagram' }
   ];
 
   return (
@@ -144,7 +145,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-start text-muted-foreground hover:text-primary transition-colors">
                   <MapPin className="w-5 h-5 mr-3 text-primary shrink-0 mt-1" />
-                  <span>Flat No-17, Indraprasatha Park Soc., Nashik Road, Deolali, Nashik, Maharashtra, 422101</span>
+                  <span>Nashik Road, Nashik, Maharashtra, 422101</span>
                 </div>
               </div>
             </div>

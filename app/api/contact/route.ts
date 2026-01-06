@@ -64,6 +64,8 @@ export async function POST(request: NextRequest) {
     console.log('Creating CRM Lead for:', formData.email);
 
     const leadPayload = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
       lead_name: `${formData.firstName} ${formData.lastName}`,
       email_id: formData.email,
       phone: formData.phone,
@@ -84,13 +86,17 @@ export async function POST(request: NextRequest) {
     if (!leadResponse.ok) {
       const errorText = await leadResponse.text();
       console.error('CRM Lead creation failed:', errorText);
+      console.log('Returning 417 with validation details'); // Added log for debugging
+
       // Return partial success since contact was created
+      // Fixing the syntax error here by returning a proper JSON response
       return NextResponse.json({
         success: true,
         contact: contactResult,
         lead: null,
-        warning: `Contact created but CRM Lead creation failed: ${leadResponse.status}`
-      });
+        warning: `Contact created but CRM Lead creation failed: ${leadResponse.status}`,
+        details: errorText // Include the actual validation message
+      }, { status: 417 });
     }
 
     const leadResult = await leadResponse.json();
