@@ -70,7 +70,7 @@ export default function Footer() {
   const socialLinks = [
     { icon: Linkedin, href: 'https://www.linkedin.com/company/siyaratech-innovations/', name: 'LinkedIn' },
     { icon: Facebook, href: 'https://www.facebook.com/p/Siyaratech-Innovations-LLP-61571050325494/', name: 'Facebook' },
-    { icon: Instagram, href: 'https://www.instagram.com/siyaratech_innovations/', name: 'Instagram' }
+    { icon: Instagram, href: 'https://www.instagram.com/siyaratech.innovations/', name: 'Instagram' }
   ];
 
   return (
