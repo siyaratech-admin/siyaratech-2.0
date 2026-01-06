@@ -74,14 +74,15 @@ export default function HeroSection({
         )}
 
         {/* Title */}
-        <div className="mb-8 w-full max-w-full px-2 flex md:justify-center overflow-hidden">
+        <h1 className="sr-only">Run Your Business on One Intelligent Platform</h1>
+        <div className="mb-8 w-full max-w-full px-2 flex md:justify-center overflow-hidden" aria-hidden="true">
           <BlurText
             text="Run Your Business on One Intelligent Platform"
             delay={50}
             animateBy="words"
             direction="top"
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] !text-center break-words max-w-[90vw] mx-auto flex-wrap justify-center"
-            as="h1"
+            as="p"
           />
         </div>
 

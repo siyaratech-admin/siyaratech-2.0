@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 import {
@@ -21,15 +21,7 @@ const logoText = '/static_images/siyaratech_logo_name_below_tagline.png';
 const logoIcon = '/static_images/siyaratech_logo_transparent.png';
 
 export default function Footer() {
-  const router = useRouter();
 
-  // Function to navigate and scroll to top
-  const navigateTo = (page: string) => {
-    const path = page === 'home' ? '/' : `/${page}`;
-    router.push(path);
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const footerSections = [
     {
@@ -157,12 +149,12 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <button
-                        onClick={() => navigateTo(link.page)}
+                      <Link
+                        href={link.page === 'home' ? '/' : `/${link.page}`}
                         className="text-muted-foreground hover:text-primary transition-colors duration-200"
                       >
                         {link.name}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>
