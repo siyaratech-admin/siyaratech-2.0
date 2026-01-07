@@ -4,8 +4,13 @@ import { Button } from './ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import BlurText from '@/components/TextAnimations/BlurText/BlurText';
 import { motion } from 'framer-motion';
-import LightPillar from './LightPillar';
+import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
+
+const LightPillar = dynamic(() => import('./LightPillar'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-background/5" />
+});
 
 interface HeroSectionProps {
   title: string;

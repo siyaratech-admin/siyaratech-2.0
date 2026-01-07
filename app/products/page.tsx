@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import dynamic from "next/dynamic";
 const ProductsSection = dynamic(() => import("@/components/ProductsSection"), {

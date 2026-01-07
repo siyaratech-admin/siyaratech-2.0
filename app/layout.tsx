@@ -74,18 +74,25 @@ import { AnimatedBackgroundBlobs } from "@/components/ui/animated-background-blo
 
 // ... imports
 
+import LockScreenLoader from "@/components/LockScreenLoader";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-0 m-0`}>
         <Providers>
+          <LockScreenLoader checkSession={true} />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
           <AnimatedBackgroundBlobs />
-          {children}
-          <Footer />
+          <div className="relative flex flex-col min-h-screen">
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
           <ChatWidget />
         </Providers>
       </body>

@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 export default function LockScreenLoader({ checkSession = false }: { checkSession?: boolean }) {
     const [isVisible, setIsVisible] = useState(true);
+    const [isExiting, setIsExiting] = useState(false);
 
     React.useEffect(() => {
         if (checkSession) {
             const hasVisited = sessionStorage.getItem("siyaratech_intro_shown");
             if (hasVisited) {
+                // If already visited, don't show at all (or exit immediately)
                 setIsVisible(false);
             } else {
                 sessionStorage.setItem("siyaratech_intro_shown", "true");
@@ -15,43 +16,24 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
         }
     }, [checkSession]);
 
-    // Auto-close since video is disabled
+    // Auto-close immediately since video is disabled
     React.useEffect(() => {
+        // Start exit animation immediately on mount
         const timer = setTimeout(() => {
-            setIsVisible(false);
-        }, 500);
+            setIsExiting(true);
+            // Remove from DOM after transition
+            setTimeout(() => setIsVisible(false), 800);
+        }, 100);
         return () => clearTimeout(timer);
     }, []);
-
-    // const handleVideoEnd = () => {
-    //     // Delay slightly before triggering exit to ensure video holds last frame
-    //     setTimeout(() => {
-    //         setIsVisible(false);
-    //     }, 200);
-    // };
 
     if (!isVisible) return null;
 
     return (
-        <AnimatePresence>
-            <motion.div
-                key="loader"
-                initial={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="fixed inset-0 z-[100] w-full h-[100dvh] flex items-center justify-center bg-black overflow-hidden"
-            >
-                {/* Video commented out as requested */}
-                {/* <video
-                    src="/Logo_Animation.mp4"
-                    autoPlay
-                    muted
-                    playsInline
-                    className="w-full h-full object-contain md:object-cover"
-                    onEnded={handleVideoEnd}
-                /> */}
-                <div className="text-white">Loading...</div>
-            </motion.div>
-        </AnimatePresence>
+        <div
+            className={`fixed inset-0 z-[9999] w-full h-[100dvh] flex items-center justify-center bg-black overflow-hidden transition-opacity duration-1000 ease-in-out ${isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        >
+            <div className="text-white font-medium tracking-widest text-lg animate-pulse">SIYARATECH</div>
+        </div>
     );
 }

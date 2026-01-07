@@ -711,6 +711,7 @@ const MagicBento: React.FC<BentoProps> = ({
                         src={card.image}
                         alt={card.title || ''}
                         fill
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover opacity-40 transition-transform duration-700 ease-out group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />

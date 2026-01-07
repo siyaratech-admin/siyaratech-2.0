@@ -66,8 +66,8 @@ export default function InnovatingSection() {
 
                                     {/* Ring 3 - Inner, fast chaotic spin */}
                                     <div className="absolute w-40 h-40 rounded-full border border-white/5 border-l-brand-orange/80 border-r-transparent animate-[spin_8s_linear_infinite_reverse]">
-                                        {/* Dot at Top-Left (Start of Left Arc) - 135 deg */}
-                                        <div className="absolute top-[14.65%] left-[14.65%] w-1.5 h-1.5 bg-brand-orange rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)] -translate-y-1/2 -translate-x-1/2" />
+                                        {/* Dot at Bottom-Left (End of Left Arc) - 225 deg */}
+                                        <div className="absolute bottom-[14.65%] left-[14.65%] w-1.5 h-1.5 bg-brand-orange rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)] translate-y-1/2 -translate-x-1/2" />
                                     </div>
 
                                     {/* Core - Stable but breathing */}

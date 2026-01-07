@@ -10,9 +10,6 @@ import {
   MapPin,
   ArrowRight,
   CheckCircle,
-  Star,
-  Globe,
-  Calendar,
   Loader2
 } from 'lucide-react';
 

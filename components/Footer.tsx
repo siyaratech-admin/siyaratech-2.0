@@ -9,14 +9,11 @@ import {
   // Phone,
   MapPin,
   Linkedin,
-  Twitter,
-  Github,
   Facebook,
   ArrowRight,
   Heart,
   Instagram
 } from 'lucide-react';
-import { icon } from 'mermaid/dist/rendering-util/rendering-elements/shapes/icon.js';
 const logoText = '/static_images/siyaratech_logo_name_below_tagline.png';
 const logoIcon = '/static_images/siyaratech_logo_transparent.png';
 

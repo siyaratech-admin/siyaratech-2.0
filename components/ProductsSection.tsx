@@ -23,6 +23,7 @@ export default function ProductsSection() {
                 src={solution.image || ""}
                 alt={`${solution.title} background`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
         ),
         Icon: solution.icon,
