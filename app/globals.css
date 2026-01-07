@@ -146,6 +146,15 @@
   --color-brand-purple: var(--brand-purple);
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
 }
 
 @layer base {
@@ -340,7 +349,6 @@ html {
 
 }
 
-
 .word {
 
   display: inline-block;
@@ -377,4 +385,13 @@ html {
   animation: marquee-vertical var(--duration) linear infinite;
   will-change: transform;
   transform: translate3d(0, 0, 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

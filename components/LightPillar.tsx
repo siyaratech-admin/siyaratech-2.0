@@ -91,9 +91,27 @@ const LightPillar: React.FC<LightPillarProps> = ({
     }
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(1); // Force 1x pixel ratio for performance
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          if (rafRef.current) {
+            cancelAnimationFrame(rafRef.current);
+            rafRef.current = null;
+          }
+        } else {
+          if (!rafRef.current) {
+            lastTime = performance.now();
+            animate(lastTime);
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
 
     // Convert hex colors to RGB
     const parseColor = (hex: string): THREE.Vector3 => {
@@ -154,7 +172,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
         float amplitude = 1.0;
         vec3 deformed = pos;
         
-        for(float i = 0.0; i < 4.0; i++) {
+        for(float i = 0.0; i < 3.0; i++) { // Reduced iterations from 4 to 3
           deformed.xz *= rot(0.4);
           float phase = timeOffset * i * 2.0;
           vec3 oscillation = cos(deformed.zxy * frequency - phase);
@@ -197,7 +215,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
         vec3 color = vec3(0.0);
         
-        for(float i = 0.0; i < 100.0; i++) {
+        for(float i = 0.0; i < 60.0; i++) { // Reduced raymarching steps from 100 to 60
           vec3 pos = origin + direction * depth;
           pos.xz *= rotX;
 
