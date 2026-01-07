@@ -8,28 +8,28 @@ const founders = [
         name: "Rohit Sonawale",
         role: "Founder and CEO",
         bio: "A seasoned technology visionary with 15+ years in IT product development and cloud solutions. AI, AWS Certified and PMP-certified leader drives innovative, scalable tech solutions that empower global business growth.",
-        image: "/static_images/team/rohit.jpg", // Placeholder path
+        image: "/static_images/team/rohit.jpeg",
     },
     {
         id: "02",
         name: "Parth Suryawanshi",
         role: "Co-Founder",
         bio: "A seasoned civil engineer with 15+ years of experience in real estate, textile, and contracting industries. Known for his expertise in system design and implementation, Parth combines technical prowess with a strategic mindset, delivering innovative solutions and driving project success with precision and efficiency.",
-        image: "/static_images/team/parth.jpg", // Placeholder path
+        image: "/static_images/team/parth.jpg",
     },
     {
         id: "03",
         name: "Amit Pitale",
         role: "Co-Founder",
         bio: "A tech leader with 21+ years of experience in IT product development, enterprise applications, and cloud transformation, specializing in ERP implementations and large-scale global program delivery.",
-        image: "/static_images/team/amit.jpg", // Placeholder path
+        image: "/static_images/team/amit.jpeg",
     },
     {
         id: "04",
         name: "Ritesh Bora",
         role: "Co-Founder\nDubai Operations",
         bio: "Seasoned ERP specialist with strong finance domain and vibrant experience across multiple verticals of ERP implementations.",
-        image: "/static_images/team/ritesh.jpg", // Placeholder path
+        image: "/static_images/team/ritesh.png",
     },
 ];
 
@@ -67,16 +67,11 @@ export default function FoundersSection() {
                         >
                             {/* Image Container */}
                             <div className="relative aspect-[4/5] mb-8 overflow-hidden bg-muted rounded-sm">
-                                {/* Placeholder for image */}
-                                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground bg-accent/50">
-                                    <span className="text-xs uppercase tracking-widest">Image Placeholder</span>
-                                </div>
-                                {/* Actual Image Tag (commented out until images are available) */}
-                                {/* <img 
-                  src={founder.image} 
-                  alt={founder.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                /> */}
+                                <img
+                                    src={founder.image}
+                                    alt={founder.name}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
 
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />

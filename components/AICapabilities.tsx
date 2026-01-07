@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CpuArchitecture } from '@/components/ui/cpu-architecture';
+import { OrbitingCircles } from '@/components/ui/orbiting-circles';
 import { Bot, LineChart, FileText, MessageSquare, AlertTriangle, Workflow } from 'lucide-react';
 
 export default function AICapabilities() {
@@ -74,13 +74,42 @@ export default function AICapabilities() {
 
                     <div className="relative">
                         {/* CPU Architecture Visualization reused here or keep specific visual */}
-                        <div className="p-8 rounded-3xl border border-border/50 bg-black/50 backdrop-blur-sm relative overflow-hidden shadow-2xl">
-                            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:50px_50px]" />
-                            <div className="relative z-10 flex flex-col items-center">
-                                <h3 className="text-xl font-bold mb-8 text-center text-white/80">Neural Core Architecture</h3>
-                                <div className="w-full max-w-lg">
-                                    <CpuArchitecture text="AI AGENT" />
+                        <div className="p-0 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center min-h-[500px]">
+                            {/* Reusing OrbitingCircles components directly here since it's cleaner than duplicating the whole block multiple times
+                                Ideally, we should componentize this "SiyaratechOrbit", but for now copying the optimized version.
+                            */}
+                            <div className="relative flex h-[500px] w-full max-w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg bg-background/0">
+                                {/* Central AI Node */}
+                                <div className="z-10 flex flex-col items-center justify-center">
+                                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand-purple to-indigo-600 shadow-[0_0_40px_-10px_rgba(147,51,234,0.5)] ring-4 ring-white/20 backdrop-blur-xl animate-pulse">
+                                        <Bot className="h-10 w-10 text-white" />
+                                    </div>
+                                    <div className="mt-3 rounded-full border border-border/50 bg-background/50 px-3 py-1 backdrop-blur-md shadow-sm">
+                                        <span className="text-[10px] font-bold tracking-widest text-foreground uppercase">Agent Core</span>
+                                    </div>
                                 </div>
+
+                                {/* Inner Ring */}
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={0} radius={100}>
+                                    <FileText className="h-5 w-5 text-blue-500" />
+                                </OrbitingCircles>
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={12} radius={100}>
+                                    <MessageSquare className="h-5 w-5 text-emerald-500" />
+                                </OrbitingCircles>
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={24} radius={100}>
+                                    <AlertTriangle className="h-5 w-5 text-amber-500" />
+                                </OrbitingCircles>
+
+                                {/* Outer Ring */}
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} reverse>
+                                    <Workflow className="h-6 w-6 text-purple-500" />
+                                </OrbitingCircles>
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} delay={17} reverse>
+                                    <LineChart className="h-6 w-6 text-pink-500" />
+                                </OrbitingCircles>
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} delay={34} reverse>
+                                    <Bot className="h-6 w-6 text-cyan-500" />
+                                </OrbitingCircles>
                             </div>
                         </div>
                     </div>

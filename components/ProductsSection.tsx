@@ -1,13 +1,28 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { } from "lucide-react";
-import { CpuArchitecture } from "./ui/cpu-architecture";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
 import { useRouter } from "next/navigation";
 import { erpSolutions, innovativeProducts } from "@/lib/data";
 import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
+import { Brain, Sparkles, Code, Database, Globe, Cpu, Users, Kanban, Lightbulb, Activity, Shield, BarChart } from "lucide-react";
 import Image from "next/image";
+
+const Icons = {
+    brain: Brain,
+    sparkles: Sparkles,
+    code: Code,
+    data: Database,
+    globe: Globe,
+    cpu: Cpu,
+    users: Users,
+    kanban: Kanban,
+    lightbulb: Lightbulb,
+    activity: Activity,
+    shield: Shield,
+    barChart: BarChart,
+};
 
 export default function ProductsSection() {
     const router = useRouter();
@@ -75,13 +90,68 @@ export default function ProductsSection() {
                     </motion.div>
                 </div>
 
-                {/* CPU Architecture Visualization */}
-                <div className="mb-24 p-8 rounded-3xl relative overflow-hidden">
+                {/* Orbiting Circles Visualization */}
+                <div className="mb-24 p-8 rounded-3xl relative overflow-hidden flex flex-col items-center">
                     <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:50px_50px]" />
-                    <div className="relative z-10 flex flex-col items-center">
+                    <div className="relative z-10 flex flex-col items-center w-full">
                         <h3 className="text-2xl font-bold mb-8 text-center">The Core of Our Intelligence</h3>
-                        <div className="w-full max-w-5xl">
-                            <CpuArchitecture text="AI" />
+
+                        <div className="relative flex h-[500px] w-full max-w-[800px] flex-col items-center justify-center overflow-hidden rounded-lg bg-background/0">
+                            {/* Central AI Node */}
+                            <div className="z-10 flex flex-col items-center justify-center">
+                                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-brand-purple to-indigo-600 shadow-[0_0_50px_-10px_rgba(147,51,234,0.5)] ring-4 ring-white/20 backdrop-blur-xl animate-pulse">
+                                    <Icons.brain className="h-12 w-12 text-white" />
+                                </div>
+                                <div className="mt-3 rounded-full border border-border/50 bg-background/50 px-3 py-1 backdrop-blur-md shadow-sm">
+                                    <span className="text-xs font-bold tracking-widest text-foreground uppercase">Siyaratech AI</span>
+                                </div>
+                            </div>
+
+                            {/* Inner Ring: Core Modules */}
+                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={0} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.data className="h-6 w-6 text-brand-orange" />
+                                    <span className="text-[10px] font-bold text-foreground/90 text-nowrap">ERP</span>
+                                </div>
+                            </OrbitingCircles>
+                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={11.5} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.users className="h-6 w-6 text-emerald-500" />
+                                    <span className="text-[10px] font-bold text-foreground/90 text-nowrap">HRMS</span>
+                                </div>
+                            </OrbitingCircles>
+                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={23} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.activity className="h-6 w-6 text-pink-500" />
+                                    <span className="text-[10px] font-bold text-foreground/90 text-nowrap">CRM</span>
+                                </div>
+                            </OrbitingCircles>
+
+                            {/* Outer Ring: Advanced Solutions */}
+                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} reverse>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.kanban className="h-7 w-7 text-blue-500" />
+                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Project<br />Mgmt</span>
+                                </div>
+                            </OrbitingCircles>
+                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={13} reverse>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.shield className="h-7 w-7 text-cyan-500" />
+                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Security</span>
+                                </div>
+                            </OrbitingCircles>
+                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={27} reverse>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.lightbulb className="h-7 w-7 text-amber-500" />
+                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Smart<br />Sol.</span>
+                                </div>
+                            </OrbitingCircles>
+                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={40} reverse>
+                                <div className="flex flex-col items-center justify-center gap-0.5">
+                                    <Icons.barChart className="h-7 w-7 text-violet-500" />
+                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Analytics</span>
+                                </div>
+                            </OrbitingCircles>
                         </div>
                     </div>
                 </div>

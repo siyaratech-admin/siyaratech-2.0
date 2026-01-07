@@ -19,6 +19,7 @@ export function OrbitingCircles({
   children,
   reverse,
   duration = 20,
+  delay = 0,
   radius = 160,
   path = true,
   iconSize = 30,
@@ -53,6 +54,7 @@ export function OrbitingCircles({
                 "--radius": radius,
                 "--angle": angle,
                 "--icon-size": `${iconSize}px`,
+                "animationDelay": `-${delay}s`,
               } as React.CSSProperties
             }
             className={cn(
