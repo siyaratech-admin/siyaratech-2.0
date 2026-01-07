@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
-    default: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
+    default: "SIYARATECH INNOVATIONS | ERP, AI & Digital Solutions",
     template: "%s | SIYARATECH INNOVATIONS"
   },
-  description: "Transform your business with SIYARATECH INNOVATIONS. Specializing in AI, machine learning, cloud services, and custom software development.",
-  keywords: ["AI Consulting", "Digital Transformation", "Software Development", "Cloud Services", "Machine Learning", "Web Development", "Siyaratech"],
+  description: "Empower your business with Siyaratech's comprehensive digital solutions. We specialize in advanced ERP platforms, smart management systems, AI integration, and custom tech development.",
+  keywords: ["ERP Solutions", "Business Management Platform", "AI Consulting", "Digital Transformation", "Custom Software", "Tech Solutions", "Smart Site Management", "Siyaratech"],
   authors: [{ name: "SIYARATECH INNOVATIONS" }],
   creator: "SIYARATECH INNOVATIONS",
   publisher: "SIYARATECH INNOVATIONS",
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://siyaratechin.com",
     siteName: "SIYARATECH INNOVATIONS",
-    title: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
-    description: "Transform your business with SIYARATECH INNOVATIONS. Specializing in AI, machine learning, cloud services, and custom software.",
+    title: "SIYARATECH INNOVATIONS | ERP, AI & Digital Solutions",
+    description: "Empower your business with Siyaratech's comprehensive digital solutions. We specialize in advanced ERP platforms, smart management systems, AI integration, and custom tech development.",
     images: [
       {
         url: "/static_images/og-image.jpg", // Ensure this image exists or use a placeholder
