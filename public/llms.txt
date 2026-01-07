@@ -1,0 +1,19 @@
+# Siyaratech Innovations
+
+Siyaratech Innovations specializes in AI, machine learning, cloud services, and custom software development. We help businesses transform through cutting-edge technology.
+
+## Main Navigation
+
+- [Home](https://siyaratechin.com/): AI & Digital Transformation services and solutions.
+- [About Us](https://siyaratechin.com/about): Our mission, vision, and team of innovators.
+- [Services](https://siyaratechin.com/services): Comprehensive tech services including AI implementation, Web Development, and Cloud Solutions.
+- [Products](https://siyaratechin.com/products): Enterprise-grade software products and AI tools.
+- [Courses](https://siyaratechin.com/courses): Professional training and bootcamps in modern technologies.
+- [Case Studies](https://siyaratechin.com/case-studies): Real-world examples of our digital transformation success stories.
+- [Contact](https://siyaratechin.com/contact): Get in touch for consultations and project inquiries.
+
+## Core Offerings
+
+- **AI Solutions**: Custom AI models, predictive analytics, and process automation.
+- **Web Development**: Modern, responsive, and high-performance web applications.
+- **Cloud Services**: Scalable cloud infrastructure and migration services.

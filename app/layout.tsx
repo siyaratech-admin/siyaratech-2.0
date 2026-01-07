@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://siyaratechin.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: "SIYARATECH INNOVATIONS | AI & Digital Transformation",
     template: "%s | SIYARATECH INNOVATIONS"
