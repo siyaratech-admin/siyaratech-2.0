@@ -59,7 +59,7 @@ export const industries = [
             "Patient Engagement Portals"
         ],
         cta: "Healthcare Solutions",
-        backgroundImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+        backgroundImage: "https://images.unsplash.com/photo-1579684385136-137af18db819?w=800&q=80",
         className: "md:col-span-2",
     },
     {
@@ -207,7 +207,7 @@ export const industries = [
             "Campus Management Software"
         ],
         cta: "Education Tech",
-        backgroundImage: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
+        backgroundImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
         className: "md:col-span-1",
     },
     {

@@ -22,8 +22,8 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
         const timer = setTimeout(() => {
             setIsExiting(true);
             // Remove from DOM after transition
-            setTimeout(() => setIsVisible(false), 800);
-        }, 100);
+            setTimeout(() => setIsVisible(false), 400);
+        }, 800);
         return () => clearTimeout(timer);
     }, []);
 
@@ -33,7 +33,7 @@ export default function LockScreenLoader({ checkSession = false }: { checkSessio
         <div
             className={`fixed inset-0 z-[9999] w-full h-[100dvh] flex items-center justify-center bg-black overflow-hidden transition-opacity duration-1000 ease-in-out ${isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
-            <div className="text-white font-medium tracking-widest text-lg animate-pulse">SIYARATECH</div>
+            <div className="text-white font-medium tracking-wide text-lg animate-pulse">Get ready to dive into innovation</div>
         </div>
     );
 }

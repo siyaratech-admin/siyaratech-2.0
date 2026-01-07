@@ -147,12 +147,14 @@
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
   --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+
   @keyframes orbit {
-  0% {
-    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
     }
-  100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
     }
   }
 }
@@ -391,7 +393,57 @@ html {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-transparent text-foreground;
   }
+}
+
+/* Aurora Background Animations - High Visibility */
+@keyframes aurora-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(15%, -15%) scale(1.2);
+  }
+}
+
+@keyframes aurora-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-15%, 15%) scale(1.1);
+  }
+}
+
+@keyframes aurora-3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(10%, 20%) scale(1.3);
+  }
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 6s infinite ease-in-out;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 8s infinite ease-in-out;
+}
+
+.animate-aurora-3 {
+  animation: aurora-3 5s infinite ease-in-out;
 }

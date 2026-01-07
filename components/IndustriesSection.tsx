@@ -25,7 +25,7 @@ export default function IndustriesSection() {
         cta: industry.cta,
         background: (
             <Image
-                className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center opacity-20 transition-opacity duration-300 group-hover:opacity-50"
+                className="absolute bottom-0 left-0 h-full w-full rounded-xl object-cover object-center !opacity-90 transition-opacity duration-300 !group-hover:opacity-100"
                 src={industry.backgroundImage}
                 alt={`${industry.name} background`}
                 fill

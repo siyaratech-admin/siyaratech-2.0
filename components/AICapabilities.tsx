@@ -90,24 +90,24 @@ export default function AICapabilities() {
                                 </div>
 
                                 {/* Inner Ring */}
-                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={0} radius={100}>
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={0} radius={100}>
                                     <FileText className="h-5 w-5 text-blue-500" />
                                 </OrbitingCircles>
-                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={12} radius={100}>
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={12} radius={100}>
                                     <MessageSquare className="h-5 w-5 text-emerald-500" />
                                 </OrbitingCircles>
-                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={24} radius={100}>
+                                <OrbitingCircles className="h-12 w-12 border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={24} radius={100}>
                                     <AlertTriangle className="h-5 w-5 text-amber-500" />
                                 </OrbitingCircles>
 
                                 {/* Outer Ring */}
-                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} reverse>
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={180} duration={50} reverse>
                                     <Workflow className="h-6 w-6 text-purple-500" />
                                 </OrbitingCircles>
-                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} delay={17} reverse>
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={180} duration={50} delay={17} reverse>
                                     <LineChart className="h-6 w-6 text-pink-500" />
                                 </OrbitingCircles>
-                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={180} duration={50} delay={34} reverse>
+                                <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={180} duration={50} delay={34} reverse>
                                     <Bot className="h-6 w-6 text-cyan-500" />
                                 </OrbitingCircles>
                             </div>

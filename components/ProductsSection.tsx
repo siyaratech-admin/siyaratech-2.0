@@ -108,48 +108,48 @@ export default function ProductsSection() {
                             </div>
 
                             {/* Inner Ring: Core Modules */}
-                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={0} radius={130}>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[70px] w-[70px] border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={0} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-1.5">
                                     <Icons.data className="h-6 w-6 text-brand-orange" />
                                     <span className="text-[10px] font-bold text-foreground/90 text-nowrap">ERP</span>
                                 </div>
                             </OrbitingCircles>
-                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={11.5} radius={130}>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[70px] w-[70px] border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={11.5} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-1.5">
                                     <Icons.users className="h-6 w-6 text-emerald-500" />
                                     <span className="text-[10px] font-bold text-foreground/90 text-nowrap">HRMS</span>
                                 </div>
                             </OrbitingCircles>
-                            <OrbitingCircles className="h-14 w-14 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" duration={35} delay={23} radius={130}>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[70px] w-[70px] border border-border/40 bg-background backdrop-blur-md shadow-lg" duration={35} delay={23} radius={130}>
+                                <div className="flex flex-col items-center justify-center gap-1.5">
                                     <Icons.activity className="h-6 w-6 text-pink-500" />
                                     <span className="text-[10px] font-bold text-foreground/90 text-nowrap">CRM</span>
                                 </div>
                             </OrbitingCircles>
 
                             {/* Outer Ring: Advanced Solutions */}
-                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} reverse>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[80px] w-[80px] border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={220} duration={55} reverse>
+                                <div className="flex flex-col items-center justify-center gap-1">
                                     <Icons.kanban className="h-7 w-7 text-blue-500" />
-                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Project<br />Mgmt</span>
+                                    <span className="text-[10px] font-bold text-center leading-[1.2] text-foreground/90">Project<br />Mgmt</span>
                                 </div>
                             </OrbitingCircles>
-                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={13} reverse>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[80px] w-[80px] border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={220} duration={55} delay={13} reverse>
+                                <div className="flex flex-col items-center justify-center gap-1">
                                     <Icons.shield className="h-7 w-7 text-cyan-500" />
-                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Security</span>
+                                    <span className="text-[10px] font-bold text-center leading-[1.2] text-foreground/90">Security</span>
                                 </div>
                             </OrbitingCircles>
-                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={27} reverse>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[80px] w-[80px] border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={220} duration={55} delay={27} reverse>
+                                <div className="flex flex-col items-center justify-center gap-1">
                                     <Icons.lightbulb className="h-7 w-7 text-amber-500" />
-                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Smart<br />Sol.</span>
+                                    <span className="text-[10px] font-bold text-center leading-[1.2] text-foreground/90">Smart<br />Sol.</span>
                                 </div>
                             </OrbitingCircles>
-                            <OrbitingCircles className="h-16 w-16 border border-border/40 bg-background/60 backdrop-blur-md shadow-lg" radius={220} duration={55} delay={40} reverse>
-                                <div className="flex flex-col items-center justify-center gap-0.5">
+                            <OrbitingCircles className="h-[80px] w-[80px] border border-border/40 bg-background backdrop-blur-md shadow-lg" radius={220} duration={55} delay={40} reverse>
+                                <div className="flex flex-col items-center justify-center gap-1">
                                     <Icons.barChart className="h-7 w-7 text-violet-500" />
-                                    <span className="text-[10px] font-bold text-center leading-[0.8] text-foreground/90">Analytics</span>
+                                    <span className="text-[10px] font-bold text-center leading-[1.2] text-foreground/90">Analytics</span>
                                 </div>
                             </OrbitingCircles>
                         </div>

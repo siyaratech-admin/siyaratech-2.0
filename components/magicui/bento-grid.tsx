@@ -50,9 +50,9 @@ const BentoCard = ({
     className={cn(
       "group relative col-span-3 flex flex-col justify-end overflow-hidden rounded-xl",
       // standard styles with glassmorphism matching MagicBento
-      "bg-background/40 backdrop-blur-xl border border-white/10 [box-shadow:0_0_0_1px_rgba(255,255,255,.05),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
+      "bg-black/60 backdrop-blur-xl border border-white/10 [box-shadow:0_0_0_1px_rgba(255,255,255,.05),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
       // dark styles specific overrides if needed (mostly covered by glass classes)
-      "dark:bg-[#060010]/60 dark:border-white/10 dark:hover:border-purple-500/50 transition-colors duration-300",
+      "transition-colors duration-300",
       className,
     )}
     {...props}
@@ -61,7 +61,7 @@ const BentoCard = ({
     <Link href={href} className="absolute inset-0 z-10" />
 
     <div className="absolute inset-0 h-[400px] w-full mix-blend-overlay opacity-50">{background}</div>
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t h-[400px] from-[#060010] via-[#060010]/50 to-transparent z-10" />
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t h-[400px] from-black via-black/50 to-transparent z-10" />
 
     <div className="relative z-20 p-4 pointer-events-none">
       <div className="flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
@@ -83,10 +83,10 @@ const BentoCard = ({
           size="sm"
           className="pointer-events-auto p-0"
         >
-          <span>
+          <Link href={href}>
             {cta}
             <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </span>
+          </Link>
         </Button>
       </div>
     </div>
@@ -102,10 +102,10 @@ const BentoCard = ({
         size="sm"
         className="pointer-events-auto p-0"
       >
-        <span>
+        <Link href={href}>
           {cta}
           <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-        </span>
+        </Link>
       </Button>
     </div>
 

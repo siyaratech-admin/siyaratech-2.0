@@ -83,7 +83,7 @@ import LockScreenLoader from "@/components/LockScreenLoader";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-0 m-0`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-0 m-0`} suppressHydrationWarning={true}>
         <Providers>
           <LockScreenLoader checkSession={true} />
           <script
