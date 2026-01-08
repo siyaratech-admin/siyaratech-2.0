@@ -24,13 +24,13 @@ const founders = [
         bio: "A tech leader with 21+ years of experience in IT product development, enterprise applications, and cloud transformation, specializing in ERP implementations and large-scale global program delivery.",
         image: "/static_images/team/amit.jpeg",
     },
-    {
-        id: "04",
-        name: "Ritesh Bora",
-        role: "Co-Founder\nDubai Operations",
-        bio: "Seasoned ERP specialist with strong finance domain and vibrant experience across multiple verticals of ERP implementations.",
-        image: "/static_images/team/ritesh.png",
-    },
+    // {
+    //     id: "04",
+    //     name: "Ritesh Bora",
+    //     role: "Co-Founder\nDubai Operations",
+    //     bio: "Seasoned ERP specialist with strong finance domain and vibrant experience across multiple verticals of ERP implementations.",
+    //     image: "/static_images/team/ritesh.png",
+    // },
 ];
 
 export default function FoundersSection() {

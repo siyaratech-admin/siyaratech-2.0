@@ -47,7 +47,11 @@ export default function HomePage() {
 
       {/* About Siyaratech (SEO Content) */}
       {/* About Siyaratech (SEO Content) */}
+      {/* About Siyaratech (SEO Content) */}
       <InnovatingSection />
+
+      {/* Clientele Section */}
+      <ClienteleSection />
 
       {/* Why Choose Us */}
       <WhyChooseUs />
@@ -63,9 +67,6 @@ export default function HomePage() {
 
       {/* AI Capabilities */}
       <AICapabilities />
-
-      {/* Clientele Section */}
-      <ClienteleSection />
 
       {/* Impact & CTA */}
       <ImpactSection />
