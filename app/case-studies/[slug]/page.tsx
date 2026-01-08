@@ -25,120 +25,16 @@ type CaseStudyDetails = {
     sections: CaseStudySectionData[]
 }
 
-// Static data for multiple case studies
-const caseStudiesData: Record<string, CaseStudyDetails> = {
-    "influencer-driven-ecommerce-platform": {
-        mainTitle: "🛍️ Influencer-Driven E-Commerce Platform",
-        mainDescription:
-            "🎯 Goal: Transform traditional online shopping into a social-first discovery experience powered by influencers.",
-        sections: [
-            {
-                title: "🏠 Homepage – 'Shop by Influencer'",
-                image: "/IS_Homepage.png",
-                description:
-                    "The homepage highlights influencers as mini-brands with profile images, taglines, and featured products.",
-                className: "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
-            },
-            {
-                title: "👤 Influencer Profile Page",
-                image: "/IS_InfluencerProfile.png",
-                description:
-                    "Each influencer has a profile page with bio, curated collections, social links, and credibility metrics like follower count.",
-                list: [
-                    "A personal bio and banner",
-                    "Curated collections or recommended products",
-                    "Social media links",
-                    "A following count or recent picks to build credibility",
-                ],
-                className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
-            },
-            {
-                title: "🛒 Personalized Cart Experience",
-                image: "/IS_Cart.png",
-                description:
-                    "Unified cart for all products, but influencer tags stay visible throughout checkout to track source creators.",
-                className: "col-span-1 lg:col-span-3 dark:border-neutral-800 border-b lg:border-r dark:border-neutral-800",
-            },
-            {
-                title: "📦 Orders Dashboard",
-                image: "/IS_Order.png",
-                description: "Order history includes influencer associations per product, reinforcing trust and connection.",
-                className: "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
-            },
-            {
-                title: "🔍 Discovery Tools",
-                image: "/IS_Search.png",
-                description: "Customers can filter by influencer trends, search by name, or explore top-rated picks.",
-                list: [
-                    'Filters like "Trending by Influencers", "New Picks This Week"',
-                    "Search by influencer name or category",
-                ],
-                className: "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
-            },
-            {
-                title: "📊 Admin Dashboard Overview",
-                image: "/IS_Admin_Dashboard.png",
-                description:
-                    "Quick insights like total sales, top influencers, best products, and active customers in one view.",
-                className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
-            },
-            {
-                title: "🛍️ Product Management",
-                image: "/IS_Admin_Products.png",
-                description:
-                    "Admins can add or edit products, manage pricing, inventory, and link them to collections or influencers.",
-                className: "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
-            },
-            {
-                title: "👑 Influencer Management",
-                image: "/IS_Admin_Influencer.png",
-                description:
-                    "Tools for onboarding influencers, tracking their performance, and assigning collections/products.",
-                className: "col-span-1 lg:col-span-3 border-b lg:border-none",
-            },
-            {
-                title: "🗂️ Collections",
-                image: "/IS_Admin_Collection.png",
-                description:
-                    "Create and manage product collections to group items by themes, influencer picks, or marketing campaigns. Enhance discoverability and curation.",
-                className: "col-span-1 lg:col-span-6 border-b dark:border-neutral-800", // Full width for the last one
-            },
-        ],
-    },
-    "digital-transformation-for-a-retail-chain": {
-        mainTitle: "Digital Transformation for a Retail Chain",
-        mainDescription:
-            "We helped a leading retail chain undergo a complete digital transformation, resulting in a 30% increase in online sales and improved customer engagement.",
-        sections: [
-            {
-                title: "Overview",
-                image: "/DT_Retail_Industry.png",
-                description: "Details about the digital transformation project for a retail chain.",
-                className: "col-span-1 lg:col-span-6 border-b dark:border-neutral-800",
-            },
-        ],
-    },
-    "ai-implementation-in-healthcare": {
-        mainTitle: "AI Implementation in Healthcare",
-        mainDescription:
-            "Our AI solution optimised patient scheduling and reduced wait times by 25% in a major hospital network",
-        sections: [
-            {
-                title: "AI Solution Overview",
-                image: "/healthcare.png",
-                description: "Details about the AI implementation in healthcare.",
-                className: "col-span-1 lg:col-span-6 border-b dark:border-neutral-800",
-            },
-        ],
-    },
-}
+// Import the shared data
+import { caseStudies } from "@/lib/caseStudies"
 
 export default function CaseStudyDetailPage() {
     const router = useRouter()
     const params = useParams()
     const slug = params?.slug as string
 
-    const currentCaseStudy = caseStudiesData[slug || ""]
+    // Find the case study from the shared data
+    const currentCaseStudy = caseStudies.find(c => c.slug === slug)
 
     const handleBack = () => router.back()
 
@@ -150,7 +46,7 @@ export default function CaseStudyDetailPage() {
                 .join(" ")
             : ""
         return (
-            <div className="max-w-6xl mx-auto px-4 py-12">
+            <div className="max-w-6xl mx-auto px-4 py-12 pt-24">
                 <Button onClick={handleBack} variant="ghost" className="mb-8">
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Case Studies
                 </Button>
@@ -164,20 +60,36 @@ export default function CaseStudyDetailPage() {
     const { mainTitle, mainDescription, sections } = currentCaseStudy
 
     return (
-        <div className="mt-12 max-w-8xl mx-auto px-4 py-12 z-10 h-fit relative">
-            <Button onClick={handleBack} variant="default" className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Case Studies
-            </Button>
+        <div className="pt-24 pb-12 min-h-screen bg-background relative z-10">
+            {/* Back Button Container */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+                <Button
+                    onClick={handleBack}
+                    variant="ghost"
+                    className="group flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors pl-0 hover:bg-transparent"
+                >
+                    <div className="p-2 rounded-full bg-secondary/50 group-hover:bg-primary/10 transition-colors">
+                        <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                    </div>
+                    <span className="font-medium text-lg">Back to Case Studies</span>
+                </Button>
+            </div>
             <div className="relative mx-auto my-10 flex h-screen w-full max-w-7xl flex-col items-center justify-center overflow-hidden rounded-3xl">
                 <h2 className="relative z-20 mx-auto max-w-4xl text-center text-2xl font-bold text-balance text-white md:text-4xl lg:text-6xl">
-                    {mainTitle}
+                    {mainTitle || currentCaseStudy.title}
                 </h2>
                 <p className="relative z-20 mx-auto max-w-2xl my-8 text-center text-sm font-semibold  text-neutral-200 md:text-base">
-                    {mainDescription}
+                    {mainDescription || currentCaseStudy.challenge}
                 </p>
 
                 {/* overlay */}
                 <div className="absolute inset-0 z-10 h-full w-full bg-black/80 dark:bg-black/40" />
+                <NextImage
+                    src={currentCaseStudy.image}
+                    alt={currentCaseStudy.title}
+                    fill
+                    className="object-cover absolute inset-0 z-0 opacity-50 blur-sm"
+                />
             </div>
 
             <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
@@ -191,7 +103,7 @@ export default function CaseStudyDetailPage() {
                 </div>
                 <div className="relative ">
                     <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
-                        {sections.map((section, index) => (
+                        {sections && sections.map((section, index) => (
                             <FeatureCard key={index} className={section.className}>
                                 <FeatureTitle>{section.title}</FeatureTitle>
                                 <FeatureDescription>{section.description}</FeatureDescription>

@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { caseStudies as allCaseStudies } from '@/lib/caseStudies';
 import CaseStudyCard from '@/components/CaseStudyCard';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -9,53 +10,7 @@ import { motion } from 'framer-motion';
 export default function CaseStudiesSection() {
     const router = useRouter();
 
-    const caseStudies = [
-        {
-            title: "Influencer-Driven eCommerce Platform",
-            client: "FashionForward",
-            industry: "E-commerce",
-            challenge: "Transform traditional online shopping into a social-first discovery experience powered by influencers.",
-            result: "Integrated influencer profiles, curated collections, and seamless checkout, boosting engagement and sales.",
-            metrics: [
-                { label: "Sales Increase", value: "150%", improvement: "150% growth" },
-                { label: "User Engagement", value: "200%", improvement: "200% higher" },
-                { label: "Conversion Rate", value: "85%", improvement: "85% better" },
-            ],
-            image: "/IS_Homepage.png",
-            tags: ["React", "Node.js", "MongoDB", "AWS"],
-            slug: "influencer-driven-ecommerce-platform"
-        },
-        {
-            title: "Digital Transformation for a Retail Chain",
-            client: "RetailGiant",
-            industry: "Retail",
-            challenge: "Complete digital transformation to improve online sales and customer engagement.",
-            result: "Resulted in a 30% increase in online sales and improved customer engagement through a new digital platform.",
-            metrics: [
-                { label: "Online Sales", value: "+30%", improvement: "30% increase" },
-                { label: "Customer Satisfaction", value: "95%", improvement: "95% score" },
-                { label: "Operational Efficiency", value: "+40%", improvement: "40% better" },
-            ],
-            image: "/DT_Retail_Industry.png",
-            tags: ["Vue.js", "Python", "PostgreSQL", "Docker"],
-            slug: "digital-transformation-for-a-retail-chain"
-        },
-        {
-            title: "AI Implementation in Healthcare",
-            client: "HealthPlus",
-            industry: "Healthcare",
-            challenge: "Optimise patient scheduling and reduce wait times in a major hospital network.",
-            result: "AI solution optimized scheduling, reducing wait times by 25% and increasing staff efficiency.",
-            metrics: [
-                { label: "Wait Time Reduction", value: "25%", improvement: "25% faster" },
-                { label: "Patient Satisfaction", value: "92%", improvement: "92% score" },
-                { label: "Staff Efficiency", value: "+35%", improvement: "35% higher" },
-            ],
-            image: "/healthcare.png",
-            tags: ["Python", "TensorFlow", "FastAPI", "Redis"],
-            slug: "ai-implementation-in-healthcare"
-        }
-    ];
+    const caseStudies = allCaseStudies;
 
     return (
         <section id="case-studies" className="py-24 bg-background relative overflow-hidden">
