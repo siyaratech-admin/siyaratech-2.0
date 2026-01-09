@@ -550,50 +550,6 @@ export const erpSolutions = [
         tags: ["HR", "AI", "Automation"],
     },
     {
-        id: "task-manager",
-        title: "ERP Task Manager Module",
-        subtitle: "Intelligent Work Execution",
-        description: "Manage tasks, track employee performance daily, monitor projects, and get real-time notifications with Siyaratech’s ERP Task Manager module.",
-        longDescription: "Siyaratech’s ERP Task Manager module is designed to bring complete visibility and control over daily operations. It enables organizations to assign, track, and monitor employee tasks on a daily basis while aligning them with ongoing projects and business goals.",
-        content: (
-            <div className="space-y-6">
-                <p>
-                    Siyaratech’s ERP Task Manager module is designed to bring complete visibility and control over daily operations. It enables organizations to assign, track, and monitor employee tasks on a daily basis while aligning them with ongoing projects and business goals. Managers can view real-time task status, deadlines, workload distribution, and employee performance from a single dashboard. With automated notifications, reminders, and priority alerts, teams never miss critical updates, approvals, or milestones. The Task Manager seamlessly integrates with other ERP modules, ensuring smooth coordination between departments and eliminating manual follow-ups.
-                </p>
-                <p>
-                    The Task Manager module improves productivity, accountability, and transparency across the organization. By tracking employee performance daily, management can identify bottlenecks, optimize resource allocation, and ensure timely project delivery. Clear task ownership and progress tracking reduce delays and miscommunication, while data-driven insights help leaders make faster, smarter decisions. Whether managing small teams or large, multi-project environments, Siyaratech’s ERP Task Manager helps organizations streamline workflows, enhance employee efficiency, and achieve operational excellence.
-                </p>
-            </div>
-        ),
-        icon: CheckSquare,
-        features: [
-            "Real-time Task Status & Deadlines",
-            "Automated Notifications & Reminders",
-            "Employee Performance Tracking",
-            "Workload Distribution Dashboard",
-            "Seamless ERP Integration",
-            "Priority Alerts Management"
-        ],
-        benefits: [
-            { title: "Enhance Efficiency", description: "Streamline workflows and eliminate manual follow-ups for better productivity." },
-            { title: "Improve Accountability", description: "Clear task ownership and daily tracking reduce delays and miscommunication." },
-            { title: "Data-Driven Decisions", description: "Gain insights into bottlenecks and resource allocation for smarter management." }
-        ],
-        faq: [
-            { question: "Can I invite external clients?", answer: "Yes, you can give clients restricted 'Guest' access to view progress without seeing internal chats." },
-            { question: "Does it integrate with email?", answer: "Yes, convert emails to tasks instantly and reply directly from the task comments." }
-        ],
-        image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
-        gallery: [
-            "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
-            "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
-            "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80"
-        ],
-        className: "md:col-span-1",
-        cta: "Explore Task Manager",
-        tags: ["Tasks", "Productivity", "Management"],
-    },
-    {
         id: "accounts-billing",
         title: "Smart Accounting & Invoicing Solution",
         subtitle: "Accuracy Meets Automation",
@@ -951,9 +907,10 @@ export const innovativeProducts = [
         ],
         image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
         gallery: [
-            "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-            "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?w=800&q=80"
+            "/images/const_erp_1.png",
+            "/images/const_erp_2.png",
+            "/images/const_erp_3.png",
+            "/images/const_erp_4.png"
         ],
         className: "md:col-span-1 lg:col-span-3 lg:row-span-3",
         tags: ["Construction", "ERP", "Management"],
