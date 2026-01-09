@@ -35,7 +35,6 @@ export default function CaseStudyCard({
   image,
   tags,
   slug,
-  onReadMore
 }: CaseStudyCardProps) {
   return (
     <motion.div

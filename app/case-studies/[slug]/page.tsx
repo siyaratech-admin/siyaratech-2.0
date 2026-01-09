@@ -19,13 +19,10 @@ type CaseStudySectionData = {
     className?: string // For grid layout
 }
 
-type CaseStudyDetails = {
-    mainTitle: string
-    mainDescription: string
-    sections: CaseStudySectionData[]
-}
+
 
 // Import the shared data
+// import { CaseStudyDetails } from "@/components/CaseStudyDetails";
 import { caseStudies } from "@/lib/caseStudies"
 
 export default function CaseStudyDetailPage() {

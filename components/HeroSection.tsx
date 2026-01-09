@@ -6,24 +6,24 @@ import BlurText from '@/components/TextAnimations/BlurText/BlurText';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
-import { OrbitingCircles } from "@/components/ui/orbiting-circles";
-import { Brain, Sparkles, Code, Database, Cloud, Globe, Shield, Cpu } from "lucide-react";
+// import { OrbitingCircles } from "@/components/ui/orbiting-circles"; // Unused
+// import { Brain, Sparkles, Code, Database, Cloud, Globe, Shield, Cpu } from "lucide-react"; // Unused
 
 const LightPillar = dynamic(() => import('./LightPillar'), {
   ssr: false,
   loading: () => <div className="absolute inset-0 bg-background/5" />
 });
 
-const Icons = {
-  brain: Brain,
-  sparkles: Sparkles,
-  code: Code,
-  database: Database,
-  cloud: Cloud,
-  globe: Globe,
-  shield: Shield,
-  cpu: Cpu,
-};
+// const Icons = { // Unused
+//   brain: Brain,
+//   sparkles: Sparkles,
+//   code: Code,
+//   database: Database,
+//   cloud: Cloud,
+//   globe: Globe,
+//   shield: Shield,
+//   cpu: Cpu,
+// };
 
 interface HeroSectionProps {
   title: string;
