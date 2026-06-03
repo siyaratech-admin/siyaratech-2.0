@@ -1,11 +1,9 @@
 "use client"
-import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
-// import Cookies from "js-cookie"
 import Image from "next/image"
 
 // Placeholder for missing components
@@ -14,66 +12,60 @@ const BlurFade = ({ children }: { children: React.ReactNode; inView?: boolean; d
 
 interface Course {
     id: string
-    title?: string // Made optional as API returns name
-    name?: string // Added name
+    title?: string
+    name?: string
     description: string
-    content?: string // Made optional
+    content?: string
     instructor: string
     price: number
-    thumbnail?: string // Made optional as API returns image
-    image?: string // Added image
+    thumbnail?: string
+    image?: string
     originalPrice: number
     discountedPrice: number
     gstPercentage: number
     isPurchased?: boolean
-    rating?: number // Added
-    totalStudents?: number // Added
+    rating?: number
+    totalStudents?: number
 }
 
-// Helper to determine region (placeholder logic)
-// Helper to determine region (placeholder logic)
-// const getRegion = () => {
-//     return Cookies.get("region") || "IN"
-// }
+// ─── Config ────────────────────────────────────────────────────────────────
+const TECHDIVE_URL = "https://techdivehub.siyaratechin.com"
 
 const CourseCard = ({ course, index }: { course: Course; index: number }) => {
-    const router = useRouter()
     const variants = ["primary", "secondary", "accent", "success", "info"] as const
     const variant = variants[index % variants.length]
 
     const getCourseImage = (course: Course) => {
-        // First try local mapped thumbnail
         if (course.thumbnail && (course.thumbnail.startsWith('/') || course.thumbnail.startsWith('http'))) return course.thumbnail;
-
-        // Fallback or mapping logic
         const titleToCheck = (course.title || course.name || "").toLowerCase();
-
-        // Direct mappings based on local files
         if (titleToCheck.includes("react basics") || titleToCheck.includes("launchpad")) return "/courses/React Basics.png";
         if (titleToCheck.includes("react advanced") || titleToCheck.includes("proficiency")) return "/courses/React Advanced.png";
         if (titleToCheck.includes("python jumpstart")) return "/courses/Python-Jumpstart.png";
         if (titleToCheck.includes("python backend")) return "/courses/Python-Backend-Odyssey.jpg";
-        if (titleToCheck.includes("full stack")) return "/courses/Python-Backend-Odyssey.jpg"; // Placeholder
-
+        if (titleToCheck.includes("full stack")) return "/courses/Python-Backend-Odyssey.jpg";
         return "/placeholder.png";
     }
 
     const displayImage = getCourseImage(course);
-    // Safe price calculation
     const currentPrice = typeof course.discountedPrice === 'number' ? course.discountedPrice : 0;
     const originalPrice = typeof course.originalPrice === 'number' ? course.originalPrice : 0;
     const displayPrice = currentPrice > 0 ? currentPrice / 100 : (typeof course.price === 'number' ? course.price / 100 : 0);
     const displayOriginalPrice = originalPrice > 0 ? originalPrice / 100 : 0;
-    const isUpcoming = displayPrice === 0 && !course.isPurchased; // Treat 0 price as Upcoming if not purchased
+    const isUpcoming = displayPrice === 0 && !course.isPurchased;
+
+    const handleEnroll = () => {
+        // Redirect to TechDive Hub — opens in the same tab
+        window.location.href = TECHDIVE_URL
+    }
 
     return (
         <BlurFade inView duration={0.6} delay={index * 0.1}>
             <BrandGlassCard variant={variant} className="h-full overflow-hidden group" intensity="high">
-                {/* Image Container with Overlay */}
+                {/* Image */}
                 <div className="relative h-48 overflow-hidden rounded-t-xl mb-4 bg-gray-900">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
                     <Image
-                        src={displayImage} // Use local image if available
+                        src={displayImage}
                         alt={course.title || course.name || "Course Image"}
                         fill
                         className="object-cover transform group-hover:scale-110 transition-transform duration-500"
@@ -94,7 +86,6 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
                         {course.description || "No description available."}
                     </p>
 
-                    {/* Features (Mock features based on description if not in course object) */}
                     <div className="space-y-2">
                         <div className="flex items-center text-xs text-gray-300">
                             <CheckCircle2 className="w-3 h-3 mr-2 text-green-400" />
@@ -106,8 +97,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
                         </div>
                     </div>
 
-
-                    {/* Price Section */}
+                    {/* Price */}
                     {!isUpcoming ? (
                         <>
                             <div className="flex items-center justify-between mb-4">
@@ -124,18 +114,15 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
                         </>
                     ) : (
                         <div className="flex items-center justify-between mb-4">
-                            <span className="text-2xl font-bold text-blue-400">
-                                Upcoming
-                            </span>
+                            <span className="text-2xl font-bold text-blue-400">Upcoming</span>
                         </div>
                     )}
-
 
                     {/* Enroll Button */}
                     <Button
                         className="w-full bg-gradient-to-r from-[#833AB4] to-[#4079ff] hover:from-[#833AB4]/80 hover:to-[#4079ff]/80 text-white border-0"
                         disabled={course.isPurchased || isUpcoming}
-                        onClick={() => router.push(`/checkout?courseId=${course.id}`)}
+                        onClick={handleEnroll}
                     >
                         {course.isPurchased ? (
                             "Already Enrolled"
@@ -157,8 +144,8 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
 const coursesData: Course[] = [
     {
         id: "cm4csjnlr00083xfs57z8c6b8",
-        title: "React Launchpad", // name -> title
-        description: "Master level React concepts, performance optimization, and architectural patterns for enterprise scale applications.", // kept generic description as source had null
+        title: "React Launchpad",
+        description: "Master level React concepts, performance optimization, and architectural patterns for enterprise scale applications.",
         price: 999800,
         discountedPrice: 499900,
         originalPrice: 999800,
@@ -173,7 +160,7 @@ const coursesData: Course[] = [
     },
     {
         id: "cm4csjr1z00173xfs6x9lx20a",
-        title: "React Proficiency", // name -> title
+        title: "React Proficiency",
         description: "Build type-safe, scalable web applications. Learn best practices for combining React and TypeScript.",
         price: 1599800,
         discountedPrice: 799900,
@@ -226,7 +213,7 @@ const coursesData: Course[] = [
         price: 0,
         discountedPrice: 0,
         originalPrice: 0,
-        thumbnail: "/courses/Python-Backend-Odyssey.jpg", // Re-using an image or placeholder? Let's use Python Backend one as filler or placeholder.
+        thumbnail: "/courses/Python-Backend-Odyssey.jpg",
         instructor: "Full Stack Lead",
         rating: 4.9,
         totalStudents: 1500,
@@ -245,7 +232,6 @@ export default function Courses() {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                // Simulate API call with local data
                 await new Promise(resolve => setTimeout(resolve, 500));
                 setCourses(coursesData);
                 setLoading(false);
@@ -255,7 +241,6 @@ export default function Courses() {
                 setLoading(false)
             }
         }
-
         fetchCourses()
     }, [])
 
@@ -281,7 +266,6 @@ export default function Courses() {
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-black">
-
             {/* Background Effects */}
             <div className="fixed inset-0 z-0">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(76,29,149,0.1),rgba(0,0,0,0))]" />

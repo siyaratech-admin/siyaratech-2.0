@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     images: ["/static_images/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/siyaratech_logo.png",
   },
   manifest: "/site.webmanifest",
 };

@@ -1,118 +1,131 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-interface ContactData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  description: string;
+const ERP_URL    = process.env.NEXT_PUBLIC_ERPNEXT_URL  ?? "http://127.0.0.1:8000";
+const API_KEY    = process.env.ERPNEXT_API_KEY          ?? "fc3272c1f8cb40b";
+const API_SECRET = process.env.ERPNEXT_API_SECRET       ?? "0add95572f83a45";
+const AUTH       = `token ${API_KEY}:${API_SECRET}`;
+const HEADERS    = {
+  Authorization:  AUTH,
+  "Content-Type": "application/json",
+  Accept:         "application/json",
+};
+
+interface ContactFormData {
+  firstName:       string;
+  lastName:        string;
+  email:           string;
+  phone:           string;
+  company:         string;
+  serviceInterest: string;
+  description:     string;
+  budget:          string;
+}
+
+async function erpPost(endpoint: string, payload: object) {
+  const res = await fetch(`${ERP_URL}/api/resource/${endpoint}`, {
+    method:  "POST",
+    headers: HEADERS,
+    body:    JSON.stringify(payload),
+  });
+  const raw = await res.text();
+  let data: unknown = null;
+  try { data = JSON.parse(raw); } catch { /* HTML page — keep raw */ }
+  console.log(`[contact] POST ${endpoint} → ${res.status}`, raw.slice(0, 600));
+  return { ok: res.ok, status: res.status, data, raw };
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.ERPNEXT_API_KEY;
-    const apiSecret = process.env.ERPNEXT_API_SECRET;
-    const erpnextUrl = process.env.NEXT_PUBLIC_ERPNEXT_URL;
+    const form: ContactFormData = await request.json();
+    const {
+      firstName       = "",
+      lastName        = "",
+      email           = "",
+      phone           = "",
+      company         = "",
+      serviceInterest = "",
+      description     = "",
+      budget          = "",
+    } = form;
 
-    if (!apiKey || !apiSecret || !erpnextUrl) {
-      return NextResponse.json(
-        { error: 'ERPNext API credentials or URL not found' },
-        { status: 500 }
-      );
-    }
+    const fullName = `${firstName} ${lastName}`.trim();
+    // Strip +91 / country code — ERPNext stores just the local number
+    const cleanPhone = phone.replace(/^\+91/, "").replace(/\D/g, "");
 
-    const formData: ContactData = await request.json();
+    // ── Step 1 · Create Contact ──────────────────────────────────────────────
+    console.log("[contact] Creating Contact for:", email);
 
-    // Step 1: Create Contact
-    console.log('Creating contact for:', formData.email);
-
-    const contactPayload = {
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      email_id: formData.email,
-      phone: formData.phone,
-      mobile_no: formData.phone,
+    const contactResult = await erpPost("Contact", {
+      first_name:  firstName,
+      last_name:   lastName,
+      mobile_no:   cleanPhone,
       designation: "Enquirer",
-      department: "Support",
-      description: formData.description
-    };
-
-    const contactResponse = await fetch(`${erpnextUrl}/api/resource/Contact`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `token ${apiKey}:${apiSecret}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(contactPayload)
+      email_ids:   [{ email_id: email, is_primary: 1 }],
+      phone_nos:   [{ phone: cleanPhone, is_primary_mobile_no: 1 }],
     });
 
-    if (!contactResponse.ok) {
-      const errorText = await contactResponse.text();
-      console.error('Contact creation failed:', errorText);
+    if (!contactResult.ok) {
+      console.error("[contact] Contact creation failed:", contactResult.raw);
       return NextResponse.json(
-        { error: `Failed to create contact: ${contactResponse.status}` },
-        { status: contactResponse.status }
+        { error: `Contact creation failed (${contactResult.status})`, detail: contactResult.raw },
+        { status: 502 }
       );
     }
 
-    const contactResult = await contactResponse.json();
-    console.log('Contact created successfully:', contactResult);
+    // ── Step 2 · Create Lead ─────────────────────────────────────────────────
+    // ✅ 'source' removed — "Website" doesn't exist in Lead Source master.
+    // ✅ 'website' is a plain Data field — safe to set to our domain.
+    // ✅ Extra enquiry details go into 'remarks' (plain Text field).
+    console.log("[contact] Creating Lead for:", email);
 
-    // Step 2: Create CRM Lead
-    console.log('Creating CRM Lead for:', formData.email);
-
-    const leadPayload = {
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      lead_name: `${formData.firstName} ${formData.lastName}`,
-      email_id: formData.email,
-      phone: formData.phone,
-      company_name: formData.company,
-      description: formData.description
-    };
-
-    const leadResponse = await fetch(`${erpnextUrl}/api/resource/CRM Lead`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `token ${apiKey}:${apiSecret}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(leadPayload)
+    const leadResult = await erpPost("Lead", {
+      naming_series:        "CRM-LEAD-.YYYY.-",
+      lead_name:            fullName,
+      first_name:           firstName,
+      last_name:            lastName,
+      email_id:             email,
+      mobile_no:            cleanPhone,
+      company_name:         company,
+      company:              "Siyaratech (Demo)",
+      website:              "https://siyaratechin.com",  // plain URL field — always valid
+      status:               "Lead",
+      lead_owner:           "Administrator",
+      qualification_status: "Unqualified",
+      no_of_employees:      "1-10",
+      country:              "India",
+      language:             "en",
+      disabled:             0,
+      unsubscribed:         0,
+      blog_subscriber:      0,
+      notes:                [],
+      remarks: `Service Interest: ${serviceInterest} | Budget: ${budget}\n\n${description}`,
     });
 
-    if (!leadResponse.ok) {
-      const errorText = await leadResponse.text();
-      console.error('CRM Lead creation failed:', errorText);
-      console.log('Returning 417 with validation details'); // Added log for debugging
-
-      // Return partial success since contact was created
-      // Fixing the syntax error here by returning a proper JSON response
-      return NextResponse.json({
-        success: true,
-        contact: contactResult,
-        lead: null,
-        warning: `Contact created but CRM Lead creation failed: ${leadResponse.status}`,
-        details: errorText // Include the actual validation message
-      }, { status: 417 });
+    if (!leadResult.ok) {
+      console.error("[contact] Lead creation failed:", leadResult.raw);
+      return NextResponse.json(
+        {
+          success: true,
+          contact: contactResult.data,
+          lead:    null,
+          warning: `Contact created but Lead creation failed (${leadResult.status})`,
+          detail:  leadResult.raw,
+        },
+        { status: 207 }
+      );
     }
-
-    const leadResult = await leadResponse.json();
-    console.log('CRM Lead created successfully:', leadResult);
 
     return NextResponse.json({
       success: true,
-      contact: contactResult,
-      lead: leadResult,
-      message: 'Contact and lead created successfully'
+      contact: contactResult.data,
+      lead:    leadResult.data,
+      message: "Contact and Lead created successfully in ERPNext",
     });
 
-  } catch (error) {
-    console.error('Error in contact API:', error);
+  } catch (err) {
+    console.error("[contact] Unexpected error:", err);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: "Internal server error", detail: String(err) },
       { status: 500 }
     );
   }

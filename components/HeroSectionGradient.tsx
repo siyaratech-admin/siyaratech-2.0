@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import BlurText from '@/components/TextAnimations/BlurText/BlurText';
@@ -27,6 +27,23 @@ export default function HeroSectionGradient({
     onPrimaryCTA,
     onSecondaryCTA,
 }: HeroSectionProps) {
+    /**
+     * Memoize the config object so its reference is stable across renders.
+     * Without this, a new object literal is created every render, which
+     * caused GradientParticleCanvas to re-run effects and restart the
+     * animation loop on every parent re-render.
+     */
+    const particleConfig = useMemo(() => ({
+        gap: 10,
+        sizeBase: 4,
+        sizeVariation: 4,
+        mouseRadius: 500,
+        friction: 0.92,
+        ease: 0.2,
+        glow: false,
+        bgOpacity: 0,
+    }), []); // empty deps → created once for the lifetime of this component
+
     return (
         <section className="relative w-screen min-h-screen flex items-center justify-center overflow-hidden bg-none">
             <div className="absolute inset-0 w-full h-full z-0">
@@ -42,9 +59,9 @@ export default function HeroSectionGradient({
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="mb-8 inline-flex items-center px-4 py-2 rounded-full border border-primary/20 "
+                        className="mb-8 inline-flex items-center px-4 py-2 rounded-full border border-primary/20"
                     >
-                        <span className="flex h-2 w-2 rounded-full bg-brand-orange mr-2 animate-pulse"></span>
+                        <span className="flex h-2 w-2 rounded-full bg-brand-orange mr-2 animate-pulse" />
                         <span className="text-sm font-medium text-primary tracking-wide uppercase">{subtitle}</span>
                     </motion.div>
 
@@ -103,20 +120,11 @@ export default function HeroSectionGradient({
                 <div className="w-full h-[500px] relative flex items-center justify-center">
                     <GradientParticleCanvas
                         imageSrc="/static_images/logo.png"
-                        config={{
-                            gap: 10,
-                            sizeBase: 4,
-                            sizeVariation: 4,
-                            mouseRadius: 500,
-                            friction: 0.92,
-                            ease: 0.2,
-                            glow: false,
-                            bgOpacity: 0
-                        }}
+                        config={particleConfig}
                         className="w-full h-full"
                     />
                 </div>
             </div>
-        </section >
+        </section>
     );
 }

@@ -35,16 +35,44 @@ export default function WhyChooseUs() {
 
     return (
         <section className="py-16 md:py-24 relative overflow-hidden">
+            <style>{`
+                .gradient-text {
+                    background: var(--brand-gradient, linear-gradient(to right, #7c3aed, #a855f7));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+                }
+                .light .gradient-text,
+                :not(.dark) .gradient-text {
+                    -webkit-text-fill-color: transparent;
+                }
+                /* On hover: kill the gradient, show solid black in light / white in dark */
+                .gradient-text-wrapper:hover .gradient-text {
+                    background: none !important;
+                    -webkit-background-clip: unset !important;
+                    background-clip: unset !important;
+                    -webkit-text-fill-color: #111111 !important;
+                    color: #111111 !important;
+                }
+                .dark .gradient-text-wrapper:hover .gradient-text {
+                    -webkit-text-fill-color: #ffffff !important;
+                    color: #ffffff !important;
+                }
+            `}</style>
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
+                <div className="text-center mb-16 gradient-text-wrapper">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold mb-6"
+                        className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
                     >
                         Where Digital Transformation Meets <br />
-                        <span className="text-brand-gradient bg-clip-text text-transparent">AI Intelligence</span>
+                        <span className="gradient-text">
+                            AI Intelligence
+                        </span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -54,7 +82,7 @@ export default function WhyChooseUs() {
                         className="text-xl text-muted-foreground max-w-3xl mx-auto"
                     >
                         Most ERP systems help you manage operations.
-                        <br /><strong className="text-foreground">Siyaratech helps you optimize, automate, and scale them.</strong>
+                        <br /><strong className="text-gray-900 dark:text-white">Siyaratech helps you optimize, automate, and scale them.</strong>
                     </motion.p>
                 </div>
 

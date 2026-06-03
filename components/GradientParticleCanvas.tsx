@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { GradientParticle, initGradientParticlesFromImage } from '../utils/gradientParticleSystem';
+import {
+    ParticleBuffers,
+    initParticlesFromImage,
+    updateParticles,
+    drawParticles,
+} from '../utils/gradientParticleSystem';
 import { ParticleConfig } from '../types/particle';
 
 interface GradientParticleCanvasProps {
@@ -10,114 +15,163 @@ interface GradientParticleCanvasProps {
     className?: string;
 }
 
-const GradientParticleCanvas: React.FC<GradientParticleCanvasProps> = ({ imageSrc, config, className }) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const particlesRef = useRef<GradientParticle[]>([]);
-    const animationFrameRef = useRef<number>(0);
-    const mouseRef = useRef({ x: 0, y: 0 });
+const GradientParticleCanvas: React.FC<GradientParticleCanvasProps> = ({
+    imageSrc,
+    config,
+    className,
+}) => {
+    // Two canvases:
+    //   readCtx  — off-screen, willReadFrequently:true, only used during init for getImageData
+    //   drawCtx  — visible canvas, NO willReadFrequently so the browser can GPU-accelerate it
+    const canvasRef      = useRef<HTMLCanvasElement>(null);
+    const offscreenRef   = useRef<HTMLCanvasElement | null>(null);
+    const drawCtxRef     = useRef<CanvasRenderingContext2D | null>(null);
+    const readCtxRef     = useRef<CanvasRenderingContext2D | null>(null);
+
+    const buffersRef     = useRef<ParticleBuffers | null>(null);
+    const rafRef         = useRef<number>(0);
+    const mouseRef       = useRef({ x: -9999, y: -9999 });
+    const easeRef        = useRef(0.01);
+    const configRef      = useRef(config);
+    const radiusSqRef    = useRef(config.mouseRadius * config.mouseRadius);
+    const visibleRef     = useRef(true);   // pause when tab/element hidden
+
     const [isLoaded, setIsLoaded] = useState(false);
 
+    useEffect(() => {
+        configRef.current = config;
+        radiusSqRef.current = config.mouseRadius * config.mouseRadius;
+    }, [config]);
+
+    // ── Init ──────────────────────────────────────────────────────────────────
     const init = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        if (!ctx) return;
-
-        const parent = canvas.parentElement;
-        if (parent) {
-            canvas.width = parent.clientWidth;
-            canvas.height = parent.clientHeight;
-        } else {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        // Visible canvas — no willReadFrequently → GPU path stays active
+        if (!drawCtxRef.current) {
+            drawCtxRef.current = canvas.getContext('2d') ?? null;
         }
-        const img = new Image();
-        img.crossOrigin = "Anonymous";
-        img.src = imageSrc;
 
+        // Off-screen scratch canvas — only used to read pixel data from the image
+        if (!offscreenRef.current) {
+            offscreenRef.current = document.createElement('canvas');
+        }
+        const offscreen = offscreenRef.current;
+
+        const parent       = canvas.parentElement;
+        const cw           = parent ? parent.clientWidth  : window.innerWidth;
+        const ch           = parent ? parent.clientHeight : window.innerHeight;
+        canvas.width       = cw;
+        canvas.height      = ch;
+        offscreen.width    = cw;
+        offscreen.height   = ch;
+
+        if (!readCtxRef.current) {
+            readCtxRef.current = offscreen.getContext('2d', { willReadFrequently: true }) ?? null;
+        }
+
+        const readCtx = readCtxRef.current;
+        if (!readCtx) return;
+
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.src = imageSrc;
         img.onload = () => {
-            particlesRef.current = initGradientParticlesFromImage(
-                ctx,
-                canvas.width,
-                canvas.height,
-                img,
-                config
+            buffersRef.current = initParticlesFromImage(
+                readCtx, cw, ch, img, configRef.current, cw, ch
             );
+            easeRef.current = 0.01; // reset ease ramp on every init
             setIsLoaded(true);
         };
-    }, [imageSrc, config]);
+    }, [imageSrc]);
 
-    const currentEase = useRef(0.01);
-
+    // ── Animation loop ────────────────────────────────────────────────────────
     const animate = useCallback(() => {
+        if (!visibleRef.current) {
+            rafRef.current = requestAnimationFrame(animate);
+            return;
+        }
+
         const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        const ctx    = drawCtxRef.current;
+        const b      = buffersRef.current;
+        if (!canvas || !ctx || !b) return;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Enable additive blending for glowing overlap effect
+        // Ramp ease
+        const cfg = configRef.current;
+        easeRef.current += (cfg.ease - easeRef.current) * 0.015;
+
+        updateParticles(
+            b,
+            mouseRef.current.x,
+            mouseRef.current.y,
+            radiusSqRef.current,
+            cfg.friction,
+            easeRef.current,
+            performance.now(),
+        );
+
+        // lighter composite only for the draw call, then reset
         ctx.globalCompositeOperation = 'lighter';
-
-        // Smoothly transition ease from slow (formation) to config value (interaction)
-        currentEase.current += (config.ease - currentEase.current) * 0.015;
-
-        const time = performance.now();
-        particlesRef.current.forEach((particle) => {
-            particle.update(mouseRef.current, { ...config, ease: currentEase.current }, time);
-            particle.draw(ctx);
-        });
-
-        // Reset composite operation
+        drawParticles(ctx, b);
         ctx.globalCompositeOperation = 'source-over';
 
-        animationFrameRef.current = requestAnimationFrame(animate);
-    }, [config]);
+        rafRef.current = requestAnimationFrame(animate);
+    }, []);
 
-    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const rect = canvas.getBoundingClientRect();
-        mouseRef.current = {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
+    // ── Visibility — pause RAF when tab/element hidden ────────────────────────
+    useEffect(() => {
+        const onVisibility = () => { visibleRef.current = !document.hidden; };
+        document.addEventListener('visibilitychange', onVisibility);
+
+        // IntersectionObserver: pause when canvas scrolls off screen
+        const observer = new IntersectionObserver(
+            ([entry]) => { visibleRef.current = entry.isIntersecting && !document.hidden; },
+            { threshold: 0 }
+        );
+        if (canvasRef.current) observer.observe(canvasRef.current);
+
+        return () => {
+            document.removeEventListener('visibilitychange', onVisibility);
+            observer.disconnect();
         };
+    }, []);
+
+    // ── Mouse ─────────────────────────────────────────────────────────────────
+    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
+        const rect = canvasRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }, []);
 
     const handleMouseLeave = useCallback(() => {
         mouseRef.current = { x: -9999, y: -9999 };
     }, []);
 
+    // ── Resize debounced ──────────────────────────────────────────────────────
     useEffect(() => {
-        const handleResize = () => {
-            init();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        let timer: ReturnType<typeof setTimeout>;
+        const onResize = () => { clearTimeout(timer); timer = setTimeout(init, 250); };
+        window.addEventListener('resize', onResize);
+        return () => { clearTimeout(timer); window.removeEventListener('resize', onResize); };
     }, [init]);
 
-    useEffect(() => {
-        init();
-    }, [init]);
+    // ── Mount ─────────────────────────────────────────────────────────────────
+    useEffect(() => { init(); }, [init]);
 
+    // ── Start RAF ─────────────────────────────────────────────────────────────
     useEffect(() => {
-        if (isLoaded) {
-            if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-            animate();
-        }
-        return () => {
-            if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-        };
+        if (!isLoaded) return;
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(rafRef.current);
     }, [isLoaded, animate]);
 
     return (
-        <div className={className}>
+        <div className={className} style={{ position: 'relative' }}>
             <canvas
                 ref={canvasRef}
                 className="block w-full h-full"
