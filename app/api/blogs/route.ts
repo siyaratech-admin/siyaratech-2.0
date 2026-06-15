@@ -1,73 +1,61 @@
-import { NextResponse } from 'next/server';
+// src/app/api/blogs/route.ts
+// Fetches from Medium API and maps to the Blog shape your page expects.
+// Set MEDIUM_PUBLICATION_SLUG in .env.local to your publication slug.
+
+import { NextResponse } from "next/server";
+
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY!;
+const PUBLICATION_SLUG = process.env.MEDIUM_PUBLICATION_SLUG || "towardsdatascience";
+const BASE = "https://medium2.p.rapidapi.com";
+
+const headers = {
+  "x-rapidapi-key": RAPIDAPI_KEY,
+  "x-rapidapi-host": "medium2.p.rapidapi.com",
+};
+
+async function mFetch(path: string) {
+  const res = await fetch(`${BASE}${path}`, { headers, next: { revalidate: 3600 } });
+  if (!res.ok) throw new Error(`Medium API ${res.status}: ${path}`);
+  return res.json();
+}
 
 export async function GET() {
-  const ERPNEXT_URL = process.env.NEXT_PUBLIC_ERPNEXT_URL;
-
-
-  if (!ERPNEXT_URL) {
-    console.warn("NEXT_PUBLIC_ERPNEXT_URL is not defined. Returning mock data.");
-    // Return mock data if no URL is configured
-    return NextResponse.json({
-      blogs: [
-        {
-          id: '1',
-          title: 'The Future of AI in Enterprise',
-          description: 'How artificial intelligence is reshaping business operations and decision-making processes.',
-          image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-        },
-        {
-          id: '2',
-          title: 'Cloud Migration Strategies',
-          description: 'Best practices for moving your legacy infrastructure to the cloud securely and efficiently.',
-          image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-        },
-        {
-          id: '3',
-          title: 'Cybersecurity in 2025',
-          description: 'Emerging threats and the advanced security measures needed to protect your digital assets.',
-          image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
-        },
-      ]
-    });
-  }
-
   try {
-    // Fetch blogs from ERPNext
-    // Assuming standard ERPNext Blog Post doctype
-    const response = await fetch(`${ERPNEXT_URL}/api/resource/Blog Post?fields=["name","title","blog_intro","meta_image","published_on"]&filters=[["published","=",1]]&order_by=published_on desc&limit_page_length=6`, {
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Authorization': `token ${API_KEY}:${API_SECRET}` // Uncomment if auth is needed
-      },
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
+    // 1. Slug → publication_id
+    const { publication_id } = await mFetch(`/publication/id_for/${PUBLICATION_SLUG}`);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`ERPNext API Error: ${response.status} ${response.statusText}`, errorText);
-      throw new Error(`Failed to fetch from ERPNext: ${response.status} ${response.statusText} - ${errorText}`);
-    }
+    // 2. Article IDs + publication info in parallel
+    const [{ publication_articles: ids }, pubInfo] = await Promise.all([
+      mFetch(`/publication/${publication_id}/articles`),
+      mFetch(`/publication/${publication_id}`),
+    ]);
 
-    const data = await response.json();
+    // 3. Fetch up to 12 articles in parallel
+    const settled = await Promise.allSettled(
+      (ids as string[]).slice(0, 12).map((id) => mFetch(`/article/${id}`))
+    );
 
-    // Transform ERPNext data to our format
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const blogs = data.data.map((item: any) => ({
-      id: item.name,
-      title: item.title,
-      description: item.blog_intro || item.title, // Fallback if intro is missing
-      image: item.meta_image ? (item.meta_image.startsWith('http') ? item.meta_image : `${ERPNEXT_URL}${item.meta_image}`) : 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=800&q=80', // Handle relative URLs
-    }));
+    const blogs = settled
+      .filter((r): r is PromiseFulfilledResult<any> => r.status === "fulfilled")
+      .map((r) => {
+        const a = r.value;
+        return {
+          id: a.id,
+          title: a.title || "Untitled",
+          description: a.subtitle || a.description || "",
+          image: a.image_url || "",
+          reading_time: a.reading_time,
+          author: a.author,
+          claps: a.claps,
+          tags: a.tags || [],
+          published_at: a.published_at,
+          url: a.url,
+        };
+      });
 
-    return NextResponse.json({ blogs });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    console.error('Error in blog API:', error);
-    return NextResponse.json({
-      error: 'Failed to fetch blogs',
-      details: error.message,
-      stack: error.stack
-    }, { status: 500 });
+    return NextResponse.json({ blogs, publication: pubInfo });
+  } catch (err: any) {
+    console.error("Blog API error:", err.message);
+    return NextResponse.json({ error: err.message, blogs: [] }, { status: 500 });
   }
 }
