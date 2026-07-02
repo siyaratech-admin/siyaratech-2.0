@@ -119,6 +119,140 @@ function getCourseImage(course: Course): string {
     return "/placeholder.png"
 }
 
+// ─── Ghost Skeleton Card ───────────────────────────────────────────────────
+function CourseCardSkeleton({ index }: { index: number }) {
+    return (
+        <div
+            style={{
+                opacity: 0,
+                animation: `skeletonFadeIn 0.4s ease forwards ${index * 100}ms`,
+            }}
+        >
+            <div
+                className="relative flex flex-col rounded-2xl overflow-hidden h-full"
+                style={{
+                    background: "linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+                    border: "1px solid rgba(131,58,180,0.15)",
+                    boxShadow: "0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.03)",
+                }}
+            >
+                {/* Top accent bar */}
+                <div
+                    className="absolute top-0 left-0 right-0 h-[2px] z-10"
+                    style={{ background: "rgba(131,58,180,0.25)" }}
+                />
+
+                {/* Thumbnail skeleton */}
+                <div className="course-skel-bone flex-shrink-0" style={{ height: 192 }} />
+
+                {/* Perforation line */}
+                <div className="relative flex items-center px-0 -mt-px z-10">
+                    <div
+                        className="w-4 h-4 rounded-full flex-shrink-0 -ml-2"
+                        style={{ background: "#090c14", border: "1px solid rgba(131,58,180,0.2)" }}
+                    />
+                    <div
+                        className="flex-1 h-px"
+                        style={{ borderTop: "1.5px dashed rgba(131,58,180,0.2)" }}
+                    />
+                    <div
+                        className="w-4 h-4 rounded-full flex-shrink-0 -mr-2"
+                        style={{ background: "#090c14", border: "1px solid rgba(131,58,180,0.2)" }}
+                    />
+                </div>
+
+                {/* Body skeleton */}
+                <div className="flex flex-col flex-1 p-5 gap-4">
+                    {/* Title */}
+                    <div>
+                        <div className="course-skel-bone h-5 w-3/4 rounded-md mb-2" />
+                        <div className="course-skel-bone h-5 w-1/2 rounded-md" />
+                    </div>
+
+                    {/* Description */}
+                    <div className="space-y-2">
+                        <div className="course-skel-bone h-3.5 w-full rounded" />
+                        <div className="course-skel-bone h-3.5 w-5/6 rounded" />
+                    </div>
+
+                    {/* Meta row */}
+                    <div className="flex items-center gap-4">
+                        <div className="course-skel-bone h-3 w-16 rounded" />
+                        <div className="course-skel-bone h-3 w-24 rounded" />
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                            <div className="course-skel-bone h-3.5 w-3.5 rounded-full flex-shrink-0" />
+                            <div className="course-skel-bone h-3 w-36 rounded" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="course-skel-bone h-3.5 w-3.5 rounded-full flex-shrink-0" />
+                            <div className="course-skel-bone h-3 w-28 rounded" />
+                        </div>
+                    </div>
+
+                    {/* Price block */}
+                    <div
+                        className="rounded-xl p-3 flex items-center justify-between"
+                        style={{
+                            background: "rgba(131,58,180,0.05)",
+                            border: "1px solid rgba(131,58,180,0.12)",
+                        }}
+                    >
+                        <div>
+                            <div className="course-skel-bone h-7 w-24 rounded-md mb-1.5" />
+                            <div className="course-skel-bone h-3 w-16 rounded" />
+                        </div>
+                        <div className="text-right">
+                            <div className="course-skel-bone h-4 w-20 rounded mb-1.5" />
+                            <div className="course-skel-bone h-3 w-16 rounded" />
+                        </div>
+                    </div>
+
+                    {/* Button */}
+                    <div className="course-skel-bone h-11 w-full rounded-xl" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+// ─── Ghost Skeleton: Full Page ─────────────────────────────────────────────
+function CoursesSkeleton() {
+    return (
+        <>
+            {/* Header skeleton */}
+            <div className="text-center mb-20">
+                {/* Badge */}
+                <div className="flex justify-center mb-6">
+                    <div className="course-skel-bone h-7 w-36 rounded-full" />
+                </div>
+                {/* Title */}
+                <div className="flex flex-col items-center gap-3 mb-6">
+                    <div className="course-skel-bone h-14 md:h-20 w-3/4 md:w-1/2 rounded-xl" />
+                    <div className="course-skel-bone h-14 md:h-20 w-1/2 md:w-1/3 rounded-xl" />
+                </div>
+                {/* Subtitle */}
+                <div className="flex flex-col items-center gap-2 mb-8">
+                    <div className="course-skel-bone h-4 w-full max-w-lg rounded" />
+                    <div className="course-skel-bone h-4 w-3/4 max-w-md rounded" />
+                </div>
+                {/* Divider */}
+                <div className="course-skel-bone h-px w-48 mx-auto rounded" />
+            </div>
+
+            {/* Cards grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {Array.from({ length: 6 }).map((_, i) => (
+                    <CourseCardSkeleton key={i} index={i} />
+                ))}
+            </div>
+        </>
+    )
+}
+
 // ─── 3D Tilt + Glow Hook ───────────────────────────────────────────────────
 function useTiltAndGlow(strength = 12) {
     const cardRef = useRef<HTMLDivElement>(null)
@@ -133,24 +267,13 @@ function useTiltAndGlow(strength = 12) {
             const rect = el.getBoundingClientRect()
             const x = (e.clientX - rect.left) / rect.width - 0.5
             const y = (e.clientY - rect.top) / rect.height - 0.5
-
-            // 3D tilt
-            el.style.transform = `
-                perspective(900px)
-                rotateX(${-y * strength}deg)
-                rotateY(${x * strength}deg)
-                scale3d(1.03, 1.03, 1.03)
-            `
-
-            // Shine overlay
+            el.style.transform = `perspective(900px) rotateX(${-y * strength}deg) rotateY(${x * strength}deg) scale3d(1.03,1.03,1.03)`
             const shine = el.querySelector<HTMLElement>(".course-shine")
             if (shine) {
                 shine.style.backgroundPosition = `${(x + 0.5) * 100}% ${(y + 0.5) * 100}%`
                 shine.style.opacity = "1"
             }
-
-            // Glow follows mouse within card bounds
-            const glowX = (x + 0.5) * 100  // 0–100%
+            const glowX = (x + 0.5) * 100
             const glowY = (y + 0.5) * 100
             glow.style.background = `radial-gradient(ellipse 80% 80% at ${glowX}% ${glowY}%, rgba(131,58,180,0.55) 0%, rgba(253,29,29,0.35) 40%, rgba(252,176,69,0.15) 70%, transparent 100%)`
             glow.style.opacity = "1"
@@ -202,20 +325,14 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
             transition={{ duration: 0.5, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] }}
             className="h-full"
         >
-            {/*
-             * ── Glow wrapper ──
-             * position: relative so the pseudo-glow div sits BEHIND the card.
-             * The glow div is absolutely positioned, blurred, and z-indexed below the card.
-             */}
             <div className="relative h-full" style={{ isolation: "isolate" }}>
-
-                {/* ── GRADIENT GLOW (behind the card) ── */}
+                {/* Gradient glow */}
                 <div
                     ref={glowRef}
                     aria-hidden="true"
                     style={{
                         position: "absolute",
-                        inset: "-18px",          // spreads a bit beyond card edges
+                        inset: "-18px",
                         zIndex: -1,
                         borderRadius: "28px",
                         opacity: 0,
@@ -226,7 +343,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                     }}
                 />
 
-                {/* ── Tilt wrapper — handles 3D transform ── */}
+                {/* Tilt wrapper */}
                 <div
                     ref={cardRef}
                     className="h-full"
@@ -236,7 +353,6 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                         willChange: "transform",
                     }}
                 >
-                    {/* Card shell */}
                     <div
                         className="relative h-full flex flex-col rounded-2xl overflow-hidden"
                         style={{
@@ -245,7 +361,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                             boxShadow: "0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04)",
                         }}
                     >
-                        {/* Shimmer / shine overlay */}
+                        {/* Shine overlay */}
                         <div
                             className="course-shine pointer-events-none absolute inset-0 z-20 rounded-2xl"
                             style={{
@@ -278,7 +394,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                             }}
                         />
 
-                        {/* ── Thumbnail ── */}
+                        {/* Thumbnail */}
                         <div className="relative h-48 overflow-hidden flex-shrink-0">
                             <div
                                 className="absolute inset-0 z-10"
@@ -296,8 +412,6 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.08)")}
                                 onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
                             />
-
-                            {/* Instructor badge */}
                             <Badge
                                 className="absolute top-3 right-3 z-20 text-xs font-semibold"
                                 style={{
@@ -309,20 +423,14 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                             >
                                 {course.instructor}
                             </Badge>
-
-                            {/* Discount badge */}
                             {discount > 0 && (
                                 <div
                                     className="absolute top-3 left-3 z-20 text-xs font-bold px-2 py-1 rounded-lg"
-                                    style={{
-                                        background: "linear-gradient(135deg, #833AB4, #FD1D1D)",
-                                        color: "#fff",
-                                    }}
+                                    style={{ background: "linear-gradient(135deg, #833AB4, #FD1D1D)", color: "#fff" }}
                                 >
                                     -{discount}%
                                 </div>
                             )}
-
                             {isUpcoming && (
                                 <div
                                     className="absolute top-3 left-3 z-20 text-xs font-bold px-2 py-1 rounded-lg"
@@ -337,7 +445,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                             )}
                         </div>
 
-                        {/* ── Perforation line ── */}
+                        {/* Perforation line */}
                         <div className="relative flex items-center px-0 -mt-px z-10">
                             <div
                                 className="w-4 h-4 rounded-full flex-shrink-0 -ml-2"
@@ -353,9 +461,8 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                             />
                         </div>
 
-                        {/* ── Body ── */}
+                        {/* Body */}
                         <div className="relative z-10 flex flex-col flex-1 p-5 gap-4">
-                            {/* Title */}
                             <h3
                                 className="text-lg font-extrabold leading-snug"
                                 style={{
@@ -368,12 +475,10 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                 {course.title || course.name || "Untitled Course"}
                             </h3>
 
-                            {/* Description */}
                             <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed flex-1">
                                 {course.description}
                             </p>
 
-                            {/* Meta row */}
                             <div className="flex items-center gap-4 text-xs text-slate-500">
                                 {course.rating && (
                                     <span className="flex items-center gap-1">
@@ -389,7 +494,6 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                 )}
                             </div>
 
-                            {/* Features */}
                             <div className="space-y-1.5">
                                 {["Comprehensive Curriculum", "Lifetime Access"].map((f) => (
                                     <div key={f} className="flex items-center gap-2 text-xs text-slate-400">
@@ -399,7 +503,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                 ))}
                             </div>
 
-                            {/* ── Price block ── */}
+                            {/* Price block */}
                             <div
                                 className="rounded-xl p-3 flex items-center justify-between"
                                 style={{
@@ -412,10 +516,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                         <div>
                                             <div
                                                 className="text-2xl font-black tracking-tight"
-                                                style={{
-                                                    color: "#f8fafc",
-                                                    textShadow: "0 0 20px rgba(131,58,180,0.5)",
-                                                }}
+                                                style={{ color: "#f8fafc", textShadow: "0 0 20px rgba(131,58,180,0.5)" }}
                                             >
                                                 ₹{displayPrice.toLocaleString()}
                                             </div>
@@ -435,10 +536,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                         )}
                                     </>
                                 ) : (
-                                    <div
-                                        className="text-xl font-black tracking-wider"
-                                        style={{ color: "#60a5fa" }}
-                                    >
+                                    <div className="text-xl font-black tracking-wider" style={{ color: "#60a5fa" }}>
                                         Upcoming
                                     </div>
                                 )}
@@ -459,14 +557,14 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                                     transition: "background-position 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease",
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "right center"
-                                        ; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 30px rgba(253,29,29,0.45)"
-                                        ; (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)"
+                                    (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "right center";
+                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 30px rgba(253,29,29,0.45)";
+                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)"
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "left center"
-                                        ; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(131,58,180,0.4)"
-                                        ; (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"
+                                    (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "left center";
+                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(131,58,180,0.4)";
+                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"
                                 }}
                             >
                                 {course.isPurchased ? (
@@ -509,32 +607,13 @@ export default function Courses() {
         fetchCourses()
     }, [])
 
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-[#090c14] flex items-center justify-center">
-                <div
-                    className="w-16 h-16 rounded-full"
-                    style={{
-                        border: "2px solid transparent",
-                        borderTopColor: "#833AB4",
-                        borderRightColor: "#FD1D1D",
-                        animation: "spin 0.8s linear infinite",
-                    }}
-                />
-                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-            </div>
-        )
-    }
-
     if (error) {
         return (
             <div className="min-h-screen bg-[#090c14] flex items-center justify-center text-white">
                 <div className="text-center">
                     <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
                     <p className="text-slate-400">{error}</p>
-                    <Button onClick={() => window.location.reload()} className="mt-6">
-                        Retry
-                    </Button>
+                    <Button onClick={() => window.location.reload()} className="mt-6">Retry</Button>
                 </div>
             </div>
         )
@@ -560,6 +639,24 @@ export default function Courses() {
                 @keyframes pulse-ring {
                     0%   { transform: scale(0.95); opacity: 0.7; }
                     100% { transform: scale(1.15); opacity: 0; }
+                }
+                @keyframes courseSkeletonShimmer {
+                    0%   { background-position: -700px 0; }
+                    100% { background-position: 700px 0; }
+                }
+                @keyframes skeletonFadeIn {
+                    to { opacity: 1; }
+                }
+                .course-skel-bone {
+                    border-radius: 6px;
+                    background: linear-gradient(
+                        90deg,
+                        rgba(131,58,180,0.06) 0px,
+                        rgba(131,58,180,0.14) 40px,
+                        rgba(131,58,180,0.06) 80px
+                    );
+                    background-size: 700px 100%;
+                    animation: courseSkeletonShimmer 1.8s ease-in-out infinite;
                 }
             `}</style>
 
@@ -611,104 +708,111 @@ export default function Courses() {
             {/* ── Content ── */}
             <div className="relative z-10 container mx-auto px-4 py-24 mt-10">
 
-                {/* Header */}
-                <div className="text-center mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 uppercase tracking-widest"
-                        style={{
-                            background: "rgba(131,58,180,0.15)",
-                            border: "1px solid rgba(131,58,180,0.4)",
-                            color: "#c084fc",
-                        }}
-                    >
-                        <span
-                            className="w-1.5 h-1.5 rounded-full"
-                            style={{
-                                background: "#833AB4",
-                                boxShadow: "0 0 6px #833AB4",
-                                animation: "pulse-ring 1.5s ease-out infinite",
-                                display: "inline-block",
-                            }}
-                        />
-                        Premium Courses
-                    </motion.div>
+                {loading ? (
+                    /* ── Ghost skeleton replaces entire header + grid while loading ── */
+                    <CoursesSkeleton />
+                ) : (
+                    <>
+                        {/* Header */}
+                        <div className="text-center mb-20">
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 uppercase tracking-widest"
+                                style={{
+                                    background: "rgba(131,58,180,0.15)",
+                                    border: "1px solid rgba(131,58,180,0.4)",
+                                    color: "#c084fc",
+                                }}
+                            >
+                                <span
+                                    className="w-1.5 h-1.5 rounded-full"
+                                    style={{
+                                        background: "#833AB4",
+                                        boxShadow: "0 0 6px #833AB4",
+                                        animation: "pulse-ring 1.5s ease-out infinite",
+                                        display: "inline-block",
+                                    }}
+                                />
+                                Premium Courses
+                            </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-black leading-none mb-6"
-                        style={{
-                            background: "linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                            backgroundSize: "200% 200%",
-                            animation: "gradientShift 4s ease infinite",
-                        }}
-                    >
-                        Master Modern Tech
-                    </motion.h1>
+                            <motion.h1
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                                className="text-5xl md:text-7xl font-black leading-none mb-6"
+                                style={{
+                                    background: "linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                    backgroundClip: "text",
+                                    backgroundSize: "200% 200%",
+                                    animation: "gradientShift 4s ease infinite",
+                                }}
+                            >
+                                Master Modern Tech
+                            </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-                    >
-                        Elevate your skills with our premium courses designed for the future of technology.
-                    </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                                className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+                            >
+                                Elevate your skills with our premium courses designed for the future of technology.
+                            </motion.p>
 
-                    <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="mx-auto mt-8 h-px max-w-xs"
-                        style={{
-                            background: "linear-gradient(90deg, transparent, rgba(131,58,180,0.6), transparent)",
-                        }}
-                    />
-                </div>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                className="mx-auto mt-8 h-px max-w-xs"
+                                style={{
+                                    background: "linear-gradient(90deg, transparent, rgba(131,58,180,0.6), transparent)",
+                                }}
+                            />
+                        </div>
 
-                {/* Course Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {courses.map((course, index) => (
-                        <CourseCard key={course.id} course={course} index={index} />
-                    ))}
-                </div>
+                        {/* Course Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {courses.map((course, index) => (
+                                <CourseCard key={course.id} course={course} index={index} />
+                            ))}
+                        </div>
 
-                {/* Footer CTA */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="text-center mt-20"
-                >
-                    <p className="text-slate-500 mb-4">More courses launching soon.</p>
-                    <a
-                        href={TECHDIVE_URL}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
-                        style={{
-                            background: "rgba(131,58,180,0.12)",
-                            border: "1px solid rgba(131,58,180,0.35)",
-                            color: "#c084fc",
-                        }}
-                        onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(131,58,180,0.22)"
-                                ; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(131,58,180,0.6)"
-                        }}
-                        onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(131,58,180,0.12)"
-                                ; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(131,58,180,0.35)"
-                        }}
-                    >
-                        Visit TechDive Hub
-                        <ArrowRight className="w-4 h-4" />
-                    </a>
-                </motion.div>
+                        {/* Footer CTA */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                            className="text-center mt-20"
+                        >
+                            <p className="text-slate-500 mb-4">More courses launching soon.</p>
+                            <a
+                                href={TECHDIVE_URL}
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
+                                style={{
+                                    background: "rgba(131,58,180,0.12)",
+                                    border: "1px solid rgba(131,58,180,0.35)",
+                                    color: "#c084fc",
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(131,58,180,0.22)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(131,58,180,0.6)"
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(131,58,180,0.12)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(131,58,180,0.35)"
+                                }}
+                            >
+                                Visit TechDive Hub
+                                <ArrowRight className="w-4 h-4" />
+                            </a>
+                        </motion.div>
+                    </>
+                )}
             </div>
         </div>
     )

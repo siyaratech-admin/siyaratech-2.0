@@ -30,8 +30,8 @@ function LogoSpotlightOverlay({
   sectionRef: React.RefObject<HTMLElement>;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rafRef    = useRef<number>(0);
-  const mouseRef  = useRef<{ x: number; y: number } | null>(null);
+  const rafRef = useRef<number>(0);
+  const mouseRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     // Track mouse only within the section
@@ -60,8 +60,8 @@ function LogoSpotlightOverlay({
 
     let dpr = window.devicePixelRatio || 1;
     const fit = () => {
-      dpr           = window.devicePixelRatio || 1;
-      canvas.width  = canvas.offsetWidth  * dpr;
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
@@ -76,41 +76,41 @@ function LogoSpotlightOverlay({
       ctx.clearRect(0, 0, W, H);
 
       const mouse = mouseRef.current;
-      const img   = imgRef.current;
+      const img = imgRef.current;
 
       // Only draw when cursor is inside the section AND image is loaded
       if (mouse && img && img.complete && img.naturalWidth > 0) {
-        const mx     = mouse.x;
-        const my     = mouse.y;
+        const mx = mouse.x;
+        const my = mouse.y;
         const RADIUS = Math.min(W, H) * 0.44;
 
         // Logo rect (must match the <Image> sizing below)
         const logoSize = Math.min(W, H) * 0.65;
-        const aspect   = img.naturalWidth / img.naturalHeight;
-        const logoW    = aspect >= 1 ? logoSize : logoSize * aspect;
-        const logoH    = aspect >= 1 ? logoSize / aspect : logoSize;
-        const logoX    = W * 0.50 - logoW / 2;
-        const logoY    = H * 0.50 - logoH / 2 - H * 0.04;
+        const aspect = img.naturalWidth / img.naturalHeight;
+        const logoW = aspect >= 1 ? logoSize : logoSize * aspect;
+        const logoH = aspect >= 1 ? logoSize / aspect : logoSize;
+        const logoX = W * 0.50 - logoW / 2;
+        const logoY = H * 0.50 - logoH / 2 - H * 0.04;
 
         // Off-screen: draw logo screened, then mask with spotlight radial
-        const tmp   = document.createElement("canvas");
-        tmp.width   = W * dpr;
-        tmp.height  = H * dpr;
-        const t     = tmp.getContext("2d")!;
+        const tmp = document.createElement("canvas");
+        tmp.width = W * dpr;
+        tmp.height = H * dpr;
+        const t = tmp.getContext("2d")!;
         t.scale(dpr, dpr);
 
         // Extra glow pass
         t.save();
-        t.globalAlpha              = 0.45;
-        t.filter                   = "blur(14px) brightness(1.5)";
+        t.globalAlpha = 0.45;
+        t.filter = "blur(14px) brightness(1.5)";
         t.globalCompositeOperation = "screen";
         t.drawImage(img, logoX, logoY, logoW, logoH);
         t.restore();
 
         // Crisp bright pass
         t.save();
-        t.globalAlpha              = 0.65;
-        t.filter                   = "none";
+        t.globalAlpha = 0.65;
+        t.filter = "none";
         t.globalCompositeOperation = "screen";
         t.drawImage(img, logoX, logoY, logoW, logoH);
         t.restore();
@@ -118,10 +118,10 @@ function LogoSpotlightOverlay({
         // Spotlight mask — destination-in punches the radial shape
         t.globalCompositeOperation = "destination-in";
         const grad = t.createRadialGradient(mx, my, 0, mx, my, RADIUS);
-        grad.addColorStop(0,    "rgba(0,0,0,1)");
+        grad.addColorStop(0, "rgba(0,0,0,1)");
         grad.addColorStop(0.35, "rgba(0,0,0,0.90)");
         grad.addColorStop(0.65, "rgba(0,0,0,0.35)");
-        grad.addColorStop(1,    "rgba(0,0,0,0)");
+        grad.addColorStop(1, "rgba(0,0,0,0)");
         t.fillStyle = grad;
         t.fillRect(0, 0, W, H);
 
@@ -155,9 +155,9 @@ export default function HeroSection({
   onPrimaryCTA,
   onSecondaryCTA,
 }: HeroSectionProps) {
-  const [mounted, setMounted]   = useState(false);
-  const sectionRef              = useRef<HTMLElement>(null);
-  const imgRef                  = useRef<HTMLImageElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => { setMounted(true); }, []);
 
